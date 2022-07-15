@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.AccountDAO">
+	<resultMap type="accountVO" id="accountMap">
+		<result column="basic_addr" property="basicAddr" />
+		<result column="detail_addr" property="detailAddr" />
+		<result column="reg_Date" property="regDate" />
+	</resultMap>
+	
+	<!-- sql  -->
+	<sql id="selectAllColumn">
+		select account_no as accountNo, member_id as memberId, amount
+			, goods_cl as goodsCl
+			, goods_code as goodsCode
+			, available, to_char(reg_date, 'yyyy-mm-dd') as regDate
+		from account a, COMM_CODE c
+		where a.goods_cl = c.CODE_ID 
+	</sql>
+	
+	<!-- select -->
+	<select id="selectAll" resultType="AccountVO" >
+		<include refid="selectAllColumn" />
+	</select>
+	
+	<select id="selectById" parameterType="String" resultType="AccountVO" >
+	  <include refid="selectAllColumn" />
+	  where account_no = #{ accountNo }
+	</select>
+	
+	<!-- DML -->
+	<insert id="insert" parameterType="AccountVO">
+		INSERT INTO MEMBER(account_no, member_id, amount, goods_cl, goods_code) 
+		VALUES(#{ accountNo }, #{ memberId }, #{ amount }, #{ goodsCl }, #{ goodsCode })
+	</insert>
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.MemberDAO">
+	<resultMap type="memberVO" id="memberMap">
+		<result column="basic_addr" property="basicAddr" />
+		<result column="detail_addr" property="detailAddr" />
+		<result column="reg_Date" property="regDate" />
+	</resultMap>
+	
+	<!-- sql  -->
+	<sql id="selectAllColumn">
+		select id, password, name, phone, email
+			, basic_addr as basicAddr, detail_addr as detailAddr, post, type
+			, to_char(reg_date, 'yyyy-mm-dd') as regDate
+		from member
+	</sql>
+	
+	<!-- select -->
+	<select id="selectAll" resultType="MemberVO" >
+		<include refid="selectAllColumn" />
+	</select>
+	
+	<select id="selectById" parameterType="String" resultType="MemberVO" >
+	  <include refid="selectAllColumn" />
+	  where id = #{ id }
+	</select>
+	
+	<!-- DML -->
+	<insert id="insert" parameterType="MemberVO">
+		INSERT INTO MEMBER(id, password, name, phone, email, basic_addr, detail_addr, post) 
+		VALUES(#{ id }, #{ password }, #{ name }, #{ phone }, #{ email }, #{ basicAddr }, #{ detailAddr }, #{ post })
+	</insert>
+</mapper>
