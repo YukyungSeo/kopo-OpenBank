@@ -58,25 +58,41 @@
         <!-- Service Start -->
         <div class="container">
             <div class="row g-4">
-            	<%-- <c:forEach items="${ fileList }" var="fileVO"> --%>
+            	<c:forEach items="${ myAcountList }" var="account">
 	                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
 	                    <div class="service-item rounded h-100">
 	                        <div class="d-flex justify-content-between">
 	                            <div class="service-icon">
 	                                <i class="fa fa-user-tie fa-2x"></i>
 	                            </div>
-	                            <div>
-		                            <a class="service-btn" href="">이체</a>
-		                            <a class="service-btn" href="">조회</a>
-	                            </div>
+	                            <a class="service-btn" href="">이체</a>
 	                        </div>
-	                        <div class="p-5">
-	                            <h5 class="mb-3">list</h5>
-	                            <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</span>
+	                        <div class="p-4">
+	                            <h4 class="mb-3">${ account.goods }</h4><br>
+	                            <h6 class="mb-3">계좌 ${ account.accountNo }</h6>
+	                            <h5 class="mb-3">금액 ${ account.amount }원</h5>
 	                        </div>
 	                    </div>
 	                </div>
-                <%-- </c:forEach> --%>
+                </c:forEach>
+                <c:forEach items="${ otherAcountList }" var="account">
+	                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+	                    <div class="service-item rounded h-100">
+	                        <div class="d-flex justify-content-between">
+	                            <div class="service-icon">
+	                                <i class="fa fa-user-tie fa-2x"></i>
+	                            </div>
+	                            <a class="service-btn" href="">이체</a>
+	                        </div>
+	                        <div class="p-4">
+	                            <h4 class="mb-3">${ account.goods }</h4><br>
+	                            <h6 class="mb-3">계좌 ${ account.accountNo }</h6>
+	                            <h5 class="mb-3">금액 ${ account.amount }원</h5>
+	                        </div>
+	                    </div>
+	                </div>
+                </c:forEach>
+            </div>
         </div>
         <!-- Service End -->
 

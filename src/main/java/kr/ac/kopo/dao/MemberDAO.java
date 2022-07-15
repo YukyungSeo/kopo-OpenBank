@@ -39,6 +39,7 @@ public class MemberDAO {
 		session.commit();
 		
 		// TODO : 삽입실패일 경우 에러 리턴
+		// 현재는 무조건 성공
 		return true;
 	}
 }

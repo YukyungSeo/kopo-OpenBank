@@ -30,7 +30,7 @@
             	<a href="${ pageContext.request.contextPath }/login.do" class="btn btn-light rounded-pill text-primary py-2 px-4 ms-lg-5">로그인</a>
             </c:if>
             <c:if test = "${ not empty member }">
-            	<a href="" class="btn btn-light rounded-pill text-primary py-2 px-4 ms-lg-5">내 계좌</a>
+            	<a href="${ pageContext.request.contextPath }/account/list.do" class="btn btn-light rounded-pill text-primary py-2 px-4 ms-lg-5">내 계좌</a>
             </c:if>
         </div>
     </nav>

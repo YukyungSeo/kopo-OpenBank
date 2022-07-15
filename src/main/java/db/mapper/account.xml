@@ -12,11 +12,12 @@
 	<!-- sql  -->
 	<sql id="selectAllColumn">
 		select account_no as accountNo, member_id as memberId, amount
-			, goods_cl as goodsCl
-			, goods_code as goodsCode
-			, available, to_char(reg_date, 'yyyy-mm-dd') as regDate
-		from account a, COMM_CODE c
-		where a.goods_cl = c.CODE_ID 
+		    , c.name as goodsCl
+		    , c2.name as goods
+		    , a.available, to_char(reg_date, 'yyyy-mm-dd') as regDate
+		from account a, COMM_CODE c, comm_code c2
+		where (c.code_id = 100 and a.goods_cl = c.code)
+		and (c2.code_id = 110 and a.goods_code = c2.code)
 	</sql>
 	
 	<!-- select -->
@@ -24,9 +25,9 @@
 		<include refid="selectAllColumn" />
 	</select>
 	
-	<select id="selectById" parameterType="String" resultType="AccountVO" >
+	<select id="selectByAccountNo" parameterType="String" resultType="AccountVO" >
 	  <include refid="selectAllColumn" />
-	  where account_no = #{ accountNo }
+	  and account_no = #{ accountNo }
 	</select>
 	
 	<!-- DML -->
