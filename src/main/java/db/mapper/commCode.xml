@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.CommCodeDAO">
+	<resultMap type="commCodeVO" id="commCodeMap">
+		<result column="code_id" property="codeId" />
+	</resultMap>
+	
+	<sql id="selectAllColumn">
+		select code_id as codeId
+			, code, name, AVAILABLE 
+		from comm_code
+	</sql>
+	
+	<!-- select  -->
+	<select id="selectByCodeId" parameterType="String" resultType="CommCodeVO" >
+	  <include refid="selectAllColumn" />
+	  where code_id = #{ code_id }
+	</select>
+</mapper>

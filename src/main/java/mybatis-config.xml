@@ -13,6 +13,7 @@
 		<typeAlias type="kr.ac.kopo.vo.MemberVO" alias="MemberVO" />
 		<typeAlias type="kr.ac.kopo.vo.AccountVO" alias="AccountVO" />
 		<typeAlias type="kr.ac.kopo.vo.TransactionVO" alias="TransactionVO" />
+		<typeAlias type="kr.ac.kopo.vo.CommCodeVO" alias="CommCodeVO" />
 	</typeAliases>
 
 	<environments default="development">
@@ -30,6 +31,7 @@
 		<mapper resource="db/mapper/member.xml" />
 		<mapper resource="db/mapper/account.xml" />
 		<mapper resource="db/mapper/transaction.xml" />
+		<mapper resource="db/mapper/commCode.xml" />
 	</mappers>
 
 </configuration>

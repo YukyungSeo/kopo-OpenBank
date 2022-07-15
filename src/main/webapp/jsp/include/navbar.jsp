@@ -12,7 +12,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
-                <a href="#" class="nav-item nav-link active">금융상품</a>
+                <a href="#" class="nav-item nav-link">금융상품</a>
+                <a href="${ pageContext.request.contextPath }/account/create.do" class="nav-item nav-link">1Q계좌개설</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">게시판</a>
                     <div class="dropdown-menu m-0">

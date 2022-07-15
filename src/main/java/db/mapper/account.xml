@@ -20,6 +20,9 @@
 		and (c2.code_id = 110 and a.goods_code = c2.code)
 	</sql>
 	
+	<!-- DML -->
+	
+	
 	<!-- select -->
 	<select id="selectAllMyAccount" resultType="AccountVO" >
 		<include refid="selectAllColumn" />
