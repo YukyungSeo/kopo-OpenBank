@@ -24,6 +24,10 @@
 	
 	
 	<!-- select -->
+	<select id="selectByAccontNo" parameterType="String" resultType="AccountVO">
+		<include refid="selectAllColumn" />
+		and account_no = #{ accountNo }
+	</select>
 	<select id="selectAllMyAccount" resultType="AccountVO" >
 		<include refid="selectAllColumn" />
 	</select>

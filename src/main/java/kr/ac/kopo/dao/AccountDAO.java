@@ -21,6 +21,11 @@ public class AccountDAO {
 		return session;
 	}
 
+	public AccountVO selectByAccontNo(String accountNO) {
+		AccountVO account = session.selectOne("dao.AccountDAO.selectByAccontNo", accountNO);
+		return account;
+	}
+
 	public List<AccountVO> selectAllMyAccount() {
 		List<AccountVO> accountList = session.selectList("dao.AccountDAO.selectAllMyAccount");
 		for (AccountVO accountVO : accountList) {

@@ -65,11 +65,11 @@
 	                            <div class="service-icon">
 	                                <i class="fa fa-user-tie fa-2x"></i>
 	                            </div>
-	                            <a class="service-btn" href="">이체</a>
+	                            <a class="service-btn" href="${ pageContext.request.contextPath }/account/transaction.do?accountNo=${ account.accountNo }">이체</a>
 	                        </div>
 	                        <div class="p-4">
 	                            <h4 class="mb-3">${ account.goods }</h4><br>
-	                            <h6 class="mb-3">계좌 ${ account.accountNo }</h6>
+	                            <h6 class="mb-3">계좌번호 ${ account.accountNo }</h6>
 	                            <h5 class="mb-3">금액 ${ account.amount }원</h5>
 	                        </div>
 	                    </div>

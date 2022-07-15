@@ -15,6 +15,9 @@ public class ListController implements Controller {
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		AccountService service = new AccountService();
+//		service.getOpenBankAccount();
+		
+		
 		List<AccountVO> myAcountList = service.getAllMyAccounts();
 		List<AccountVO> otherAcountList = service.getAllOtherAccounts();
 		

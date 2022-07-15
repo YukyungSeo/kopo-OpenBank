@@ -16,9 +16,19 @@ public class TransactionDAO {
 	public SqlSession getSession() {
 		return session;
 	}
-
+	
 	public void myBankTransaction(TransactionVO transactionVO) {
 		session.update("dao.TransactionDAO.myBankTransaction", transactionVO);
+		session.commit();
+	}
+	
+	public void myBankToHJTransaction(TransactionVO transactionVO) {
+		session.update("dao.TransactionDAO.myBankToHJTransaction", transactionVO);
+		session.commit();
+	}
+	
+	public void HJToMyBankTransaction(TransactionVO transactionVO) {
+		session.update("dao.TransactionDAO.HJToMyBankTransaction", transactionVO);
 		session.commit();
 	}
 }

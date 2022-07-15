@@ -18,10 +18,18 @@ public class AccountTest {
 		AccountDAO dao = new AccountDAO();
 		assertNotNull(dao.selectAllMyAccount());
 	}
-
+	
 	@org.junit.Test
 	public void AccountServiceGetAllOtherAccounts() throws Exception {
 		AccountService service = new AccountService();
 		assertNotNull(service.getAllOtherAccounts());
+	}
+	
+
+
+	@org.junit.Test
+	public void AccountDAOSelectByAccontNoTest() throws Exception {
+		AccountDAO dao = new AccountDAO();
+		assertNotNull(dao.selectByAccontNo("13900000000001"));
 	}
 }

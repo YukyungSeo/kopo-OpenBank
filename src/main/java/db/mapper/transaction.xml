@@ -9,12 +9,26 @@
 		<result column="reg_Date" property="regDate" />
 	</resultMap>
 	
-	<!-- sql  -->
-	
 	<!-- procedure -->
 	<select id="myBankTransaction" statementType="CALLABLE" parameterType="TransactionVO">
 	{
-		CALL PR_TRANSACTION(#{ activeAcctNo }, 'I', #{ name }
+		CALL PR_TRANSACTION(#{ activeAcctNo }, 'O', #{ name }
+			, #{ dealName }, #{ amount }
+			, #{ dealBankcode }, #{ dealAcctNo })
+	}
+	</select>
+	
+	<select id="myBankToHJTransaction" statementType="CALLABLE" parameterType="TransactionVO">
+	{
+		CALL PR_TRANSACTION_MYTOHJ(#{ activeAcctNo }, 'O', #{ name }
+			, #{ dealName }, #{ amount }
+			, #{ dealBankcode }, #{ dealAcctNo })
+	}
+	</select>
+	
+	<select id="HJToMyBankTransaction" statementType="CALLABLE" parameterType="TransactionVO">
+	{
+		CALL PR_TRANSACTION_HJTOMY(#{ activeAcctNo }, 'O', #{ name }
 			, #{ dealName }, #{ amount }
 			, #{ dealBankcode }, #{ dealAcctNo })
 	}

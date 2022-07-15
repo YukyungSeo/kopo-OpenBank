@@ -32,5 +32,11 @@ public class AccountService {
 		CommCodeDAO commCodeDAO = new CommCodeDAO();
 		return commCodeDAO.selectByCodeId(codeId); 
 	}
+
+	public AccountVO getAccountByAccountNo(String accountNO) {
+		AccountDAO accountDAO = new AccountDAO();
+		AccountVO account = accountDAO.selectByAccontNo(accountNO);
+		return account;
+	}
 	
 }

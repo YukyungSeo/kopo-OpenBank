@@ -18,7 +18,21 @@ public class TransactionTest {
 	public void TransactionDAOMyBankTransactionTest() throws Exception {
 		TransactionDAO dao = new TransactionDAO();
 		dao.myBankTransaction(
-				new TransactionVO("13900000000001", "I", "서유경에게 출금", "서유경으로부터 입금", "10000", "02", "13900000000002"));
+				new TransactionVO("13900000000001", "O", "서유경에게 출금", "서유경으로부터 입금", "10000", "02", "13900000000002"));
+		assertTrue("test".equals("test"));
+	}
+	
+	@org.junit.Test
+	public void TransactionDAOmyBankToHJTransactionTest() throws Exception {
+		TransactionDAO dao = new TransactionDAO();
+		dao.myBankToHJTransaction(new TransactionVO("13900000000001", "O", "서유경에게 출금", "서유경으로부터 입금", "10000", "03", "3900000000001"));
+		assertTrue("test".equals("test"));
+	}
+	
+	@org.junit.Test
+	public void TransactionDAOHJToMyBankTransactionTest() throws Exception {
+		TransactionDAO dao = new TransactionDAO();
+		dao.HJToMyBankTransaction(new TransactionVO("03900000000001", "O", "서유경에게 출금", "서유경으로부터 입금", "10000", "03", "13900000000001"));
 		assertTrue("test".equals("test"));
 	}
 
