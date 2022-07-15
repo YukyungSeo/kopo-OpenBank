@@ -12,7 +12,14 @@ public class AccountService {
 	 */
 	public List<AccountVO> getAllMyAccounts(){
 		AccountDAO accountDAO = new AccountDAO();
-		return accountDAO.selectAll();
+		return accountDAO.selectAllMyAccount();
+	}
+
+	public List<AccountVO> getAllOtherAccounts() {
+		AccountDAO accountDAO = new AccountDAO();
+		List<AccountVO> accountList = accountDAO.selectAllHJAccount();
+		accountList.addAll(accountDAO.selectAllSYAccount());
+		return accountList;
 	}
 	
 }

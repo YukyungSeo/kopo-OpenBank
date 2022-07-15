@@ -21,18 +21,36 @@
 	</sql>
 	
 	<!-- select -->
-	<select id="selectAll" resultType="AccountVO" >
+	<select id="selectAllMyAccount" resultType="AccountVO" >
 		<include refid="selectAllColumn" />
 	</select>
 	
-	<select id="selectByAccountNo" parameterType="String" resultType="AccountVO" >
-	  <include refid="selectAllColumn" />
-	  and account_no = #{ accountNo }
+	<select id="selectAllHJAccount" resultType="AccountVO" >
+		select A.ACCOUNT_NUMBER as accountNo
+		    , C.MEMBER_ID as memberId
+		    , A.BALANCE AS AMOUNT
+		    , NULL AS goodsCl
+		    , A.ACCOUNT_NAME as goods
+		    , NULL AS available
+		    , to_char(A.OPEN_DATE, 'yyyy-mm-dd') as regDate
+		from CONNECTED_ACCT C, O_ACCOUNT@ORCL_TO_HJORCL_LINK A
+		WHERE C.MEMBER_ID = A.ID
+	</select>
+	
+	<select id="selectAllSYAccount" resultType="AccountVO" >
+		select TO_CHAR(A.ACCOUNT_NUMBER, '09999999999999') as accountNo
+		    , C.MEMBER_ID as memberId
+		    , A.BALANCE AS AMOUNT
+		    , NULL AS goodsCl
+		    , A.ACCOUNT_NAME as goods
+		    , NULL AS available
+		    , to_char(A.OPEN_DATE, 'yyyy-mm-dd') as regDate
+		from CONNECTED_ACCT C, O_ACCOUNT@ORCL_TO_SYORCL_LINK A
+		WHERE C.MEMBER_ID = A.ID
 	</select>
 	
 	<!-- DML -->
-	<insert id="insert" parameterType="AccountVO">
-		INSERT INTO MEMBER(account_no, member_id, amount, goods_cl, goods_code) 
-		VALUES(#{ accountNo }, #{ memberId }, #{ amount }, #{ goodsCl }, #{ goodsCode })
-	</insert>
+	<update id="myBankTransport" parameterType="AccountVO">
+		EXEC PR_TRANSACTION(#{ dealAcctNo }, 'I', #{ name }, #{ dealName }, #{ amount }, #{ dealBankcode }, #{ dealAcctNo });
+	</update>
 </mapper>

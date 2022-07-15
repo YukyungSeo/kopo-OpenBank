@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import kr.ac.kopo.MyConfig;
 import kr.ac.kopo.vo.AccountVO;
+import kr.ac.kopo.vo.TransactionVO;
 
 public class AccountDAO {
 
@@ -15,33 +16,37 @@ public class AccountDAO {
 		session = new MyConfig().getInstance();
 		System.out.println(session);
 	}
-	
+
 	public SqlSession getSession() {
 		return session;
 	}
-	
-	public List<AccountVO> selectAll() {
-		List<AccountVO> accountList = session.selectList("dao.AccountDAO.selectAll");
+
+	public List<AccountVO> selectAllMyAccount() {
+		List<AccountVO> accountList = session.selectList("dao.AccountDAO.selectAllMyAccount");
 		for (AccountVO accountVO : accountList) {
 			System.out.println(accountVO);
 		}
 		return accountList;
 	}
-	
-	public AccountVO selectByAccountNo(String accountNo) {
-		AccountVO account = session.selectOne("dao.AccountDAO.selectByAccountNo", accountNo);
-		return account;
+
+	public List<AccountVO> selectAllHJAccount() {
+		List<AccountVO> accountList = session.selectList("dao.AccountDAO.selectAllHJAccount");
+		for (AccountVO accountVO : accountList) {
+			System.out.println(accountVO);
+		}
+		return accountList;
 	}
 
-	public boolean insert(AccountVO accountVO) {
-		
-		session.insert("dao.AccountDAO.insert", accountVO);
+	public List<AccountVO> selectAllSYAccount() {
+		List<AccountVO> accountList = session.selectList("dao.AccountDAO.selectAllSYAccount");
+		for (AccountVO accountVO : accountList) {
+			System.out.println(accountVO);
+		}
+		return accountList;
+	}
+
+	public void myBankTransport(TransactionVO transactionVO) {
+		session.update("dao.AccountDAO.myBankTransport", transactionVO);
 		session.commit();
-		
-		// TODO : 삽입실패일 경우 에러 리턴
-		// 현재는 무조건 성공
-		return true;
 	}
 }
-
-

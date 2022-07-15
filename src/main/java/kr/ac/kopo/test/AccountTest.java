@@ -2,9 +2,8 @@ package kr.ac.kopo.test;
 
 import static org.junit.Assert.assertNotNull;
 
-import org.junit.Ignore;
-
 import kr.ac.kopo.dao.AccountDAO;
+import kr.ac.kopo.service.AccountService;
 
 public class AccountTest {
 
@@ -15,21 +14,14 @@ public class AccountTest {
 	}
 
 	@org.junit.Test
-	public void AccountDAOSelectAllTest() throws Exception {
+	public void AccountDAOSelectAllMyAccountTest() throws Exception {
 		AccountDAO dao = new AccountDAO();
-		assertNotNull(dao.selectAll());
+		assertNotNull(dao.selectAllMyAccount());
 	}
 
 	@org.junit.Test
-	public void AccountDAOSelectByAccountNo() throws Exception {
-		AccountDAO dao = new AccountDAO();
-		assertNotNull(dao.selectByAccountNo("13900000000001"));
-	}
-	
-	@Ignore
-	@org.junit.Test
-	public void AccountDAOInsert() throws Exception {
-//		AccountDAO dao = new AccountDAO();
-//		assertNotNull(dao.insert(new AccountVO("0", "0", "0", "0", "0", "0", "0", "0")));
+	public void AccountServiceGetAllOtherAccounts() throws Exception {
+		AccountService service = new AccountService();
+		assertNotNull(service.getAllOtherAccounts());
 	}
 }

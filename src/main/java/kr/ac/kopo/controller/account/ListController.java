@@ -16,8 +16,10 @@ public class ListController implements Controller {
 
 		AccountService service = new AccountService();
 		List<AccountVO> myAcountList = service.getAllMyAccounts();
+		List<AccountVO> otherAcountList = service.getAllOtherAccounts();
 		
 		request.setAttribute("myAcountList", myAcountList);
+		request.setAttribute("otherAcountList", otherAcountList);
 		
 		return "/jsp/account/list.jsp";
 	}
