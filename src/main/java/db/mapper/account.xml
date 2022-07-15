@@ -48,9 +48,4 @@
 		from CONNECTED_ACCT C, O_ACCOUNT@ORCL_TO_SYORCL_LINK A
 		WHERE C.MEMBER_ID = A.ID
 	</select>
-	
-	<!-- DML -->
-	<update id="myBankTransport" parameterType="AccountVO">
-		EXEC PR_TRANSACTION(#{ dealAcctNo }, 'I', #{ name }, #{ dealName }, #{ amount }, #{ dealBankcode }, #{ dealAcctNo });
-	</update>
 </mapper>

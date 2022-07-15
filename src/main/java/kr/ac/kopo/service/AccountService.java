@@ -15,6 +15,10 @@ public class AccountService {
 		return accountDAO.selectAllMyAccount();
 	}
 
+	/**
+	 * 오픈뱅킹 계좌 정보 가져오기
+	 * @return
+	 */
 	public List<AccountVO> getAllOtherAccounts() {
 		AccountDAO accountDAO = new AccountDAO();
 		List<AccountVO> accountList = accountDAO.selectAllHJAccount();

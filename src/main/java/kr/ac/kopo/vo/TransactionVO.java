@@ -32,6 +32,18 @@ public class TransactionVO {
 		this.regDate = regDate;
 	}
 
+	public TransactionVO(String activeAcctNo, String type, String name, String dealName, String amount,
+			String dealBankcode, String dealAcctNo) {
+		super();
+		this.activeAcctNo = activeAcctNo;
+		this.type = type;
+		this.name = name;
+		this.dealName = dealName;
+		this.amount = amount;
+		this.dealBankcode = dealBankcode;
+		this.dealAcctNo = dealAcctNo;
+	}
+
 	public String getTransactionSeq() {
 		return transactionSeq;
 	}

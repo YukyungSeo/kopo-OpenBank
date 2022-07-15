@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.TransactionDAO">
+	<resultMap type="transactionVO" id="transactionMap">
+		<result column="basic_addr" property="basicAddr" />
+		<result column="detail_addr" property="detailAddr" />
+		<result column="reg_Date" property="regDate" />
+	</resultMap>
+	
+	<!-- sql  -->
+	
+	<!-- procedure -->
+	<select id="myBankTransaction" statementType="CALLABLE" parameterType="TransactionVO">
+	{
+		CALL PR_TRANSACTION(#{ activeAcctNo }, 'I', #{ name }
+			, #{ dealName }, #{ amount }
+			, #{ dealBankcode }, #{ dealAcctNo })
+	}
+	</select>
+</mapper>
