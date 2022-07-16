@@ -3,6 +3,8 @@ package kr.ac.kopo.vo;
 public class TransactionVO {
 
 	private String transactionSeq;
+	private String activeBankcode;
+	private String activeBankName;
 	private String activeAcctNo;
 	private String type;
 	private String name;
@@ -10,6 +12,7 @@ public class TransactionVO {
 	private String amount;
 	private String balance;
 	private String dealBankcode;
+	private String dealBankName;
 	private String dealAcctNo;
 	private String regDate;
 
@@ -17,10 +20,13 @@ public class TransactionVO {
 		super();
 	}
 
-	public TransactionVO(String transactionSeq, String activeAcctNo, String type, String name, String dealName,
-			String amount, String balance, String dealBankcode, String dealAcctNo, String regDate) {
+	public TransactionVO(String transactionSeq, String activeBankcode, String activeBankName, String activeAcctNo,
+			String type, String name, String dealName, String amount, String balance, String dealBankcode,
+			String dealBankName, String dealAcctNo, String regDate) {
 		super();
 		this.transactionSeq = transactionSeq;
+		this.activeBankcode = activeBankcode;
+		this.activeBankName = activeBankName;
 		this.activeAcctNo = activeAcctNo;
 		this.type = type;
 		this.name = name;
@@ -28,15 +34,16 @@ public class TransactionVO {
 		this.amount = amount;
 		this.balance = balance;
 		this.dealBankcode = dealBankcode;
+		this.dealBankName = dealBankName;
 		this.dealAcctNo = dealAcctNo;
 		this.regDate = regDate;
 	}
 
-	public TransactionVO(String activeAcctNo, String type, String name, String dealName, String amount,
+	public TransactionVO(String activeBankcode, String activeAcctNo, String name, String dealName, String amount,
 			String dealBankcode, String dealAcctNo) {
 		super();
+		this.activeBankcode = activeBankcode;
 		this.activeAcctNo = activeAcctNo;
-		this.type = type;
 		this.name = name;
 		this.dealName = dealName;
 		this.amount = amount;
@@ -50,6 +57,22 @@ public class TransactionVO {
 
 	public void setTransactionSeq(String transactionSeq) {
 		this.transactionSeq = transactionSeq;
+	}
+
+	public String getActiveBankcode() {
+		return activeBankcode;
+	}
+
+	public void setActiveBankcode(String activeBankcode) {
+		this.activeBankcode = activeBankcode;
+	}
+
+	public String getActiveBankName() {
+		return activeBankName;
+	}
+
+	public void setActiveBankName(String activeBankName) {
+		this.activeBankName = activeBankName;
 	}
 
 	public String getActiveAcctNo() {
@@ -108,6 +131,14 @@ public class TransactionVO {
 		this.dealBankcode = dealBankcode;
 	}
 
+	public String getDealBankName() {
+		return dealBankName;
+	}
+
+	public void setDealBankName(String dealBankName) {
+		this.dealBankName = dealBankName;
+	}
+
 	public String getDealAcctNo() {
 		return dealAcctNo;
 	}
@@ -126,9 +157,11 @@ public class TransactionVO {
 
 	@Override
 	public String toString() {
-		return "TransactionVO [transactionSeq=" + transactionSeq + ", activeAcctNo=" + activeAcctNo + ", type=" + type
-				+ ", name=" + name + ", dealName=" + dealName + ", amount=" + amount + ", balance=" + balance
-				+ ", dealBankcode=" + dealBankcode + ", dealAcctNo=" + dealAcctNo + ", regDate=" + regDate + "]";
+		return "TransactionVO [transactionSeq=" + transactionSeq + ", activeBankcode=" + activeBankcode
+				+ ", activeBankName=" + activeBankName + ", activeAcctNo=" + activeAcctNo + ", type=" + type + ", name="
+				+ name + ", dealName=" + dealName + ", amount=" + amount + ", balance=" + balance + ", dealBankcode="
+				+ dealBankcode + ", dealBankName=" + dealBankName + ", dealAcctNo=" + dealAcctNo + ", regDate="
+				+ regDate + "]";
 	}
 
 }

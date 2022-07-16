@@ -21,11 +21,11 @@ public class ListController implements Controller {
 		MemberVO member = (MemberVO) session.getAttribute("member");
 //		System.out.println(member.toString());
 		
-		List<AccountVO> myAcountList = service.getAllMyAccounts();
-		List<AccountVO> otherAcountList = service.getAllOtherAccounts(member.getId());
+		List<AccountVO> myAccountList = service.getAllMyAccounts();
+		List<AccountVO> otherAccountList = service.getAllOtherAccounts(member.getId());
 		
-		request.setAttribute("myAcountList", myAcountList);
-		request.setAttribute("otherAcountList", otherAcountList);
+		session.setAttribute("myAccountList", myAccountList);
+		session.setAttribute("otherAccountList", otherAccountList);
 		
 		return "/jsp/account/list.jsp";
 	}

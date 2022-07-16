@@ -3,6 +3,8 @@ package kr.ac.kopo.vo;
 public class AccountVO {
 
 	private String accountNo;
+	private String bankcode;
+	private String bankName;
 	private String memberId;
 	private String amount;
 	private String goodsCl;
@@ -12,13 +14,14 @@ public class AccountVO {
 
 	public AccountVO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public AccountVO(String accountNo, String memberId, String amount, String goodsCl, String goods, String available,
-			String regDate) {
+	public AccountVO(String accountNo, String bankcode, String bankName, String memberId, String amount, String goodsCl,
+			String goods, String available, String regDate) {
 		super();
 		this.accountNo = accountNo;
+		this.bankcode = bankcode;
+		this.bankName = bankName;
 		this.memberId = memberId;
 		this.amount = amount;
 		this.goodsCl = goodsCl;
@@ -33,6 +36,22 @@ public class AccountVO {
 
 	public void setAccountNo(String accountNo) {
 		this.accountNo = accountNo;
+	}
+
+	public String getBankcode() {
+		return bankcode;
+	}
+
+	public void setBankcode(String bankcode) {
+		this.bankcode = bankcode;
+	}
+
+	public String getBankName() {
+		return bankName;
+	}
+
+	public void setBankName(String bankName) {
+		this.bankName = bankName;
 	}
 
 	public String getMemberId() {
@@ -85,8 +104,9 @@ public class AccountVO {
 
 	@Override
 	public String toString() {
-		return "AccountVO [accountNo=" + accountNo + ", memberId=" + memberId + ", amount=" + amount + ", goodsCl="
-				+ goodsCl + ", goods=" + goods + ", available=" + available + ", regDate=" + regDate + "]";
+		return "AccountVO [accountNo=" + accountNo + ", bankcode=" + bankcode + ", bankName=" + bankName + ", memberId="
+				+ memberId + ", amount=" + amount + ", goodsCl=" + goodsCl + ", goods=" + goods + ", available="
+				+ available + ", regDate=" + regDate + "]";
 	}
 
 }

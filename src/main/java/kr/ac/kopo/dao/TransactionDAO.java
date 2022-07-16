@@ -1,5 +1,8 @@
 package kr.ac.kopo.dao;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import kr.ac.kopo.MyConfig;
@@ -16,19 +19,15 @@ public class TransactionDAO {
 	public SqlSession getSession() {
 		return session;
 	}
-	
-	public void myBankTransaction(TransactionVO transactionVO) {
-		session.update("dao.TransactionDAO.myBankTransaction", transactionVO);
-		session.commit();
-	}
-	
-	public void myBankToHJTransaction(TransactionVO transactionVO) {
-		session.update("dao.TransactionDAO.myBankToHJTransaction", transactionVO);
-		session.commit();
-	}
-	
-	public void HJToMyBankTransaction(TransactionVO transactionVO) {
-		session.update("dao.TransactionDAO.HJToMyBankTransaction", transactionVO);
-		session.commit();
+
+	public void transaction(TransactionVO transactionVO, String password) {
+		System.out.println(transactionVO.toString());
+		System.out.println(password);
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("password", password);
+		map.put("transactionVO", transactionVO);
+		session.selectOne("dao.TransactionDAO.transaction", map);
+//		session.selectList("dao.TransactionDAO.transactionStart", transactionVO);
 	}
 }

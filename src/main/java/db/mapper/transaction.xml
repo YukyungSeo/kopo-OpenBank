@@ -3,34 +3,30 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.TransactionDAO">
-	<resultMap type="transactionVO" id="transactionMap">
-		<result column="basic_addr" property="basicAddr" />
-		<result column="detail_addr" property="detailAddr" />
-		<result column="reg_Date" property="regDate" />
+	<resultMap type="transactionVO" id="transactionVO">
+		<result column="TRANSACTION_SEQ" property="transactionSeq" />
+		<result column="ACTIVE_BANKCODE" property="activeBankcode" />
+		<result column="ACTIVE_BANKNAME" property="activeBankName" />
+		<result column="ACTIVE_ACCT_NO" property="activeAcctNo" />
+		<result column="DEAL_NAME" property="dealName" />
+		<result column="DEAL_BANKCODE" property="dealBankcode" />
+		<result column="DEAL_BANKNAME" property="dealBankName" />
+		<result column="DEAL_ACCT_NO" property="dealAcctNo" />
+		<result column="REG_DATE" property="regDate" />
 	</resultMap>
 	
 	<!-- procedure -->
-	<select id="myBankTransaction" statementType="CALLABLE" parameterType="TransactionVO">
+	<select id="transaction" statementType="CALLABLE" parameterType="map">
 	{
-		CALL PR_TRANSACTION(#{ activeAcctNo }, 'O', #{ name }
-			, #{ dealName }, #{ amount }
-			, #{ dealBankcode }, #{ dealAcctNo })
-	}
-	</select>
-	
-	<select id="myBankToHJTransaction" statementType="CALLABLE" parameterType="TransactionVO">
-	{
-		CALL PR_TRANSACTION_MYTOHJ(#{ activeAcctNo }, 'O', #{ name }
-			, #{ dealName }, #{ amount }
-			, #{ dealBankcode }, #{ dealAcctNo })
-	}
-	</select>
-	
-	<select id="HJToMyBankTransaction" statementType="CALLABLE" parameterType="TransactionVO">
-	{
-		CALL PR_TRANSACTION_HJTOMY(#{ activeAcctNo }, 'O', #{ name }
-			, #{ dealName }, #{ amount }
-			, #{ dealBankcode }, #{ dealAcctNo })
+		CALL PR_TRANSACTION( #{ transactionVO.activeBankcode }
+			, #{ transactionVO.activeAcctNo }
+			, #{ transactionVO.name }
+			, #{ transactionVO.dealName }
+			, #{ transactionVO.amount }
+			, #{ transactionVO.dealBankcode }
+			, #{ transactionVO.dealAcctNo }
+			, #{ password }
+		)
 	}
 	</select>
 </mapper>

@@ -13,7 +13,7 @@
 	
 	<!-- sql  -->
 	<sql id="selectAllColumn">
-		select account_no as accountNo, member_id as memberId, amount
+		select account_no as accountNo, 2 as bankcode, 'SEO은행' as bankName, member_id as memberId, amount
 		    , c.name as goodsCl
 		    , c2.name as goods
 		    , a.available, to_char(reg_date, 'yyyy-mm-dd') as regDate

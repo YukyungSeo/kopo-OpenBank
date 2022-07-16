@@ -74,20 +74,19 @@
         <div class="container">
     		<div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                 <div class="d-inline-block border rounded-pill text-primary px-4 mb-3"></div>
-                <h2 class="mb-5">${ account.goods }</h2>
-                <h2 class="mb-3">${ account.bankcode } ${ account.accountNo }</h2>
-                <h2 class="mb-3">${ account.amount }</h2>
+                <h2 class="mb-3">${ account.bankName } ${ account.accountNo }</h2>
+                <h2 class="mb-3">잔액 : ${ account.amount } 원</h2>
             </div>
 		    <div class="row justify-content-center">
 		        <div class="col-lg-7 wow fadeInUp" data-wow-delay="0.3s">
 		            <form  action="${ pageContext.request.contextPath }/account/transactionProcess.do" method="post"
 							onsubmit="return checkForm()" name="transactionForm" class="pt-3">
-						<input type="hidden" class="form-control" value="${ account.bankcode }" name="bankcode" id="bankcode" placeholder="bankcode" readonly>
-						<input type="hidden" class="form-control" value="${ account.account }" name="account" id="account" placeholder="account" readonly>
+						<input type="hidden" class="form-control" value="${ account.bankcode }" name="activeBankcode" id="activeBankcode" placeholder="activeBankcode" readonly>
+						<input type="hidden" class="form-control" value="${ account.accountNo }" name="activeAcctNo" id="activeAcctNo" placeholder="activeAcctNo" readonly>
 		                <div class="row g-3">
 		                	<div class="col-12">
 		                        <div class="form-floating">
-		                            <select class="form-select" id="bankSelect" name="bankSelect" aria-label="Financial Consultancy">
+		                            <select class="form-select" id="dealBankcode" name="dealBankcode" aria-label="Financial Consultancy">
 		                                <option selected value="2">SEO 은행</option>
 		                                <option value="1">SY 은행</option>
 		                                <option value="3">HJ 은행</option>
@@ -98,7 +97,7 @@
 		                    </div>
 		                    <div class="col-md-12">
 		                        <div class="form-floating">
-		                            <input type="text" class="form-control" name="dealAccount" id="dealAccount" placeholder="dealAccount">
+		                            <input type="text" class="form-control" name="dealAcctNo" id="dealAcctNo" placeholder="dealAcctNo">
 		                            <label for="dealAccount">받는분 계좌번호 : '-'없이 표기</label>
 		                        </div>
 		                    </div>
