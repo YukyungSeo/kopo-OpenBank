@@ -8,7 +8,7 @@ public class TransactionService {
 	public boolean transaction(TransactionVO transactionVO, String password) {
 
 		TransactionDAO transactionDAO = new TransactionDAO();
-		transactionDAO.transaction(transactionVO, password);
+		transactionDAO.procedureTransaction(transactionVO, password);
 		
 		return true;
 	}

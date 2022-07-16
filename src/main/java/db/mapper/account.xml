@@ -34,11 +34,21 @@
 		<include refid="selectAllColumn" />
 	</select>
 	
-	<select id="selectAllOtherAccount" statementType="CALLABLE" 
-		parameterType="map">
+	<!-- procedure -->
+	<select id="selectAllOtherAccount" statementType="CALLABLE" parameterType="map">
 	{
 		CALL PR_OPENBACK_LIST(#{ memberId }, #{ accountList, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=accountMap })
 	}
 	</select>
+	<select id="procedureConnectedACCT" statementType="CALLABLE" parameterType="map">
+	{
+		CALL PR_ADD_OTHER_BANK_ACCOUNT(#{ id }, #{ bankcode })
+	}
+	</select>
 	
+	
+	<!-- DML -->
+	<insert id="insertConnectedACCT" parameterType="String">
+		insert 
+	</insert>
 </mapper>

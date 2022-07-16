@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.ac.kopo.controller.Controller;
 import kr.ac.kopo.service.AccountService;
+import kr.ac.kopo.service.CommCodeService;
 import kr.ac.kopo.vo.CommCodeVO;
 
 public class CreateController implements Controller {
@@ -14,7 +15,7 @@ public class CreateController implements Controller {
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		AccountService service = new AccountService();
+		CommCodeService service = new CommCodeService();
 		List<CommCodeVO> goodsclList = service.getCommCodeByCodeId("100");
 		
 		request.setAttribute("goodsclList", goodsclList);

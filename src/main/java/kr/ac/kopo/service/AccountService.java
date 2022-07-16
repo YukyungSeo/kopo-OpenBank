@@ -6,6 +6,7 @@ import kr.ac.kopo.dao.AccountDAO;
 import kr.ac.kopo.dao.CommCodeDAO;
 import kr.ac.kopo.vo.AccountVO;
 import kr.ac.kopo.vo.CommCodeVO;
+import kr.ac.kopo.vo.MemberVO;
 
 public class AccountService {
 
@@ -26,16 +27,16 @@ public class AccountService {
 		List<AccountVO> accountList = accountDAO.selectAllOtherAccount(id);
 		return accountList;
 	}
-	
-	public List<CommCodeVO> getCommCodeByCodeId(String codeId){
-		CommCodeDAO commCodeDAO = new CommCodeDAO();
-		return commCodeDAO.selectByCodeId(codeId); 
-	}
 
 	public AccountVO getAccountByAccountNo(String accountNO) {
 		AccountDAO accountDAO = new AccountDAO();
 		AccountVO account = accountDAO.selectByAccontNo(accountNO);
 		return account;
+	}
+
+	public void addAccountByBankCode(MemberVO memberVO, String bankcode) {
+		AccountDAO accountDAO = new AccountDAO();
+		accountDAO.precedureConnectedACCT(memberVO.getId(), bankcode);
 	}
 	
 }

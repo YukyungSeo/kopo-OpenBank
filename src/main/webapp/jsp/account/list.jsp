@@ -96,7 +96,15 @@
         </div>
         <!-- Service End -->
 
-
+		<!-- add OpenBank Account -->
+		<div class="container-xxl py-6">
+            <div class="container">
+                <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                    <a class="btn btn-primary rounded-pill py-3 px-5 mt-2" href="${ pageContext.request.contextPath }/account/addAccount.do">+ 다른 금융 계좌 추가</a>
+                </div>
+            </div>
+        </div>
+        
         <!-- Testimonial Start -->
         <div class="container-xxl py-6">
             <div class="container">

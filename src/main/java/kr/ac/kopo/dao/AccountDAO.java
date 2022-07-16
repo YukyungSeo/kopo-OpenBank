@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import kr.ac.kopo.MyConfig;
 import kr.ac.kopo.vo.AccountVO;
+import kr.ac.kopo.vo.MemberVO;
 import kr.ac.kopo.vo.TransactionVO;
 
 public class AccountDAO {
@@ -54,8 +55,12 @@ public class AccountDAO {
 		return accountList;
 	}
 
-	public void myBankTransport(TransactionVO transactionVO) {
-		session.update("dao.AccountDAO.myBankTransport", transactionVO);
-		session.commit();
+	public void precedureConnectedACCT(String id, String bankcode) {
+
+		Map<String, Object> map = new HashMap<>();
+		map.put("id", id);
+		map.put("bankcode", bankcode);
+
+		session.selectOne("dao.AccountDAO.procedureConnectedACCT", map);
 	}
 }

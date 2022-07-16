@@ -20,14 +20,14 @@ public class TransactionDAO {
 		return session;
 	}
 
-	public void transaction(TransactionVO transactionVO, String password) {
+	public void procedureTransaction(TransactionVO transactionVO, String password) {
 		System.out.println(transactionVO.toString());
 		System.out.println(password);
 		
 		Map<String, Object> map = new HashMap<>();
 		map.put("password", password);
 		map.put("transactionVO", transactionVO);
-		session.selectOne("dao.TransactionDAO.transaction", map);
+		session.selectOne("dao.TransactionDAO.procedureTransaction", map);
 //		session.selectList("dao.TransactionDAO.transactionStart", transactionVO);
 	}
 }

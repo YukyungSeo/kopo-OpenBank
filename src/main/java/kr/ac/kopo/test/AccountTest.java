@@ -30,4 +30,11 @@ public class AccountTest {
 		AccountDAO dao = new AccountDAO();
 		assertNotNull(dao.selectByAccontNo("13900000000001"));
 	}
+	
+
+	@org.junit.Test
+	public void AccountDAOprecedureConnectedACCTTest() throws Exception {
+		AccountDAO dao = new AccountDAO();
+		dao.precedureConnectedACCT("2340529477", "3");
+	}
 }

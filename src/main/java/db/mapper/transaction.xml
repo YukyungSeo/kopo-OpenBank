@@ -16,7 +16,7 @@
 	</resultMap>
 	
 	<!-- procedure -->
-	<select id="transaction" statementType="CALLABLE" parameterType="map">
+	<select id="procedureTransaction" statementType="CALLABLE" parameterType="map">
 	{
 		CALL PR_TRANSACTION( #{ transactionVO.activeBankcode }
 			, #{ transactionVO.activeAcctNo }
