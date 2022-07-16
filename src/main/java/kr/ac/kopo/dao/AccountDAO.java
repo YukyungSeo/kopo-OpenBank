@@ -1,6 +1,9 @@
 package kr.ac.kopo.dao;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -34,18 +37,19 @@ public class AccountDAO {
 		return accountList;
 	}
 
-	public List<AccountVO> selectAllHJAccount() {
-		List<AccountVO> accountList = session.selectList("dao.AccountDAO.selectAllHJAccount");
-		for (AccountVO accountVO : accountList) {
-			System.out.println(accountVO);
-		}
-		return accountList;
-	}
+	@SuppressWarnings("unchecked")
+	public List<AccountVO> selectAllOtherAccount(String id) {
+		List<AccountVO> accountList = new ArrayList<>();
 
-	public List<AccountVO> selectAllSYAccount() {
-		List<AccountVO> accountList = session.selectList("dao.AccountDAO.selectAllSYAccount");
-		for (AccountVO accountVO : accountList) {
-			System.out.println(accountVO);
+		Map<String, Object> map = new HashMap<>();
+		map.put("memberId", id);
+		map.put("accountList", accountList);
+
+		session.selectOne("dao.AccountDAO.selectAllOtherAccount", map);
+		accountList = (List<AccountVO>) map.get("accountList");
+		
+		for (AccountVO account : accountList) {
+			System.out.println(account);
 		}
 		return accountList;
 	}

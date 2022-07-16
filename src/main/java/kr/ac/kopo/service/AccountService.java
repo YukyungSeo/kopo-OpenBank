@@ -21,10 +21,9 @@ public class AccountService {
 	 * 오픈뱅킹 계좌 정보 가져오기
 	 * @return
 	 */
-	public List<AccountVO> getAllOtherAccounts() {
+	public List<AccountVO> getAllOtherAccounts(String id) {
 		AccountDAO accountDAO = new AccountDAO();
-		List<AccountVO> accountList = accountDAO.selectAllHJAccount();
-//		accountList.addAll(accountDAO.selectAllSYAccount());
+		List<AccountVO> accountList = accountDAO.selectAllOtherAccount(id);
 		return accountList;
 	}
 	

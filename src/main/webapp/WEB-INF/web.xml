@@ -7,7 +7,7 @@
   	<servlet-class>kr.ac.kopo.controller.FrontControllerServlet</servlet-class>
   	<init-param>
   		<param-name>propLocation</param-name>
-  		<param-value>D:\\Lecture\\web-workspace\\kopo-OpenBank\\bean.properties</param-value>
+  		<param-value>C:\Users\syk33\eclipse-workspace\kopo-OpenBank\bean.properties</param-value>
   	</init-param>
   	<init-param>
   		<param-name>propLoginKakaoKey</param-name>

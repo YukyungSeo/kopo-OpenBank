@@ -22,7 +22,7 @@ public class AccountTest {
 	@org.junit.Test
 	public void AccountServiceGetAllOtherAccounts() throws Exception {
 		AccountService service = new AccountService();
-		assertNotNull(service.getAllOtherAccounts());
+		assertNotNull(service.getAllOtherAccounts("2340529477"));
 	}
 	
 

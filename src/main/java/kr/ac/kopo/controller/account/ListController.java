@@ -4,10 +4,12 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kr.ac.kopo.controller.Controller;
 import kr.ac.kopo.service.AccountService;
 import kr.ac.kopo.vo.AccountVO;
+import kr.ac.kopo.vo.MemberVO;
 
 public class ListController implements Controller {
 
@@ -15,11 +17,12 @@ public class ListController implements Controller {
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		AccountService service = new AccountService();
-//		service.getOpenBankAccount();
-		
+		HttpSession session = request.getSession();
+		MemberVO member = (MemberVO) session.getAttribute("member");
+//		System.out.println(member.toString());
 		
 		List<AccountVO> myAcountList = service.getAllMyAccounts();
-		List<AccountVO> otherAcountList = service.getAllOtherAccounts();
+		List<AccountVO> otherAcountList = service.getAllOtherAccounts(member.getId());
 		
 		request.setAttribute("myAcountList", myAcountList);
 		request.setAttribute("otherAcountList", otherAcountList);
