@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNotNull;
 
 import kr.ac.kopo.dao.AccountDAO;
 import kr.ac.kopo.service.AccountService;
+import kr.ac.kopo.vo.MemberVO;
 
 public class AccountTest {
 
@@ -16,13 +17,13 @@ public class AccountTest {
 	@org.junit.Test
 	public void AccountDAOSelectAllMyAccountTest() throws Exception {
 		AccountDAO dao = new AccountDAO();
-		assertNotNull(dao.selectAllMyAccount());
+		assertNotNull(dao.selectAllMyAccount("2340529477"));
 	}
 
 	@org.junit.Test
 	public void AccountServiceGetAllOtherAccounts() throws Exception {
 		AccountService service = new AccountService();
-		assertNotNull(service.getAllOtherAccounts("2340529477"));
+		assertNotNull(service.getAllOtherAccounts(new MemberVO("2340529477", null, null)));
 	}
 
 	@org.junit.Test

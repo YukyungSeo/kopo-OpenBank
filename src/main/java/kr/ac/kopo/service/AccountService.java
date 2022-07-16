@@ -3,9 +3,7 @@ package kr.ac.kopo.service;
 import java.util.List;
 
 import kr.ac.kopo.dao.AccountDAO;
-import kr.ac.kopo.dao.CommCodeDAO;
 import kr.ac.kopo.vo.AccountVO;
-import kr.ac.kopo.vo.CommCodeVO;
 import kr.ac.kopo.vo.MemberVO;
 
 public class AccountService {
@@ -13,18 +11,18 @@ public class AccountService {
 	/**
 	 * 모든 계좌 정보 가져오기
 	 */
-	public List<AccountVO> getAllMyAccounts(){
+	public List<AccountVO> getAllMyAccounts(MemberVO memberVO){
 		AccountDAO accountDAO = new AccountDAO();
-		return accountDAO.selectAllMyAccount();
+		return accountDAO.selectAllMyAccount(memberVO.getId());
 	}
 
 	/**
 	 * 오픈뱅킹 계좌 정보 가져오기
 	 * @return
 	 */
-	public List<AccountVO> getAllOtherAccounts(String id) {
+	public List<AccountVO> getAllOtherAccounts(MemberVO memberVO) {
 		AccountDAO accountDAO = new AccountDAO();
-		List<AccountVO> accountList = accountDAO.selectAllOtherAccount(id);
+		List<AccountVO> accountList = accountDAO.selectAllOtherAccount(memberVO.getId());
 		return accountList;
 	}
 
@@ -37,6 +35,11 @@ public class AccountService {
 	public void addAccountByBankCode(MemberVO memberVO, String bankcode) {
 		AccountDAO accountDAO = new AccountDAO();
 		accountDAO.precedureConnectedACCT(memberVO.getId(), bankcode);
+	}
+
+	public void createNewAccount(AccountVO accountVO) {
+		AccountDAO accountDAO = new AccountDAO();
+		accountDAO.insertAccount(accountVO);
 	}
 	
 }

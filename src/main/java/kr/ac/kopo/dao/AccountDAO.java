@@ -9,8 +9,6 @@ import org.apache.ibatis.session.SqlSession;
 
 import kr.ac.kopo.MyConfig;
 import kr.ac.kopo.vo.AccountVO;
-import kr.ac.kopo.vo.MemberVO;
-import kr.ac.kopo.vo.TransactionVO;
 
 public class AccountDAO {
 
@@ -30,8 +28,8 @@ public class AccountDAO {
 		return account;
 	}
 
-	public List<AccountVO> selectAllMyAccount() {
-		List<AccountVO> accountList = session.selectList("dao.AccountDAO.selectAllMyAccount");
+	public List<AccountVO> selectAllMyAccount(String id) {
+		List<AccountVO> accountList = session.selectList("dao.AccountDAO.selectAllMyAccount", id);
 		for (AccountVO accountVO : accountList) {
 			System.out.println(accountVO);
 		}
@@ -62,5 +60,10 @@ public class AccountDAO {
 		map.put("bankcode", bankcode);
 
 		session.selectOne("dao.AccountDAO.procedureConnectedACCT", map);
+	}
+
+	public void insertAccount(AccountVO accountVO) {
+		session.insert("dao.AccountDAO.insertAccount", accountVO);
+		session.commit();
 	}
 }

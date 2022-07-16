@@ -38,11 +38,7 @@
 		function checkForm() {
 			let f = document.createForm;
 	
-			if (isNull(f.id, "아이디를 입력하세요") 
-					|| isNull(f.password, "패스워드를 입력하세요")
-					|| isNull(f.repassword, "비밀번호를 다시 입력하세요") 
-					|| isNull(f.name, "이름을 입력하세요")
-					|| isNull(f.phone, "전화번호를 입력하세요"))
+			if (isNull(f.password, "패스워드를 입력하세요")
 				return false;
 			
 	
@@ -66,7 +62,7 @@
         <%@ include file="/jsp/include/navbar.jsp"%>
         <div class="container-xxl bg-primary page-header">
 	        <div class="container text-center">
-	            <h1 class="text-white animated zoomIn mb-3">회원가입</h1>
+	            <h1 class="text-white animated zoomIn mb-3">1Q계좌개설</h1>
 	        </div>
         </div>
         <!-- Navbar & Hero End -->
@@ -74,61 +70,39 @@
 
         <!-- Contact Start -->
         <div class="container">
-		    <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-		        <div class="d-inline-block border rounded-pill text-primary px-4 mb-3">Free Quote</div>
-		        <h2 class="mb-5">Request A Free Quote</h2>
-		    </div>
 		    <div class="row justify-content-center">
 		        <div class="col-lg-7 wow fadeInUp" data-wow-delay="0.3s">
 		            <form  action="${ pageContext.request.contextPath }/account/createProcess.do" method="post"
 							onsubmit="return checkForm()" name="createForm" class="pt-3">
 		                <div class="row g-3">
-		                    <div class="col-md-6">
+		                    <div class="col-12">
 		                        <div class="form-floating">
-		                            <input type="text" class="form-control" name="name" id="name" placeholder="name" readonly>
-		                            <label for="name">이름</label>
+		                            <select class="form-select" name="goodsClCode" id="goodsClCode" aria-label="Financial Consultancy">
+		                                <option value="0">입출금예금</option>
+		                            </select>
+		                            <label for="floatingSelect">상품 유형</label>
+		                        </div>
+		                    </div>
+		                    <div class="col-12">
+		                        <div class="form-floating">
+		                            <select class="form-select" name="goodsCode" id="goodsCode" aria-label="Financial Consultancy">
+		                                <option value="0">SEO 취업이룸 통장</option>
+		                                <option value="1">영SEO플러스 통장</option>
+		                                <option value="2">SEO 주택연금 지킴이 통장</option>
+		                                <option value="3">급여SEO 통장</option>
+		                                <option value="4">연금SEO 통장</option>
+		                            </select>
+		                            <label for="floatingSelect">상품 유형</label>
 		                        </div>
 		                    </div>
 		                    <div class="col-md-6">
 		                        <div class="form-floating">
-		                            <input type="password" class="form-control" id="password" placeholder="4digit password">
+		                            <input type="password" class="form-control" name="password" id="password" placeholder="4digit password">
 		                            <label for="password">비밀번호 4자리</label>
 		                        </div>
 		                    </div>
 		                    <div class="col-12">
-		                        <div class="form-floating">
-		                            <select class="form-select" id="GoodsClSelect" aria-label="Financial Consultancy">
-		                                <option selected value="0">입출금예금</option>
-		                            </select>
-		                            <label for="floatingSelect">상품 유형</label>
-		                        </div>
-		                    </div>
-		                    <div class="col-12">
-		                        <div class="form-floating">
-		                            <select class="form-select" id="GoodsSelect" aria-label="Financial Consultancy">
-		                                <option selected value="0">SEO 취업이룸 통장</option>
-		                                <option value="1" disabled>영SEO플러스 통장</option>
-		                                <option value="2" disabled>SEO 주택연금 지킴이 통장</option>
-		                                <option value="2" disabled>급여SEO 통장</option>
-		                                <option value="2" disabled>연금SEO 통장</option>
-		                                <option value="2" disabled>SEO 주택연금 지킴이 통장</option>
-		                                <option value="2" disabled>SEO 주택연금 지킴이 통장</option>
-		                                <option value="2" disabled>SEO 주택연금 지킴이 통장</option>
-		                                <option value="2" disabled>SEO 주택연금 지킴이 통장</option>
-		                                <option value="2" disabled>SEO 주택연금 지킴이 통장</option>
-		                                <option value="2" disabled>SEO 주택연금 지킴이 통장</option>
-		                            </select>
-		                            <label for="floatingSelect">상품 유형</label>
-		                        </div>
-		                    </div>
-		                    <div class="col-12">
-		                        <div class="form-floating">
-		                            <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 150px"></textarea>
-		                            <label for="message">Comments</label>
-		                        </div>
-		                    </div>
-		                    <div class="col-12">
-		                        <button class="btn btn-primary w-100 py-3" type="submit">Request Quote</button>
+		                        <button class="btn btn-primary w-100 py-3" type="submit">계좌 개설</button>
 		                    </div>
 		                </div>
 		            </form>

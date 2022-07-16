@@ -13,8 +13,14 @@
 	
 	<!-- sql  -->
 	<sql id="selectAllColumn">
-		select account_no as accountNo, 2 as bankcode, 'SEO은행' as bankName, member_id as memberId, amount
+		select account_no as accountNo, 2 as bankcode
+		    , 'SEO은행' as bankName
+		    , member_id as memberId
+		    , password
+		    , amount
+		    , a.goods_cl as goodsClCode
 		    , c.name as goodsCl
+		    , a.goods_code as goodsCode
 		    , c2.name as goods
 		    , a.available, to_char(reg_date, 'yyyy-mm-dd') as regDate
 		from account a, COMM_CODE c, comm_code c2
@@ -30,8 +36,9 @@
 		<include refid="selectAllColumn" />
 		and account_no = #{ accountNo }
 	</select>
-	<select id="selectAllMyAccount" resultType="AccountVO" >
+	<select id="selectAllMyAccount" parameterType="String" resultType="AccountVO" >
 		<include refid="selectAllColumn" />
+		and a.member_id = #{ memberId }
 	</select>
 	
 	<!-- procedure -->
@@ -48,7 +55,8 @@
 	
 	
 	<!-- DML -->
-	<insert id="insertConnectedACCT" parameterType="String">
-		insert 
+	<insert id="insertAccount" parameterType="AccountVO">
+		insert into account (ACCOUNT_NO, MEMBER_ID, PASSWORD, GOODS_CL, GOODS_CODE)
+		values('13900000000'||LPAD(ROUND(DBMS_RANDOM.VALUE(10, 999)),3, '0'), #{ memberId }, #{ password }, #{ goodsClCode }, #{ goodsCode })
 	</insert>
 </mapper>

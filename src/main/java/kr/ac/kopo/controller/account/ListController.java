@@ -19,10 +19,10 @@ public class ListController implements Controller {
 		AccountService service = new AccountService();
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("member");
-//		System.out.println(member.toString());
+		System.out.println(member.toString());
 		
-		List<AccountVO> myAccountList = service.getAllMyAccounts();
-		List<AccountVO> otherAccountList = service.getAllOtherAccounts(member.getId());
+		List<AccountVO> myAccountList = service.getAllMyAccounts(member);
+		List<AccountVO> otherAccountList = service.getAllOtherAccounts(member);
 		
 		session.setAttribute("myAccountList", myAccountList);
 		session.setAttribute("otherAccountList", otherAccountList);

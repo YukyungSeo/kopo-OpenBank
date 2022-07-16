@@ -6,8 +6,11 @@ public class AccountVO {
 	private String bankcode;
 	private String bankName;
 	private String memberId;
+	private String password;
 	private String amount;
+	private String goodsClCode;
 	private String goodsCl;
+	private String goodsCode;
 	private String goods;
 	private String available;
 	private String regDate;
@@ -16,18 +19,30 @@ public class AccountVO {
 		super();
 	}
 
-	public AccountVO(String accountNo, String bankcode, String bankName, String memberId, String amount, String goodsCl,
-			String goods, String available, String regDate) {
+	public AccountVO(String accountNo, String bankcode, String bankName, String memberId, String password,
+			String amount, String goodsClCode, String goodsCl, String goodsCode, String goods, String available,
+			String regDate) {
 		super();
 		this.accountNo = accountNo;
 		this.bankcode = bankcode;
 		this.bankName = bankName;
 		this.memberId = memberId;
+		this.password = password;
 		this.amount = amount;
+		this.goodsClCode = goodsClCode;
 		this.goodsCl = goodsCl;
+		this.goodsCode = goodsCode;
 		this.goods = goods;
 		this.available = available;
 		this.regDate = regDate;
+	}
+
+	public AccountVO(String memberId, String password, String goodsClCode, String goodsCode) {
+		super();
+		this.memberId = memberId;
+		this.password = password;
+		this.goodsClCode = goodsClCode;
+		this.goodsCode = goodsCode;
 	}
 
 	public String getAccountNo() {
@@ -62,6 +77,14 @@ public class AccountVO {
 		this.memberId = memberId;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public String getAmount() {
 		return amount;
 	}
@@ -70,12 +93,28 @@ public class AccountVO {
 		this.amount = amount;
 	}
 
+	public String getGoodsClCode() {
+		return goodsClCode;
+	}
+
+	public void setGoodsClCode(String goodsClCode) {
+		this.goodsClCode = goodsClCode;
+	}
+
 	public String getGoodsCl() {
 		return goodsCl;
 	}
 
 	public void setGoodsCl(String goodsCl) {
 		this.goodsCl = goodsCl;
+	}
+
+	public String getGoodsCode() {
+		return goodsCode;
+	}
+
+	public void setGoodsCode(String goodsCode) {
+		this.goodsCode = goodsCode;
 	}
 
 	public String getGoods() {
@@ -105,8 +144,9 @@ public class AccountVO {
 	@Override
 	public String toString() {
 		return "AccountVO [accountNo=" + accountNo + ", bankcode=" + bankcode + ", bankName=" + bankName + ", memberId="
-				+ memberId + ", amount=" + amount + ", goodsCl=" + goodsCl + ", goods=" + goods + ", available="
-				+ available + ", regDate=" + regDate + "]";
+				+ memberId + ", password=" + password + ", amount=" + amount + ", goodsClCode=" + goodsClCode
+				+ ", goodsCl=" + goodsCl + ", goodsCode=" + goodsCode + ", goods=" + goods + ", available=" + available
+				+ ", regDate=" + regDate + "]";
 	}
 
 }
