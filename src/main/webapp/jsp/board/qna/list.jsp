@@ -84,8 +84,14 @@
 					<c:forEach items="${ boardList }" var="board" varStatus="status">
 					<tr <c:if test="${ status.count mod 2 eq 0 }"> class="table-primary" </c:if> >
 						<th scope="row">${ board.boardTypeName }</th>
-						<td>${ board.title }</td>
-						<td>${ board.writer }</td>
+						<td>
+							<c:forEach begin="0" end="${ board.tabCnt }">
+								&nbsp;&nbsp;
+							</c:forEach>
+							<c:if test="${ board.tabCnt ne 0 }">└</c:if>
+							${ board.title }
+						</td>
+						<td>${ board.writerName }</td>
 						<td>${ board.viewCnt }</td>
 						<td>${ board.regDate }</td>
 					</tr>

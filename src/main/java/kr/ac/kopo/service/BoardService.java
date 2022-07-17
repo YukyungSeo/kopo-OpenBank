@@ -21,14 +21,20 @@ public class BoardService {
 		BoardDAO boardDAO = new BoardDAO();
 
 		List<BoardVO> headList = boardDAO.selectQnAHeadBoard(String.valueOf(boardType));
+		List<BoardVO> commendList = headList;
 
-		Set<String> set = new HashSet<String>();
-		for (BoardVO boardVO : headList) {
-			set.add(boardVO.getBoardSeq());
-		}
+		int size = commendList.size();
 
-		List<BoardVO> commendList = boardDAO.selectQnACommendBoard(String.valueOf(boardType), set);
-		while (commendList.size() != 0) {
+		while (size != 0) {
+			Set<String> set = new HashSet<String>();
+			for (BoardVO boardVO : commendList) {
+				set.add(boardVO.getBoardSeq());
+			}
+
+			commendList = boardDAO.selectQnACommendBoard(String.valueOf(boardType), set);
+			size = commendList.size();
+//			System.out.println("size : " + size);
+
 			for (BoardVO commend : commendList) {
 				int index = 0;
 				for (BoardVO head : headList) {
@@ -41,12 +47,11 @@ public class BoardService {
 				headList.add(index + 1, commend);
 			}
 
-			set.clear();
-			for (BoardVO boardVO : commendList) {
-				set.add(boardVO.getBoardSeq());
-			}
+//			System.out.println("-------------------------------------");
+//			for (BoardVO board : headList) {
+//				System.out.println(board.getTabCnt() + " : " + board.getTitle());
+//			}
 
-			commendList = boardDAO.selectQnACommendBoard(String.valueOf(boardType), set);
 		}
 
 		return headList;

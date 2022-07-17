@@ -6,7 +6,9 @@ public class BoardVO {
 	private String boardType;
 	private String boardTypeName;
 	private String superBoardSeq;
+	private String tabCnt;
 	private String writer;
+	private String writerName;
 	private String title;
 	private String content;
 	private String viewCnt;
@@ -16,14 +18,16 @@ public class BoardVO {
 		super();
 	}
 
-	public BoardVO(String boardSeq, String boardType, String boardTypeName, String superBoardSeq, String writer,
-			String title, String content, String viewCnt, String regDate) {
+	public BoardVO(String boardSeq, String boardType, String boardTypeName, String superBoardSeq, String tabCnt,
+			String writer, String writerName, String title, String content, String viewCnt, String regDate) {
 		super();
 		this.boardSeq = boardSeq;
 		this.boardType = boardType;
 		this.boardTypeName = boardTypeName;
 		this.superBoardSeq = superBoardSeq;
+		this.tabCnt = tabCnt;
 		this.writer = writer;
+		this.writerName = writerName;
 		this.title = title;
 		this.content = content;
 		this.viewCnt = viewCnt;
@@ -62,12 +66,28 @@ public class BoardVO {
 		this.superBoardSeq = superBoardSeq;
 	}
 
+	public String getTabCnt() {
+		return tabCnt;
+	}
+
+	public void setTabCnt(String tabCnt) {
+		this.tabCnt = tabCnt;
+	}
+
 	public String getWriter() {
 		return writer;
 	}
 
 	public void setWriter(String writer) {
 		this.writer = writer;
+	}
+
+	public String getWriterName() {
+		return writerName;
+	}
+
+	public void setWriterName(String writerName) {
+		this.writerName = writerName;
 	}
 
 	public String getTitle() {
@@ -105,8 +125,9 @@ public class BoardVO {
 	@Override
 	public String toString() {
 		return "BoardVO [boardSeq=" + boardSeq + ", boardType=" + boardType + ", boardTypeName=" + boardTypeName
-				+ ", superBoardSeq=" + superBoardSeq + ", writer=" + writer + ", title=" + title + ", content="
-				+ content + ", viewCnt=" + viewCnt + ", regDate=" + regDate + "]";
+				+ ", superBoardSeq=" + superBoardSeq + ", tabCnt=" + tabCnt + ", writer=" + writer + ", writerName="
+				+ writerName + ", title=" + title + ", content=" + content + ", viewCnt=" + viewCnt + ", regDate="
+				+ regDate + "]";
 	}
 
 }

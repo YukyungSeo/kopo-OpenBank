@@ -7,7 +7,9 @@
 		<result column="BOARD_SEQ" property="boardSeq" />
 		<result column="BOARD_TYPE" property="boardType" />
 		<result column="BOARD_TYPE_NAME" property="boardTypeName" />
+		<result column="TAB_CNT" property="tabCnt" />
 		<result column="SUPER_BOARD_SEQ" property="superBoardSeq" />
+		<result column="WRITER_NAME" property="writerName" />
 		<result column="VIEW_CNT" property="viewCnt" />
 		<result column="REG_DATE" property="regDate" />
 	</resultMap>
@@ -18,13 +20,16 @@
 		    , B.BOARD_TYPE
 		    , C.NAME AS BOARD_TYPE_NAME
 		    , B.SUPER_BOARD_SEQ
+		    , B.TAB_CNT
 		    , B.WRITER
+            , M.NAME  AS WRITER_NAME
 		    , B.TITLE
 		    , B.CONTENT
 		    , B.VIEW_CNT
 		    , TO_CHAR(B.REG_DATE, 'YYYY-MM-DD') AS REG_DATE
-		FROM BOARD B, COMM_CODE C
-		WHERE B.BOARD_TYPE = C.CODE
+		FROM BOARD B, COMM_CODE C, MEMBER M
+		WHERE M.ID = B.WRITER
+        AND B.BOARD_TYPE = C.CODE
         AND C.CODE = #{ boardType } AND C.CODE_ID = 200
     </sql>
     
