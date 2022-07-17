@@ -9,14 +9,15 @@
 		<result column="BOARD_TYPE_NAME" property="boardTypeName" />
 		<result column="TAB_CNT" property="tabCnt" />
 		<result column="SUPER_BOARD_SEQ" property="superBoardSeq" />
+		<result column="SUPER_BOARD_TITLE" property="superBoardTitle" />
 		<result column="WRITER_NAME" property="writerName" />
 		<result column="VIEW_CNT" property="viewCnt" />
 		<result column="REG_DATE" property="regDate" />
 	</resultMap>
 	
 	<!-- SQL -->
-    <sql id="selectAllHead">
-		SELECT B.BOARD_SEQ
+    <sql id="selectHead">
+        SELECT B.BOARD_SEQ
 		    , B.BOARD_TYPE
 		    , C.NAME AS BOARD_TYPE_NAME
 		    , B.SUPER_BOARD_SEQ
@@ -33,7 +34,7 @@
         AND C.CODE = #{ boardType } AND C.CODE_ID = 200
     </sql>
     
-    <sql id="selectAllTail">
+    <sql id="selectTail">
 		ORDER BY B.REG_DATE DESC
     </sql>
     
@@ -43,23 +44,30 @@
 		SELECT COUNT(*)	FROM BOARD WHERE BOARD_TYPE = #{ boardType }
 	</select>
 	
-	<select id="selectQnAHeadBoard" parameterType="String" resultMap="BoardMap">
-		<include refid="selectAllHead">
+	<select id="selectOne" parameterType="map" resultMap="BoardMap">
+		<include refid="selectHead">
 			<property name="boardType" value="${ boardType }"/>
 		</include>
-		AND SUPER_BOARD_SEQ IS NULL
-		<include refid="selectAllTail"/>
+		AND B.BOARD_SEQ = ${ boardSeq }
+	</select>
+	
+	<select id="selectQnAHeadBoard" parameterType="String" resultMap="BoardMap">
+		<include refid="selectHead">
+			<property name="boardType" value="${ boardType }"/>
+		</include>
+		AND B.SUPER_BOARD_SEQ IS NULL
+		<include refid="selectTail"/>
 	</select>
 	
 	<select id="selectQnACommendBoard" parameterType="map" resultMap="BoardMap">
-		<include refid="selectAllHead">
+		<include refid="selectHead">
 			<property name="boardType" value="#{ boardType }"/>
 		</include>
 		AND B.SUPER_BOARD_SEQ IN 
     	<foreach item="item" collection="superBoardSeq" separator="," open="(" close=")">
     		#{ item }
     	</foreach>
-		<include refid="selectAllTail"/>
+		<include refid="selectTail"/>
 	</select>
 	
 </mapper>

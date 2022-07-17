@@ -68,4 +68,12 @@ public class BoardService {
 		return headList;
 	}
 
+	public BoardVO getQnABoard(String boardSeq) {
+		return getBoard("2", boardSeq);
+	}
+	public BoardVO getBoard(String boardType, String boardSeq) {
+		BoardDAO boardDAO = new BoardDAO();
+		return boardDAO.selectOne(boardType, boardSeq);
+	}
+
 }

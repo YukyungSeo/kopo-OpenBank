@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>BizConsult - List</title>
+    <title>BizConsult - BoardDetail</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -37,9 +36,12 @@
     <script src="${ pageContext.request.contextPath }/js/myJS.js"></script>
 	<script>
 		function checkForm() {
-			let f = document.listForm;
+			let f = document.boardDetailForm;
 	
-			if (isNull(f.bankSelect, "은행을 선택해주세요"))
+			if (isNull(f.bankSelect, "은행을 선택해주세요") 
+					|| isNull(f.dealAccount, "계좌번호를 입력하세요")
+					|| isNull(f.amount, "금액을 입력하세요") 
+					|| isNull(f.password, "비밀번호를 입력하세요"))
 				return false;
 			
 			return true;
@@ -62,7 +64,7 @@
         <%@ include file="/jsp/include/navbar.jsp"%>
         <div class="container-xxl bg-primary page-header">
 	        <div class="container text-center">
-	            <h1 class="text-white animated zoomIn mb-3">QnA</h1>
+	            <h1 class="text-white animated zoomIn mb-3">게시글 작성</h1>
 	        </div>
         </div>
         <!-- Navbar & Hero End -->
@@ -70,59 +72,51 @@
 
         <!-- Contact Start -->
         <div class="container">
-			<div class="col-12 wow fadeInUp" data-wow-delay="0.5s">
-				<div class="col-lg-auto wow fadeInUp" data-wow-delay="0.5s">
-                	<a class="btn btn-primary btn-sm" type="button" 
-                		href="${ pageContext.request.contextPath }/board/qna/write.do">새글작성</a>
-                </div>
-            </div>
-		    <table class="table table-hover col-lg-7 wow fadeInUp" data-wow-delay="0.3s">
-				<thead>
-					<tr>
-						<th scope="col">Type</th>
-						<th scope="col">Title</th>
-						<th scope="col">Writer</th>
-						<th scope="col">View</th>
-						<th scope="col">Register Date</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${ boardList }" var="board" varStatus="status">
-					<tr <c:if test="${ status.count mod 2 eq 0 }"> class="table-primary" </c:if> >
-						<th scope="row">${ board.boardTypeName }</th>
-						<td>
-							<c:forEach begin="0" end="${ board.tabCnt }">
-								&nbsp;&nbsp;
-							</c:forEach>
-							<c:if test="${ board.tabCnt ne 0 }">└</c:if>
-							<a href="${ pageContext.request.contextPath }/board/qna/detail.do?boardSeq=${ board.boardSeq }">
-								${ board.title }
-							</a>
-						</td>
-						<td>${ board.writerName }</td>
-						<td>${ board.viewCnt }</td>
-						<td>${ board.regDate }</td>
-					</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-			<div class="row justify-content-center">
-				<div class="col-lg-auto wow fadeInUp" data-wow-delay="0.5s">
-					<ul class="pagination">
-						<li class="page-item <c:if test="${ page le 1 }">disabled</c:if>">
-							<a class="page-link" href="${ pageContext.request.contextPath }/board/qna/list.do?page=${ page - 1 }">&laquo;</a>
-						</li>
-						<c:forEach begin="1" end="${ pageCnt }" varStatus="status">
-							<li class="page-item <c:if test="${ status.count eq page }">active</c:if>" >
-								<a class="page-link" href="${ pageContext.request.contextPath }/board/qna/list.do?page=${ status.count }">${ status.count }</a>
-							</li>
-						</c:forEach>
-						<li class="page-item <c:if test="${ page ge pageCnt }">disabled</c:if>">
-							<a class="page-link" href="${ pageContext.request.contextPath }/board/qna/list.do?page=${ page + 1 }">&raquo;</a>
-						</li>
-					</ul>
-				</div>
-			</div>
+		    <div class="row justify-content-center">
+		        <div class="col-lg-7 wow fadeInUp" data-wow-delay="0.3s">
+		            <form  action="${ pageContext.request.contextPath }/account/boardDetailProcess.do" method="post"
+							onsubmit="return checkForm()" name="boardDetailForm" class="pt-3">
+						<input type="hidden" class="form-control" value="${ member.id }" name="writer" id="writer" placeholder="activeBankcode" readonly>
+						<input type="hidden" class="form-control" value="${ superBoardSeq }" name="superBoardSeq" id="superBoardSeq" placeholder="superBoardSeq" readonly>
+		                <div class="row g-3">
+		                	<div class="col-md-6">
+                                <div class="form-floating">
+	                                    <input type="text" class="form-control" id="name" value="${ member.name }" placeholder="Your Name">
+	                                    <label for="name">Your Name</label>
+	                                </div>
+	                            </div>
+	                            <div class="col-md-6">
+	                                <div class="form-floating">
+	                                    <input type="text" class="form-control" id="superBoardTitle" value="${ superBoardSeq }" placeholder="superBoardTitle">
+	                                    <label for="superBoardTitle">상위글</label>
+	                                </div>
+	                            </div>
+	                            <div class="col-12">
+	                                <div class="form-floating">
+	                                    <select class="form-select" id="floatingSelect" aria-label="Financial Consultancy">
+	                                        <option selected="">Financial Consultancy</option>
+	                                        <option value="1">Strategy Consultancy</option>
+	                                        <option value="2">Tax Consultancy</option>
+	                                    </select>
+	                                    <label for="floatingSelect">Select A Service</label>
+	                                </div>
+	                            </div>
+	                            <div class="col-12">
+	                                <div class="form-floating">
+	                                    <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 150px"></textarea>
+	                                    <label for="message">Comments</label>
+	                                </div>
+	                            </div>
+	                            <div class="col-12">
+	                                <button class="btn btn-primary w-100 py-3" type="submit">Request Quote</button>
+	                            </div>
+		                    <div class="col-12">
+		                        <button class="btn btn-primary w-100 py-3" type="submit">이체하기</button>
+		                    </div>
+		                </div>
+		            </form>
+		        </div>
+		    </div>
 		</div>
         <!-- Contact End -->
         

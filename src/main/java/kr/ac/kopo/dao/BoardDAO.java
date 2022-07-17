@@ -47,4 +47,11 @@ public class BoardDAO {
 		return boardList;
 	}
 
+	public BoardVO selectOne(String boardType, String boardSeq) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("boardType", boardType);
+		map.put("boardSeq", boardSeq);
+		
+		return session.selectOne("dao.BoardDAO.selectOne", map);
+	}
 }

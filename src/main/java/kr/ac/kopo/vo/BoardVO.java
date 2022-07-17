@@ -6,6 +6,7 @@ public class BoardVO {
 	private String boardType;
 	private String boardTypeName;
 	private String superBoardSeq;
+	private String superBoardTitle;
 	private String tabCnt;
 	private String writer;
 	private String writerName;
@@ -18,13 +19,15 @@ public class BoardVO {
 		super();
 	}
 
-	public BoardVO(String boardSeq, String boardType, String boardTypeName, String superBoardSeq, String tabCnt,
-			String writer, String writerName, String title, String content, String viewCnt, String regDate) {
+	public BoardVO(String boardSeq, String boardType, String boardTypeName, String superBoardSeq,
+			String superBoardTitle, String tabCnt, String writer, String writerName, String title, String content,
+			String viewCnt, String regDate) {
 		super();
 		this.boardSeq = boardSeq;
 		this.boardType = boardType;
 		this.boardTypeName = boardTypeName;
 		this.superBoardSeq = superBoardSeq;
+		this.superBoardTitle = superBoardTitle;
 		this.tabCnt = tabCnt;
 		this.writer = writer;
 		this.writerName = writerName;
@@ -64,6 +67,14 @@ public class BoardVO {
 
 	public void setSuperBoardSeq(String superBoardSeq) {
 		this.superBoardSeq = superBoardSeq;
+	}
+
+	public String getSuperBoardTitle() {
+		return superBoardTitle;
+	}
+
+	public void setSuperBoardTitle(String superBoardTitle) {
+		this.superBoardTitle = superBoardTitle;
 	}
 
 	public String getTabCnt() {
@@ -125,9 +136,9 @@ public class BoardVO {
 	@Override
 	public String toString() {
 		return "BoardVO [boardSeq=" + boardSeq + ", boardType=" + boardType + ", boardTypeName=" + boardTypeName
-				+ ", superBoardSeq=" + superBoardSeq + ", tabCnt=" + tabCnt + ", writer=" + writer + ", writerName="
-				+ writerName + ", title=" + title + ", content=" + content + ", viewCnt=" + viewCnt + ", regDate="
-				+ regDate + "]";
+				+ ", superBoardSeq=" + superBoardSeq + ", superBoardTitle=" + superBoardTitle + ", tabCnt=" + tabCnt
+				+ ", writer=" + writer + ", writerName=" + writerName + ", title=" + title + ", content=" + content
+				+ ", viewCnt=" + viewCnt + ", regDate=" + regDate + "]";
 	}
 
 }
