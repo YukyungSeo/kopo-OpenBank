@@ -16,8 +16,13 @@ public class ListController implements Controller {
 		
 		request.setCharacterEncoding("utf-8");
 		int page = Integer.parseInt(request.getParameter("page"));
+		request.setAttribute("page", page);
 		
 		BoardService service = new BoardService();
+		
+		int pageCnt = service.getQnABoardPageCnt();
+		request.setAttribute("pageCnt", pageCnt);
+		
 		List<BoardVO> boardList = service.getQnABoardListPage(page);
 		System.out.println(boardList.toString());
 		

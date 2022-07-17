@@ -11,8 +11,19 @@ public class BoardService {
 
 	private int pageSize = 10;
 
+	public int getQnABoardPageCnt() {
+		return getBoardPageCnt(2);
+	}
+
+	private int getBoardPageCnt(int boardType) {
+		BoardDAO boardDAO = new BoardDAO();
+		int row = boardDAO.selectRowCount(boardType);
+		return row % 10 == 0 ? row / 10 : row / 10 + 1;
+	}
+
 	public List<BoardVO> getQnABoardListPage(int page) {
-		return getBoardList(2).subList((page - 1) * pageSize, page * pageSize);
+		List<BoardVO> list = getBoardList(2);
+		return list.subList((page - 1) * pageSize, page * pageSize > list.size() ? list.size() : page * pageSize);
 	}
 
 	private List<BoardVO> getBoardList(int boardType) {

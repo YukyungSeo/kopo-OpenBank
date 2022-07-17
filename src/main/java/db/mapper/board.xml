@@ -39,6 +39,10 @@
     
     
 	<!-- select -->
+	<select id="selectRowCount" parameterType="int" resultType="int">
+		SELECT COUNT(*)	FROM BOARD WHERE BOARD_TYPE = #{ boardType }
+	</select>
+	
 	<select id="selectQnAHeadBoard" parameterType="String" resultMap="BoardMap">
 		<include refid="selectAllHead">
 			<property name="boardType" value="${ boardType }"/>

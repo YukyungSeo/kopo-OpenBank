@@ -62,7 +62,7 @@
         <%@ include file="/jsp/include/navbar.jsp"%>
         <div class="container-xxl bg-primary page-header">
 	        <div class="container text-center">
-	            <h1 class="text-white animated zoomIn mb-3">오픈뱅킹</h1>
+	            <h1 class="text-white animated zoomIn mb-3">QnA</h1>
 	        </div>
         </div>
         <!-- Navbar & Hero End -->
@@ -91,7 +91,8 @@
 							<c:if test="${ board.tabCnt ne 0 }">└</c:if>
 							${ board.title }
 						</td>
-						<td>${ board.writerName }</td>
+						<td>
+							<a href="${ pageContext.request.contextPath }/board/qna/detail.do">${ board.writerName }</a></td>
 						<td>${ board.viewCnt }</td>
 						<td>${ board.regDate }</td>
 					</tr>
@@ -99,43 +100,18 @@
 				</tbody>
 			</table>
 			<div class="row justify-content-center">
-				<div class="col-lg-auto wow fadeInUp" style="background-color:black;" data-wow-delay="0.5s">
+				<div class="col-lg-auto wow fadeInUp" data-wow-delay="0.5s">
 					<ul class="pagination">
-						<li class="page-item disabled"">
-							<a class="page-link" href="#">&laquo;</a>
+						<li class="page-item <c:if test="${ page le 1 }">disabled</c:if>">
+							<a class="page-link" href="${ pageContext.request.contextPath }/board/qna/list.do?page=${ page - 1 }">&laquo;</a>
 						</li>
-						<li class="page-item active">
-							<a class="page-link" href="#">1</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">2</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">3</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">4</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">5</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">6</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">7</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">8</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">9</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">10</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">&raquo;</a>
+						<c:forEach begin="1" end="${ pageCnt }" varStatus="status">
+							<li class="page-item <c:if test="${ status.count eq page }">active</c:if>" >
+								<a class="page-link" href="${ pageContext.request.contextPath }/board/qna/list.do?page=${ status.count }">${ status.count }</a>
+							</li>
+						</c:forEach>
+						<li class="page-item <c:if test="${ page ge pageCnt }">disabled</c:if>">
+							<a class="page-link" href="${ pageContext.request.contextPath }/board/qna/list.do?page=${ page + 1 }">&raquo;</a>
 						</li>
 					</ul>
 				</div>

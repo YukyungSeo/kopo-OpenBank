@@ -23,6 +23,10 @@ public class BoardDAO {
 		return session;
 	}
 
+	public int selectRowCount(int boardType) {
+		return (int) session.selectOne("selectRowCount", boardType);
+	}
+
 	public List<BoardVO> selectQnAHeadBoard(String boardType) {
 		List<BoardVO> boardList = session.selectList("dao.BoardDAO.selectQnAHeadBoard", boardType);
 //		for (BoardVO boardVO : boardList) {
@@ -35,7 +39,7 @@ public class BoardDAO {
 		Map<String, Object> map = new HashMap<>();
 		map.put("boardType", boardType);
 		map.put("superBoardSeq", list);
-		
+
 		List<BoardVO> boardList = session.selectList("dao.BoardDAO.selectQnACommendBoard", map);
 //		for (BoardVO boardVO : boardList) {
 //			System.out.println(boardVO);
