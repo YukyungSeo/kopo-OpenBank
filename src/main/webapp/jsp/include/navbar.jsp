@@ -19,7 +19,7 @@
                     <div class="dropdown-menu m-0">
                         <a href="#" class="dropdown-item">공지사항</a>
                         <a href="#" class="dropdown-item">자주묻는질문</a>
-                        <a href="#" class="dropdown-item">QnA</a>
+                        <a href="${ pageContext.request.contextPath }/board/qna/list.do?page=1" class="dropdown-item">QnA</a>
                     </div>
                 </div>
                 <c:if test = "${ not empty member }">
