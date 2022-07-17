@@ -54,4 +54,8 @@ public class BoardDAO {
 		
 		return session.selectOne("dao.BoardDAO.selectOne", map);
 	}
+
+	public void insertProcedure(BoardVO boardVO) {
+		session.selectOne("dao.BoardDAO.insertProcedure", boardVO);
+	}
 }

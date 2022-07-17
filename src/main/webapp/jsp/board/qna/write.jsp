@@ -36,12 +36,9 @@
     <script src="${ pageContext.request.contextPath }/js/myJS.js"></script>
 	<script>
 		function checkForm() {
-			let f = document.boardDetailForm;
+			let f = document.boardWriteForm;
 	
-			if (isNull(f.bankSelect, "은행을 선택해주세요") 
-					|| isNull(f.dealAccount, "계좌번호를 입력하세요")
-					|| isNull(f.amount, "금액을 입력하세요") 
-					|| isNull(f.password, "비밀번호를 입력하세요"))
+			if (isNull(f.title, "제목을 작성해주세요") )
 				return false;
 			
 			return true;
@@ -74,45 +71,45 @@
         <div class="container">
 		    <div class="row justify-content-center">
 		        <div class="col-lg-7 wow fadeInUp" data-wow-delay="0.3s">
-		            <form  action="${ pageContext.request.contextPath }/account/boardDetailProcess.do" method="post"
-							onsubmit="return checkForm()" name="boardDetailForm" class="pt-3">
-						<input type="hidden" class="form-control" value="${ member.id }" name="writer" id="writer" placeholder="activeBankcode" readonly>
+		            <form  action="${ pageContext.request.contextPath }/board/qna/writeProcess.do" method="post"
+							onsubmit="return checkForm()" name="boardWriteForm" class="pt-3">
+						<input type="hidden" class="form-control" value="${ boardType }" name="boardType" id="boardType" placeholder="boardType" readonly>
 						<input type="hidden" class="form-control" value="${ superBoardSeq }" name="superBoardSeq" id="superBoardSeq" placeholder="superBoardSeq" readonly>
+						<input type="hidden" class="form-control" value="${ member.id }" name="writer" id="writer" placeholder="activeBankcode" readonly>
 		                <div class="row g-3">
+                            <div class="col-md-6">
+                                <h5>게시판 ${ boardTypeName }</h5>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>상위글 - 
+                                	<c:if test="${ not empty superBoardTitle }">${ superBoardTitle }</c:if>
+                            		<c:if test="${ empty superBoardTitle }">없음</c:if> 
+                           		</h5>
+                            </div>
 		                	<div class="col-md-6">
                                 <div class="form-floating">
-	                                    <input type="text" class="form-control" id="name" value="${ member.name }" placeholder="Your Name">
-	                                    <label for="name">Your Name</label>
-	                                </div>
-	                            </div>
-	                            <div class="col-md-6">
-	                                <div class="form-floating">
-	                                    <input type="text" class="form-control" id="superBoardTitle" value="${ superBoardSeq }" placeholder="superBoardTitle">
-	                                    <label for="superBoardTitle">상위글</label>
-	                                </div>
-	                            </div>
-	                            <div class="col-12">
-	                                <div class="form-floating">
-	                                    <select class="form-select" id="floatingSelect" aria-label="Financial Consultancy">
-	                                        <option selected="">Financial Consultancy</option>
-	                                        <option value="1">Strategy Consultancy</option>
-	                                        <option value="2">Tax Consultancy</option>
-	                                    </select>
-	                                    <label for="floatingSelect">Select A Service</label>
-	                                </div>
-	                            </div>
-	                            <div class="col-12">
-	                                <div class="form-floating">
-	                                    <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 150px"></textarea>
-	                                    <label for="message">Comments</label>
-	                                </div>
-	                            </div>
-	                            <div class="col-12">
-	                                <button class="btn btn-primary w-100 py-3" type="submit">Request Quote</button>
-	                            </div>
-		                    <div class="col-12">
-		                        <button class="btn btn-primary w-100 py-3" type="submit">이체하기</button>
-		                    </div>
+                                    <input type="text" class="form-control" id="name" name="name" value="${ member.name }" placeholder="Your Name" readonly>
+                                    <label for="name">작성자</label>
+                                </div>
+                            </div>
+		                	<div class="col-md-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="title" name="title" placeholder="title">
+                                    <label for="title">제목</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="내용을 작성하세요" id="content" name="content" style="height: 150px"></textarea>
+                                    <label for="message">내용</label>
+                                </div>
+                            </div>
+                            <div class="col-12 justify-content-center">
+                            <div class="col-12">
+                                <button class="btn btn-primary rounded-pill px-4 py-3 mt-2" type="submit">완료</button>
+                                <a class="btn btn-primary rounded-pill px-4 py-3 mt-2" href="${ pageContext.request.contextPath }/board/qna/list.do?page=1">취소</a>
+                                </div>
+                            </div>
 		                </div>
 		            </form>
 		        </div>

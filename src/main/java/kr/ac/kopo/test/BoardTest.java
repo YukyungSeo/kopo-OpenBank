@@ -10,6 +10,7 @@ import org.junit.Ignore;
 
 import kr.ac.kopo.dao.BoardDAO;
 import kr.ac.kopo.service.BoardService;
+import kr.ac.kopo.vo.BoardVO;
 
 public class BoardTest {
 	@org.junit.Test
@@ -52,6 +53,14 @@ public class BoardTest {
 		BoardService service = new BoardService();
 		System.out.println(service.getQnABoard("5"));
 		System.out.println(service.getQnABoard("13"));
+	}
+	
+
+	@org.junit.Test
+	public void BoardServiceWriteBoardTest() throws Exception {
+		BoardService service = new BoardService();
+		service.writeQnABoard(new BoardVO("2", null, "1", "test_NULL", "test_NULL"));
+		service.writeQnABoard(new BoardVO("2", "1", "1", "test_1", "test_1"));
 	}
 
 }

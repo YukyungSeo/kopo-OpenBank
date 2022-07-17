@@ -76,4 +76,13 @@ public class BoardService {
 		return boardDAO.selectOne(boardType, boardSeq);
 	}
 
+	public void writeQnABoard(BoardVO boardVO) {
+		writeBoard(boardVO);
+	}
+
+	private void writeBoard(BoardVO boardVO) {
+		BoardDAO boardDAO = new BoardDAO();
+		boardDAO.insertProcedure(boardVO);
+	}
+
 }

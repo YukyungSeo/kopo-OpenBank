@@ -38,6 +38,32 @@
 		ORDER BY B.REG_DATE DESC
     </sql>
     
+    <!-- procedure -->
+    <select id="insertProcedure" parameterType="BoardVO" statementType="CALLABLE">
+    {
+    	CALL
+    	
+    	DECLARE
+    		V_SUPER_BOARD_SEQ	BOARD.SUPER_BOARD_SEQ%TYPE;
+    		V_TAB_CNT			BOARD.TAB_CNT%TYPE;
+    	BEGIN
+    		V_SUPER_BOARD_SEQ := #{ superBoardSeq };
+    		
+    		IF V_SUPER_BOARD_SEQ IS NOT NULL THEN
+		        SELECT TAB_CNT INTO V_TAB_CNT FROM BOARD WHERE BOARD_SEQ = 1;
+		        INSERT INTO BOARD(BOARD_SEQ, BOARD_TYPE, SUPER_BOARD_SEQ, TAB_CNT, WRITER, TITLE, CONTENT)
+		        VALUES(SEQ_BOARD.NEXTVAL, #{ boardType }, #{ superBoardSeq }, V_TAB_CNT + 1, #{ writer }, #{ title }, #{ content });
+		    ELSE
+		        V_TAB_CNT := 0;
+		        INSERT INTO BOARD(BOARD_SEQ, BOARD_TYPE, SUPER_BOARD_SEQ, WRITER, TITLE, CONTENT)
+		        VALUES(SEQ_BOARD.NEXTVAL, #{ boardType }, #{ superBoardSeq }, #{ writer }, #{ title }, #{ content });
+		    END IF;
+    
+	    	COMMIT;
+    	END
+   	}
+    </select>
+    
     
 	<!-- select -->
 	<select id="selectRowCount" parameterType="int" resultType="int">

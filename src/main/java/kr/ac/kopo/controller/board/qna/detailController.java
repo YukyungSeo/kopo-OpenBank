@@ -7,7 +7,7 @@ import kr.ac.kopo.controller.Controller;
 import kr.ac.kopo.service.BoardService;
 import kr.ac.kopo.vo.BoardVO;
 
-public class detailController implements Controller {
+public class DetailController implements Controller {
 	
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -24,3 +24,4 @@ public class detailController implements Controller {
 	}
 	
 }
+

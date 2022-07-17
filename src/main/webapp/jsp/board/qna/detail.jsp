@@ -82,8 +82,9 @@
 						<p class="mb-0">${ board.content }</p>
 
 	                    <div class="col-12">
-	                        <a class="btn btn-primary rounded-pill py-3 px-5 mt-2" type="button">수정</a>
-	                        <a class="btn btn-primary rounded-pill py-3 px-5 mt-2" type="button" href="${ pageContext.request.contextPath }/board/qna/list.do?page=1">목록</a>
+	                        <a class="btn btn-primary rounded-pill py-2 px-4 mt-2" type="button">수정</a>
+	                        <a class="btn btn-primary rounded-pill py-2 px-4 mt-2" type="button" href="${ pageContext.request.contextPath }/board/qna/list.do?page=1">목록</a>
+	                        <a class="btn btn-primary rounded-pill py-2 px-4 mt-2" type="button" href="${ pageContext.request.contextPath }/board/qna/write.do?boardSeq=${ board.boardSeq }&title=${ board.title }">답글</a>
 	                    </div>
 	                </div>
 		        </div>

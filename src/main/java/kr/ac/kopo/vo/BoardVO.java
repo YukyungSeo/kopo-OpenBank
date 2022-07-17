@@ -37,6 +37,15 @@ public class BoardVO {
 		this.regDate = regDate;
 	}
 
+	public BoardVO(String boardType, String superBoardSeq, String writer, String title, String content) {
+		super();
+		this.boardType = boardType;
+		this.superBoardSeq = superBoardSeq;
+		this.writer = writer;
+		this.title = title;
+		this.content = content;
+	}
+
 	public String getBoardSeq() {
 		return boardSeq;
 	}
