@@ -85,4 +85,10 @@ public class BoardService {
 		boardDAO.insertProcedure(boardVO);
 	}
 
+	public void deleteQnABoard(String boardSeq) {
+		BoardDAO boardDAO = new BoardDAO();
+		boardDAO.deleteProcedure(boardSeq);
+		
+	}
+
 }

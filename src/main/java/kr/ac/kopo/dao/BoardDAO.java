@@ -58,4 +58,8 @@ public class BoardDAO {
 	public void insertProcedure(BoardVO boardVO) {
 		session.selectOne("dao.BoardDAO.insertProcedure", boardVO);
 	}
+
+	public void deleteProcedure(String boardSeq) {
+		session.selectOne("dao.BoardDAO.deleteProcedure", boardSeq);
+	}
 }

@@ -64,6 +64,13 @@
    	}
     </select>
     
+    <select id="deleteProcedure" parameterType="String" statementType="CALLABLE">
+    {
+    	CALL PR_DELETE_BOARD(#{ boardSeq })
+   	}
+    	
+    </select>
+    
     
 	<!-- select -->
 	<select id="selectRowCount" parameterType="int" resultType="int">

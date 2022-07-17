@@ -1,5 +1,6 @@
 package kr.ac.kopo.test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.Arrays;
@@ -62,5 +63,12 @@ public class BoardTest {
 		service.writeQnABoard(new BoardVO("2", null, "1", "test_NULL", "test_NULL"));
 		service.writeQnABoard(new BoardVO("2", "1", "1", "test_1", "test_1"));
 	}
-
+	
+	
+	@org.junit.Test
+	public void BoardDAODeleteProcedureTest() throws Exception {
+		BoardDAO boardDAO = new BoardDAO();
+		boardDAO.deleteProcedure("23");
+		
+	}
 }
