@@ -24,6 +24,7 @@ public class TransactionProcessController implements Controller {
 		String name = request.getParameter("name");
 
 		TransactionVO transactionVO = new TransactionVO(activeBankcode, activeAcctNo, name, dealName, amount, dealBankcode, dealAcctNo);
+//		System.out.println(transactionVO);
 		
 		TransactionService service = new TransactionService();
 		service.transaction(transactionVO, password);

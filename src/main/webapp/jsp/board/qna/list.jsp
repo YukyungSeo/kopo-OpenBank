@@ -35,15 +35,38 @@
     
     <!-- JavaScript -->
     <script src="${ pageContext.request.contextPath }/js/myJS.js"></script>
-	<script>
-		function checkForm() {
-			let f = document.listForm;
-	
-			if (isNull(f.bankSelect, "은행을 선택해주세요"))
-				return false;
-			
-			return true;
-		}
+    <script src="${ pageContext.request.contextPath }/js/jquery-3.6.0.min.js"></script>
+    <script>
+    function checkLogin(type){
+    	if(${ empty member }) {
+    		$(".modal").fadeIn();
+    	} else {
+    		switch(type){
+    		case 'writeQnABoard':
+    			location.href="${ pageContext.request.contextPath }/board/qna/write.do"
+    			break;
+    		}
+    	}
+    }
+    
+    $(document).ready(function(){    	
+		$(".btn-login").click(function(){
+			location.href="${ pageContext.request.contextPath }/login.do"
+		});
+		
+		$(".btn-cancle").click(function(){
+			$(".modal").fadeOut();
+		});
+    });
+    
+	function checkForm() {
+		let f = document.listForm;
+
+		if (isNull(f.bankSelect, "은행을 선택해주세요"))
+			return false;
+		
+		return true;
+	}
 	</script>
 </head>
 
@@ -57,6 +80,9 @@
         </div>
         <!-- Spinner End -->
 
+		<!-- modal start -->
+		<%@ include file="/jsp/include/modal.jsp" %>
+		<!-- modal end -->
 
         <!-- Navbar & Hero Start -->
         <%@ include file="/jsp/include/navbar.jsp"%>
@@ -73,7 +99,7 @@
 			<div class="col-12 wow fadeInUp" data-wow-delay="0.5s">
 				<div class="col-lg-auto wow fadeInUp" data-wow-delay="0.5s">
                 	<a class="btn btn-primary btn-sm" type="button" 
-                		href="${ pageContext.request.contextPath }/board/qna/write.do">새글작성</a>
+                		onclick="checkLogin('writeQnABoard')">새글작성</a>
                 </div>
             </div>
 		    <table class="table table-hover col-lg-7 wow fadeInUp" data-wow-delay="0.3s">

@@ -8,3 +8,4 @@ function isNull(obj, msg) {
 	}
 	return false;
 }
+

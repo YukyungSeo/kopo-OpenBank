@@ -4,7 +4,10 @@
 <div class="container-xxl position-relative p-0">
    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
        <a href="${ pageContext.request.contextPath }/" class="navbar-brand p-0">
-           <h1 class="m-0">BizConsult</h1>
+           <h1 class="m-0">
+				<img alt="mini-logo" src="${ pageContext.request.contextPath }/img/mini-logo.JPG">
+				SEO BANK
+			</h1>
            <!-- <img src="img/logo.png" alt="Logo"> -->
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -13,7 +16,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
                 <a href="#" class="nav-item nav-link">금융상품</a>
-                <a href="${ pageContext.request.contextPath }/account/create.do" class="nav-item nav-link">1Q계좌개설</a>
+                <a class="nav-item nav-link" onclick="checkLogin('CreateAccout')">1Q계좌개설</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">게시판</a>
                     <div class="dropdown-menu m-0">

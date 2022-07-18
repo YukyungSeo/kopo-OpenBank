@@ -16,7 +16,8 @@ public class AddAccountProcessController implements Controller {
 		String bankcode = request.getParameter("bankcode");
 		HttpSession session = request.getSession();
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");
-//		System.out.println(memberVO);
+		System.out.println("AddAccountProcess - memberVO : " + memberVO);
+		System.out.println("AddAccountProcess - bankcode : " + bankcode);
 		
 		AccountService service = new AccountService();
 		service.addAccountByBankCode(memberVO, bankcode);

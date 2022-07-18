@@ -4,4 +4,3 @@
 .project
 /build/
 /src/main/webapp/js/secure.js
-/src/main/java/db.properties
