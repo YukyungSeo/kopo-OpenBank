@@ -4,7 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.ac.kopo.controller.Controller;
-import kr.ac.kopo.dao.BoardDAO;
 import kr.ac.kopo.service.BoardService;
 import kr.ac.kopo.vo.BoardVO;
 

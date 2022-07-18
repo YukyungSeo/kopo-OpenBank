@@ -14,6 +14,7 @@ public class LogoutController implements Controller {
 		HttpSession session = request.getSession();
 		session.removeAttribute("member");
 		
+		
 		return "redirect:";
 	}
 

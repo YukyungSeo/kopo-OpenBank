@@ -1,5 +1,7 @@
 package kr.ac.kopo.service;
 
+import java.util.List;
+
 import kr.ac.kopo.dao.TransactionDAO;
 import kr.ac.kopo.vo.TransactionVO;
 
@@ -11,6 +13,13 @@ public class TransactionService {
 		transactionDAO.procedureTransaction(transactionVO, password);
 		
 		return true;
+	}
+
+	public List<TransactionVO> getAllTransaction(String bankcode, String accoutNo) {
+		
+		TransactionDAO transactionDAO = new TransactionDAO();
+		return transactionDAO.procedureSelectAll(bankcode, accoutNo);
+		
 	}
 
 	

@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.ac.kopo.controller.Controller;
-import kr.ac.kopo.service.AccountService;
 import kr.ac.kopo.service.CommCodeService;
 import kr.ac.kopo.vo.CommCodeVO;
 

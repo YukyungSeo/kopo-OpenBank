@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.TransactionDAO">
-	<resultMap type="transactionVO" id="transactionVO">
+	<resultMap type="TransactionVO" id="TransactionMap">
 		<result column="TRANSACTION_SEQ" property="transactionSeq" />
 		<result column="ACTIVE_BANKCODE" property="activeBankcode" />
 		<result column="ACTIVE_BANKNAME" property="activeBankName" />
@@ -28,5 +28,12 @@
 			, #{ password }
 		)
 	}
+	</select>
+	
+	<select id="procedureSelectAll" statementType="CALLABLE" parameterType="map">
+	{
+		CALL PR_SELECT_ALL_TRANSACTION(#{ bankcode }, #{ accountNo }
+			, #{ transactionList, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=TransactionMap })
+	} 
 	</select>
 </mapper>

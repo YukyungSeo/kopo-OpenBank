@@ -44,6 +44,7 @@ public class AccountDAO {
 		map.put("memberId", id);
 		map.put("accountList", accountList);
 
+		System.out.println("아이디 : " + id);
 		session.selectOne("dao.AccountDAO.selectAllOtherAccount", map);
 		accountList = (List<AccountVO>) map.get("accountList");
 		

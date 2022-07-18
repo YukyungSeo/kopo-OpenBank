@@ -16,7 +16,7 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet"> 
 
     <!-- Icon Font Stylesheet -->
@@ -59,7 +59,8 @@
         <div class="container">
             <div class="row g-4">
             	<c:forEach items="${ myAccountList }" var="account">
-	                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+	                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" 
+	                	onclick="location.href='${ pageContext.request.contextPath }/account/transactionList.do?bankcode=${ account.bankcode }&accountNo=${ account.accountNo }'">
 	                    <div class="service-item rounded h-100">
 	                        <div class="d-flex justify-content-between">
 	                            <div class="service-icon">

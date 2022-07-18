@@ -27,6 +27,7 @@ public class TransactionController implements Controller {
 				request.setAttribute("account", accountVO);
 				break;
 			}
+			session.removeAttribute("myAccountList");
 		}
 		
 		if(request.getAttribute("account") == null) {
@@ -36,6 +37,7 @@ public class TransactionController implements Controller {
 					request.setAttribute("account", accountVO);
 					break;
 				}
+				session.removeAttribute("otherAccountList");
 			}
 		}
 

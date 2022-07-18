@@ -3,15 +3,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="container-xxl position-relative p-0">
    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-       <a href="${ pageContext.request.contextPath }/" class="navbar-brand p-0">
-           <h1 class="m-0">
+  		<a href="${ pageContext.request.contextPath }/" class="navbar-brand p-0">
+        	<h1 class="m-0">
 				<img alt="mini-logo" src="${ pageContext.request.contextPath }/img/mini-logo.JPG">
 				SEO BANK
 			</h1>
-           <!-- <img src="img/logo.png" alt="Logo"> -->
-        </a>
+       	</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="fa fa-bars"></span>
+        <span class="fa fa-bars"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">

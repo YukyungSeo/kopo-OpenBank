@@ -32,33 +32,6 @@
 
     <!-- Template Stylesheet -->
     <link href="${ pageContext.request.contextPath }/css/style.css" rel="stylesheet">
-    
-    <!-- JavaScript -->
-    <script src="${ pageContext.request.contextPath }/js/myJS.js"></script>
-    <script src="${ pageContext.request.contextPath }/js/jquery-3.6.0.min.js"></script>
-    <script>
-    function checkLogin(type){
-    	if(${ empty member }) {
-    		$(".modal").fadeIn();
-    	} else {
-    		switch(type){
-    		case 'writeQnABoard':
-    			location.href="${ pageContext.request.contextPath }/board/qna/write.do"
-    			break;
-    		}
-    	}
-    }
-    
-    $(document).ready(function(){    	
-		$(".btn-login").click(function(){
-			location.href="${ pageContext.request.contextPath }/login.do"
-		});
-		
-		$(".btn-cancle").click(function(){
-			$(".modal").fadeOut();
-		});
-    });
-	</script>
 </head>
 
 <body>
@@ -71,15 +44,11 @@
         </div>
         <!-- Spinner End -->
 
-		<!-- modal start -->
-		<%@ include file="/jsp/include/modal.jsp" %>
-		<!-- modal end -->
-
         <!-- Navbar & Hero Start -->
         <%@ include file="/jsp/include/navbar.jsp"%>
         <div class="container-xxl bg-primary page-header">
 	        <div class="container text-center">
-	            <h1 class="text-white animated zoomIn mb-3">QnA</h1>
+	            <h1 class="text-white animated zoomIn mb-3">거래 내역</h1>
 	        </div>
         </div>
         <!-- Navbar & Hero End -->
@@ -87,59 +56,26 @@
 
         <!-- Contact Start -->
         <div class="container">
-			<div class="col-12 wow fadeInUp" data-wow-delay="0.5s">
-				<div class="col-lg-auto wow fadeInUp" data-wow-delay="0.5s">
-                	<a class="btn btn-primary btn-sm" type="button" 
-                		onclick="checkLogin('writeQnABoard')">새글작성</a>
-                </div>
-            </div>
 		    <table class="table table-hover col-lg-7 wow fadeInUp" data-wow-delay="0.3s">
 				<thead>
 					<tr>
-						<th scope="col">Type</th>
-						<th scope="col">Title</th>
-						<th scope="col">Writer</th>
-						<th scope="col">View</th>
-						<th scope="col">Register Date</th>
+						<th scope="col">거래일</th>
+						<th scope="col">거래명</th>
+						<th scope="col">금액</th>
+						<th scope="col">잔액</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${ boardList }" var="board" varStatus="status">
-					<tr <c:if test="${ status.count mod 2 eq 0 }"> class="table-primary" </c:if> >
-						<th scope="row">${ board.boardTypeName }</th>
-						<td>
-							<c:forEach begin="0" end="${ board.tabCnt }">
-								&nbsp;&nbsp;
-							</c:forEach>
-							<c:if test="${ board.tabCnt ne 0 }">└</c:if>
-							<a href="${ pageContext.request.contextPath }/board/qna/detail.do?boardSeq=${ board.boardSeq }">
-								${ board.title }
-							</a>
-						</td>
-						<td>${ board.writerName }</td>
-						<td>${ board.viewCnt }</td>
-						<td>${ board.regDate }</td>
+					<c:forEach items="${ transactionList }" var="transaction" varStatus="status">
+					<tr class="table-primary" >
+						<td>${ transaction.regDate }</td>
+						<th scope="row">${ transaction.name }</th>
+						<td>${ transaction.amount }</td>
+						<td>${ transaction.balance }</td>
 					</tr>
 					</c:forEach>
 				</tbody>
 			</table>
-			<div class="row justify-content-center">
-				<div class="col-lg-auto wow fadeInUp" data-wow-delay="0.5s">
-					<ul class="pagination">
-						<li class="page-item <c:if test="${ page le 1 }">disabled</c:if>">
-							<a class="page-link" href="${ pageContext.request.contextPath }/board/qna/list.do?page=${ page - 1 }">&laquo;</a>
-						</li>
-						<c:forEach begin="1" end="${ pageCnt }" varStatus="status">
-							<li class="page-item <c:if test="${ status.count eq page }">active</c:if>" >
-								<a class="page-link" href="${ pageContext.request.contextPath }/board/qna/list.do?page=${ status.count }">${ status.count }</a>
-							</li>
-						</c:forEach>
-						<li class="page-item <c:if test="${ page ge pageCnt }">disabled</c:if>">
-							<a class="page-link" href="${ pageContext.request.contextPath }/board/qna/list.do?page=${ page + 1 }">&raquo;</a>
-						</li>
-					</ul>
-				</div>
-			</div>
 		</div>
         <!-- Contact End -->
         
