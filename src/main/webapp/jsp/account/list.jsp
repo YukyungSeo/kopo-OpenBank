@@ -35,6 +35,7 @@
     
     <!-- javascript -->
     <script src="https://kit.fontawesome.com/3b179c433e.js" crossorigin="anonymous"></script>
+    <script src="${ pageContext.request.contextPath }/js/myJS.js"></script>
 </head>
 
 <body>

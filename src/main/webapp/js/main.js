@@ -96,5 +96,11 @@
         }
     });
     
+    
+    /* mine */
+	$(".btn-cancle").click(function(){
+		$(".modal").fadeOut();
+	});
+	
 })(jQuery);
 

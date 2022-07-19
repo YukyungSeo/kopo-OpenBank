@@ -81,6 +81,7 @@
                			${ account.goods }
            			</h1>
                 	<h2 class="animated zoomIn mb-3">잔액 ${ account.amount }원</h2>
+					<p>계좌번호 &nbsp;&nbsp; ${ account.accountNo }</p>
 					<p>사용여부 &nbsp;&nbsp; ${ account.available }</p>
 					<p>등록일 &nbsp;&nbsp;&nbsp;&nbsp; ${ account.regDate }<p>
                 </div>

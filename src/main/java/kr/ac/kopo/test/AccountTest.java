@@ -2,6 +2,8 @@ package kr.ac.kopo.test;
 
 import static org.junit.Assert.assertNotNull;
 
+import org.junit.Ignore;
+
 import kr.ac.kopo.dao.AccountDAO;
 import kr.ac.kopo.service.AccountService;
 import kr.ac.kopo.vo.MemberVO;

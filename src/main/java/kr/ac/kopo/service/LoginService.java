@@ -18,7 +18,7 @@ public class LoginService {
 		MemberVO memberVO = MemberDAO.selectById(id);
 		
 		// password 비교
-		if(pwd.equals(memberVO.getPassword())){
+		if(memberVO != null && pwd.equals(memberVO.getPassword())){
 			return memberVO;
 		}
 		return null;

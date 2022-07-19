@@ -33,17 +33,35 @@
     <link href="${ pageContext.request.contextPath }/css/style.css" rel="stylesheet">
     
     <!-- JavaScript -->
+    <script src="${ pageContext.request.contextPath }/js/jquery-3.6.0.min.js"></script>
     <script src="${ pageContext.request.contextPath }/js/myJS.js"></script>
 	<script>
-		function checkForm() {
-			let f = document.createForm;
+	function checkForm() {
+		let f = document.createForm;
+
+		if (isNull(f.password, "패스워드를 입력하세요") ||
+				isNull(f.repassword, "패스워드를 다시 입력하세요"))
+			return false;
+		
+		if(isChecked($("#flexCheckDefault1"), '개인(신용)정보 조회를 동의해주세요') 
+				|| isChecked($("#flexCheckDefault2"), '불법 탈법 차명거래 금지 설명을 확인해주세요') 
+				|| isChecked($("#flexCheckDefault3"), '예금자보호법 설명을 확인해주세요'))
+			return false;
+
+		return true;
+	}
 	
-			if (isNull(f.password, "패스워드를 입력하세요")
-				return false;
+	$(document).ready(function(){
+		$(".checkbox_group").on("click", "#flexCheckDefault-whole", function () {
+			var checked = $(this).is(":checked");
 			
-	
-			return true;
-		}
+			if(checked){
+				$(this).parents(".checkbox_group").find('input').prop("checked", true);
+			} else {
+				$(this).parents(".checkbox_group").find('input').prop("checked", false);
+			}
+		});
+	});
 	</script>
 </head>
 
@@ -100,6 +118,63 @@
 		                            <input type="password" class="form-control" name="password" id="password" placeholder="4digit password">
 		                            <label for="password">비밀번호 4자리</label>
 		                        </div>
+		                    </div>
+		                    <div class="col-md-6">
+		                        <div class="form-floating">
+		                            <input type="repassword" class="form-control" name="repassword" id="repassword" placeholder="4digit password">
+		                            <label for="repassword">비밀번호 4자리 재입력</label>
+		                        </div>
+		                    </div>
+		                    
+		                    <!-- 동의버튼 -->
+		                    <div class="checkbox_group">
+			                    <div class="col-md-12" style="margin-bottom:10px">
+		                    		<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault-whole"> &nbsp;&nbsp; 
+									<label class="form-check-label" for="flexCheckDefault-whole" >전체 동의</label>
+		                    	</div>
+			                    <div class="col-md-12 accordion" id="accordionExample">
+									<div class="accordion-item">
+										<h2 class="accordion-header" id="headingOne">
+											<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+												<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" name="flexCheckDefault1"> &nbsp;&nbsp; 
+												<label class="form-check-label" for="flexCheckDefault1" >개인(신용)정보 조회 동의서</label>
+											</button>
+										</h2>
+										<div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+										    <div class="accordion-body">
+										    	「신용정보의 이용 및 보호에 관한 법률」제32조제2항에 따라 귀사가 아래와 같은 내용으로 신용조회회사 또는 신용정보집중기관으로부터 본인의 신용정보를 조회하는 것에 대하여 동의합니다.
+												<br>
+												□ 조회할 신용정보 : 개인식별정보, 신용거래정보, 신용등급 및 평점정보
+										    </div>
+						 				</div>
+									</div>
+									<div class="accordion-item">
+										<h2 class="accordion-header" id="headingTwo">
+											<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="#collapseTwo">
+												<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2" name="flexCheckDefault2"> &nbsp;&nbsp; 
+												<label class="form-check-label" for="flexCheckDefault2" >불법 탈법 차명거래 금지 설명 확인</label>
+											</button>
+										</h2>
+										<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample" style="">
+										    <div class="accordion-body">
+										    	금융실명거래 및 비밀보장에 관한 법률」 제3조 제3항에 따라 누구든지 불법재산의 은닉, 자금세탁 행위, 공중협박자금조달행위 및 강제 집행의 면탈, 그 밖의 탈법행위를 목적으로 타인의 실명으로 금융거래를 하여서는 아니되며, 이를 위반 시 5년 이하의 징역 또는 5천만 원 이항의 벌금에 처할 수 있습니다. 본인은 위 안내에 대해 충분히 이해하였음을 확인합니다.
+										    </div>
+						 				</div>
+									</div>
+									<div class="accordion-item">
+										<h2 class="accordion-header" id="headingThree">
+											<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="#collapseThree">
+												<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3" name="flexCheckDefault3"> &nbsp;&nbsp; 
+												<label class="form-check-label" for="flexCheckDefault3" >예금자보호법 설명 확인</label>
+											</button>
+										</h2>
+										<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample" style="">
+										    <div class="accordion-body">
+										    	본인이 가입하는 금융상품의 예금자보호여부 및 보호한도(원금과 소정의 이자를 하하여 1인당 5천만원)에 대하여 설명을 보고, 충분히 이해하였음을 확인합니다.
+										    </div>
+						 				</div>
+									</div>
+			                    </div>
 		                    </div>
 		                    <div class="col-12">
 		                        <button class="btn btn-primary w-100 py-3" type="submit">계좌 개설</button>

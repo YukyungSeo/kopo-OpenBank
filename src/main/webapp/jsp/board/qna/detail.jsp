@@ -31,6 +31,9 @@
 
     <!-- Template Stylesheet -->
     <link href="${ pageContext.request.contextPath }/css/style.css" rel="stylesheet">
+    
+    <!-- javascript -->
+    <script src="${ pageContext.request.contextPath }/js/myJS.js"></script>
 </head>
 
 <body>
@@ -71,7 +74,8 @@
 	                        <a class="btn btn-dark rounded-pill py-2 px-4 mt-2" type="button" href="${ pageContext.request.contextPath }/board/qna/deleteProcess.do?boardSeq=${ board.boardSeq }">삭제</a>
                         </c:if>
 	                        <a class="btn btn-primary rounded-pill py-2 px-4 mt-2" type="button" href="${ pageContext.request.contextPath }/board/qna/list.do?page=1">목록</a>
-	                        <a class="btn btn-primary rounded-pill py-2 px-4 mt-2" type="button" href="${ pageContext.request.contextPath }/board/qna/write.do?boardSeq=${ board.boardSeq }&title=${ board.title }">답글</a>
+	                        <a class="btn btn-primary rounded-pill py-2 px-4 mt-2" type="button" 
+	                        	onclick="checkLogin(${ empty member }, 'writeQnABoard','${ pageContext.request.contextPath }')">답글</a>
 	                    </div>
 	                </div>
 		        </div>

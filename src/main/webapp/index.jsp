@@ -36,7 +36,7 @@
     <script src="${ pageContext.request.contextPath }/js/myJS.js"></script>
     <script src="${ pageContext.request.contextPath }/js/jquery-3.6.0.min.js"></script>
     <script>
-    function checkLogin(type){
+/*     function checkLogin(type){
     	if(${ empty member }) {
     		$(".modal").fadeIn();
     	} else {
@@ -59,7 +59,7 @@
 		$(".btn-cancle").click(function(){
 			$(".modal").fadeOut();
 		});
-    });
+    }); */
     </script>
 </head>
 
@@ -72,11 +72,6 @@
             </div>
         </div>
         <!-- Spinner End -->
-        
-        <!-- modal start -->
-		<%@include file="/jsp/include/modal.jsp" %>
-        <!-- modal end -->
-		
 
         <!-- Navbar & Hero Start -->
         <%@include file="/jsp/include/navbar.jsp" %>
@@ -87,7 +82,7 @@
 	                    <h1 class="text-white mb-4 animated zoomIn">We Help To Push Your Business To The Top Level nego</h1>
 	                    <p class="text-white pb-3 animated zoomIn">Tempor rebum no at dolore lorem clita rebum rebum ipsum rebum stet dolor sed justo kasd. Ut dolor sed magna dolor sea diam. Sit diam sit justo amet ipsum vero ipsum clita lorem</p>
 	                    <a class="btn btn-outline-light rounded-pill border-2 py-3 px-5 animated slideInRight btn-modal-action"
-	                    	onclick="checkLogin('AccountList')">내 계좌</a>
+	                    	onclick="checkLogin(${ empty member }, 'AccountList', '${ pageContext.request.contextPath }')">내 계좌</a>
 	                </div>
 	                <div class="col-lg-6 text-center text-lg-start">
 	                    <img class="img-fluid animated zoomIn" src="img/hero.png" alt="">

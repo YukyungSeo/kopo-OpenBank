@@ -36,29 +36,6 @@
     <!-- JavaScript -->
     <script src="${ pageContext.request.contextPath }/js/myJS.js"></script>
     <script src="${ pageContext.request.contextPath }/js/jquery-3.6.0.min.js"></script>
-    <script>
-    function checkLogin(type){
-    	if(${ empty member }) {
-    		$(".modal").fadeIn();
-    	} else {
-    		switch(type){
-    		case 'writeQnABoard':
-    			location.href="${ pageContext.request.contextPath }/board/qna/write.do"
-    			break;
-    		}
-    	}
-    }
-    
-    $(document).ready(function(){    	
-		$(".btn-login").click(function(){
-			location.href="${ pageContext.request.contextPath }/login.do"
-		});
-		
-		$(".btn-cancle").click(function(){
-			$(".modal").fadeOut();
-		});
-    });
-	</script>
 </head>
 
 <body>
@@ -70,10 +47,6 @@
             </div>
         </div>
         <!-- Spinner End -->
-
-		<!-- modal start -->
-		<%@ include file="/jsp/include/modal.jsp" %>
-		<!-- modal end -->
 
         <!-- Navbar & Hero Start -->
         <%@ include file="/jsp/include/navbar.jsp"%>
