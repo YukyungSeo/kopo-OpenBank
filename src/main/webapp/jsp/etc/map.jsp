@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>SEO Bank - 지점찾기</title>
+    <title>SEO Bank - 오시는길</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -31,6 +31,13 @@
 
     <!-- Template Stylesheet -->
     <link href="${ pageContext.request.contextPath }/css/style.css" rel="stylesheet">
+    
+    <!-- map api -->
+    <script src="${ pageContext.request.contextPath }/js/secure.js"></script>
+    <script src="${ pageContext.request.contextPath }/js/jquery-3.6.0.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/js/myJS.js"></script>
+	
+
 </head>
 
 <body>
@@ -48,7 +55,7 @@
         <%@ include file="/jsp/include/navbar.jsp"%>
         <div class="container-xxl bg-primary page-header">
 	        <div class="container text-center">
-	            <h1 class="text-white animated zoomIn mb-3">내 정보</h1>
+	            <h1 class="text-white animated zoomIn mb-3">오시는 길</h1>
 	        </div>
         </div>
         <!-- Navbar & Hero End -->
@@ -56,142 +63,24 @@
 
         <!-- Features Start -->
         <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="d-inline-block border rounded-pill text-primary px-4 mb-3">Features</div>
-                    <h2 class="mb-4">Why People Choose Us? We Are Trusted & Award Wining Agency</h2>
-                    <p>Clita nonumy sanctus nonumy et clita tempor, et sea amet ut et sadipscing rebum amet takimata amet, sed accusam eos eos dolores dolore et. Et ea ea dolor rebum invidunt clita eos. Sea accusam stet stet ipsum, sit ipsum et ipsum kasd</p>
-                    <p>Et ea ea dolor rebum invidunt clita eos. Sea accusam stet stet ipsum, sit ipsum et ipsum kasd</p>
-                    <a class="btn btn-primary rounded-pill py-3 px-5 mt-2" href="">Read More</a>
-                </div>
-                <div class="col-lg-7">
-                    <div class="row g-5">
-                        <div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-                                    <i class="fa fa-cubes text-white"></i>
-                                </div>
-                                <h6 class="mb-0">Best In Industry</h6>
-                            </div>
-                            <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam eos diam dolor</span>
-                        </div>
-                        <div class="col-sm-6 wow fadeIn" data-wow-delay="0.2s">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-                                    <i class="fa fa-percent text-white"></i>
-                                </div>
-                                <h6 class="mb-0">99% Success Rate</h6>
-                            </div>
-                            <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam eos diam dolor</span>
-                        </div>
-                        <div class="col-sm-6 wow fadeIn" data-wow-delay="0.3s">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-                                    <i class="fa fa-award text-white"></i>
-                                </div>
-                                <h6 class="mb-0">Award Winning</h6>
-                            </div>
-                            <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam eos diam dolor</span>
-                        </div>
-                        <div class="col-sm-6 wow fadeIn" data-wow-delay="0.4s">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-                                    <i class="fa fa-smile-beam text-white"></i>
-                                </div>
-                                <h6 class="mb-0">100% Happy Client</h6>
-                            </div>
-                            <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam eos diam dolor</span>
-                        </div>
-                        <div class="col-sm-6 wow fadeIn" data-wow-delay="0.5s">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-                                    <i class="fa fa-user-tie text-white"></i>
-                                </div>
-                                <h6 class="mb-0">Professional Advisors</h6>
-                            </div>
-                            <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam eos diam dolor</span>
-                        </div>
-                        <div class="col-sm-6 wow fadeIn" data-wow-delay="0.6s">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-                                    <i class="fa fa-headset text-white"></i>
-                                </div>
-                                <h6 class="mb-0">24/7 Customer Support</h6>
-                            </div>
-                            <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam eos diam dolor</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="row justify-content-center">
+            	<div id="map" style="width:1000px;height:400px;"></div>
+            	<div class="col-lg-7 wow fadeInUp" data-wow-delay="0.3s">
+            		<br>
+	            	<p><strong>오시는 길</strong></p>
+					<p>철산역 3번 출구에서 505m</p>
+					<p><strong>문의</strong></p>
+					<p>02-851-2340</p>
+					<p><strong>주소</strong></p>
+					<p>경기 광명시 오리로 904 4층</p>
+				</div>
             </div>
         </div>
         <!-- Features End -->
         
 
         <!-- Footer Start -->
-        <div class="container-fluid bg-dark text-light footer pt-5 wow fadeIn" data-wow-delay="0.1s" style="margin-top: 6rem;">
-            <div class="container py-5">
-                <div class="row g-5">
-                    <div class="col-md-6 col-lg-3">
-                        <h5 class="text-white mb-4">Get In Touch</h5>
-                        <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                        <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                        <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
-                        <div class="d-flex pt-2">
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-instagram"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <h5 class="text-white mb-4">Quick Link</h5>
-                        <a class="btn btn-link" href="">About Us</a>
-                        <a class="btn btn-link" href="">Contact Us</a>
-                        <a class="btn btn-link" href="">Privacy Policy</a>
-                        <a class="btn btn-link" href="">Terms & Condition</a>
-                        <a class="btn btn-link" href="">Career</a>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <h5 class="text-white mb-4">Popular Link</h5>
-                        <a class="btn btn-link" href="">About Us</a>
-                        <a class="btn btn-link" href="">Contact Us</a>
-                        <a class="btn btn-link" href="">Privacy Policy</a>
-                        <a class="btn btn-link" href="">Terms & Condition</a>
-                        <a class="btn btn-link" href="">Career</a>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <h5 class="text-white mb-4">Newsletter</h5>
-                        <p>Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulpu</p>
-                        <div class="position-relative w-100 mt-3">
-                            <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Your Email" style="height: 48px;">
-                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="copyright">
-                    <div class="row">
-                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved. 
-							
-							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-							Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
-                            <br>Distributed By: <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
-                        </div>
-                        <div class="col-md-6 text-center text-md-end">
-                            <div class="footer-menu">
-                                <a href="">Home</a>
-                                <a href="">Cookies</a>
-                                <a href="">Help</a>
-                                <a href="">FQAs</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <%@ include file="/jsp/include/footer.jsp" %>
         <!-- Footer End -->
 
 
@@ -209,6 +98,29 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    
+	<script id="kakao-map-script" type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey="></script>
+	<script>
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	    mapOption = { 
+	        center: new kakao.maps.LatLng(37.477366, 126.862592), // 지도의 중심좌표
+	        level: 3 // 지도의 확대 레벨
+	    };
+	
+	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	var markerPosition  = new kakao.maps.LatLng(37.477366, 126.862592); // 마커가 표시될 위치입니다 
+	
+	// 마커를 생성합니다
+	var marker = new kakao.maps.Marker({
+	    position: markerPosition
+	});
+	
+	// 마커가 지도 위에 표시되도록 설정합니다
+	marker.setMap(map);
+	
+	// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
+	// marker.setMap(null);    
+	</script>
 </body>
 
 </html>

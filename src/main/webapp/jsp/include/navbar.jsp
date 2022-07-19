@@ -28,8 +28,8 @@
                         <a href="#" class="dropdown-item">자주묻는질문</a>
                         <a href="${ pageContext.request.contextPath }/board/qna/list.do?page=1" class="dropdown-item">QnA</a>
                     </div>
-                    <a href="${ pageContext.request.contextPath }/map.do">지점위치</a>
                 </div>
+                <a href="${ pageContext.request.contextPath }/map.do" class="nav-item nav-link">오시는 길</a>
                 <c:if test = "${ not empty member }">
 	                <a href="#" class="nav-item nav-link">마이페이지</a>
 	                <a href="${ pageContext.request.contextPath }/logout.do" class="nav-item nav-link">로그아웃</a>
