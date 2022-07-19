@@ -36,4 +36,5 @@
 			, #{ transactionList, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=TransactionMap })
 	} 
 	</select>
+	
 </mapper>

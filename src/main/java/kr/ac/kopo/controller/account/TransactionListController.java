@@ -7,42 +7,25 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import kr.ac.kopo.controller.Controller;
+import kr.ac.kopo.service.AccountService;
 import kr.ac.kopo.service.TransactionService;
 import kr.ac.kopo.vo.AccountVO;
 import kr.ac.kopo.vo.TransactionVO;
 
 public class TransactionListController implements Controller {
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		String accountNo = request.getParameter("accountNo");
 		String bankcode = request.getParameter("bankcode");
 		HttpSession session = request.getSession();
-
-		// accout를 pageContext로 올림
-
-		if (bankcode.equals("2")) {
-			List<AccountVO> accountList = (List<AccountVO>) session.getAttribute("myAccountList");
-			for (AccountVO accountVO : accountList) {
-				if (accountVO.getAccountNo().equals(accountNo)) {
-					request.setAttribute("account", accountVO);
-					break;
-				}
-				session.removeAttribute("myAccountList");
-			}
-		} else {
-			
-			List<AccountVO> accountList = (List<AccountVO>) session.getAttribute("otherAccountList");
-			for (AccountVO accountVO : accountList) {
-				if (accountVO.getAccountNo().equals(accountNo)) {
-					request.setAttribute("account", accountVO);
-					break;
-				}
-				session.removeAttribute("otherAccountList");
-			}
-		}
+		
+		// accountNo로 Account정보 가져와서 pageContext로 올림
+		AccountService AccountService = new AccountService();
+		AccountVO account = AccountService.getAccount(bankcode, accountNo);
+		session.setAttribute("account", account);
+		System.out.println(account);
 
 		// accountNo로 transactionList를 가져와서 pageContext로 올림
 		TransactionService service = new TransactionService();

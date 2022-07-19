@@ -5,7 +5,7 @@
    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
   		<a href="${ pageContext.request.contextPath }/" class="navbar-brand p-0">
         	<h1 class="m-0">
-				<img alt="mini-logo" src="${ pageContext.request.contextPath }/img/mini-logo.JPG">
+				<img alt="mini-logo" src="${ pageContext.request.contextPath }/img/mini-logo.png">
 				SEO BANK
 			</h1>
        	</a>

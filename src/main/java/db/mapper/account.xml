@@ -3,12 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.AccountDAO">
-	<resultMap type="accountVO" id="accountVO">
+	<resultMap type="AccountVO" id="AccountVO">
 		<result column="basic_addr" property="basicAddr" />
 		<result column="detail_addr" property="detailAddr" />
 		<result column="reg_Date" property="regDate" />
 	</resultMap>
-	<resultMap id="accountMap" type="accountVO">
+	<resultMap id="AccountMap" type="AccountVO">
     </resultMap>
 	
 	<!-- sql  -->
@@ -28,23 +28,22 @@
 		and (c2.code_id = 110 and a.goods_code = c2.code)
 	</sql>
 	
-	<!-- DML -->
-	
-	
 	<!-- select -->
-	<select id="selectByAccontNo" parameterType="String" resultType="AccountVO">
-		<include refid="selectAllColumn" />
-		and account_no = #{ accountNo }
-	</select>
 	<select id="selectAllMyAccount" parameterType="String" resultType="AccountVO" >
 		<include refid="selectAllColumn" />
 		and a.member_id = #{ memberId }
 	</select>
 	
 	<!-- procedure -->
+	<select id="procedureSelectOne" statementType="CALLABLE" parameterType="map">
+	{
+		CALL PR_SELECT_ONE_ACCOUNT(#{ bankcode }, #{ accountNo }
+			, #{ accountList, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=AccountMap })
+	}
+	</select>
 	<select id="selectAllOtherAccount" statementType="CALLABLE" parameterType="map">
 	{
-		CALL PR_OPENBACK_LIST(#{ memberId }, #{ accountList, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=accountMap })
+		CALL PR_OPENBACK_LIST(#{ memberId }, #{ accountList, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=AccountMap })
 	}
 	</select>
 	<select id="procedureConnectedACCT" statementType="CALLABLE" parameterType="map">

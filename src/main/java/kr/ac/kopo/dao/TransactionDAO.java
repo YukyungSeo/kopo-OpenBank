@@ -34,16 +34,15 @@ public class TransactionDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<TransactionVO> procedureSelectAll(String bankcode, String accoutNo) {
+	public List<TransactionVO> procedureSelectAll(String bankcode, String accountNo) {
 		List<TransactionVO> transactionList = new ArrayList<>();
-//		transactionList.add(new TransactionVO());
 
 		Map<String, Object> map = new HashMap<>();
-		map.put("bankcode", bankcode);
-		map.put("accoutNo", accoutNo);
+		map.put("bankcode", Integer.parseInt(bankcode));
+		map.put("accountNo", accountNo);
 		map.put("transactionList", transactionList);
 
-		System.out.println("bankcode : " + bankcode + ", accountNo : " + accoutNo + ", " + transactionList);
+		System.out.println("bankcode : " + bankcode + ", accountNo : " + accountNo + ", " + transactionList);
 		session.selectOne("dao.TransactionDAO.procedureSelectAll", map);
 		transactionList = (List<TransactionVO>) map.get("transactionList");
 		

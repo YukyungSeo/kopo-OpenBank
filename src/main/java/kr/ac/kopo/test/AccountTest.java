@@ -27,12 +27,11 @@ public class AccountTest {
 	}
 
 	@org.junit.Test
-	public void AccountDAOSelectByAccontNoTest() throws Exception {
+	public void AccountDAOprocedureSelectOneTest() throws Exception {
 		AccountDAO dao = new AccountDAO();
-		assertNotNull(dao.selectByAccontNo("13900000000001"));
+		assertNotNull(dao.procedureSelectOne("4", "010-2609-3796"));
 	}
 	
-
 	@org.junit.Test
 	public void AccountDAOprecedureConnectedACCTTest() throws Exception {
 		AccountDAO dao = new AccountDAO();

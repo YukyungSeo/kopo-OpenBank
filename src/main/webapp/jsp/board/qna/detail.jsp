@@ -31,22 +31,6 @@
 
     <!-- Template Stylesheet -->
     <link href="${ pageContext.request.contextPath }/css/style.css" rel="stylesheet">
-    
-    <!-- JavaScript -->
-    <script src="${ pageContext.request.contextPath }/js/myJS.js"></script>
-	<script>
-		function checkForm() {
-			let f = document.boardDetailForm;
-	
-			if (isNull(f.bankSelect, "은행을 선택해주세요") 
-					|| isNull(f.dealAccount, "계좌번호를 입력하세요")
-					|| isNull(f.amount, "금액을 입력하세요") 
-					|| isNull(f.password, "비밀번호를 입력하세요"))
-				return false;
-			
-			return true;
-		}
-	</script>
 </head>
 
 <body>

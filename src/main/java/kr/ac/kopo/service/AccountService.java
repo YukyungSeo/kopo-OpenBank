@@ -26,12 +26,17 @@ public class AccountService {
 		return accountList;
 	}
 
-	public AccountVO getAccountByAccountNo(String accountNO) {
+	public AccountVO getAccount(String bankcode, String accountNO) {
 		AccountDAO accountDAO = new AccountDAO();
-		AccountVO account = accountDAO.selectByAccontNo(accountNO);
+		AccountVO account = accountDAO.procedureSelectOne(bankcode, accountNO);
 		return account;
 	}
 
+	/**
+	 * ConnectedACCT에 계좌 링크하기
+	 * @param memberVO
+	 * @param bankcode
+	 */
 	public void addAccountByBankCode(MemberVO memberVO, String bankcode) {
 		AccountDAO accountDAO = new AccountDAO();
 		accountDAO.precedureConnectedACCT(memberVO.getId(), bankcode);

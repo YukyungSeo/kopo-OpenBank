@@ -15,10 +15,11 @@ public class TransactionService {
 		return true;
 	}
 
-	public List<TransactionVO> getAllTransaction(String bankcode, String accoutNo) {
+	public List<TransactionVO> getAllTransaction(String bankcode, String accountNo) {
 		
 		TransactionDAO transactionDAO = new TransactionDAO();
-		return transactionDAO.procedureSelectAll(bankcode, accoutNo);
+		
+		return transactionDAO.procedureSelectAll(bankcode, accountNo);
 		
 	}
 

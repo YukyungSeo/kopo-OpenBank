@@ -32,6 +32,9 @@
 
     <!-- Template Stylesheet -->
     <link href="${ pageContext.request.contextPath }/css/style.css" rel="stylesheet">
+    
+    <!-- javascript -->
+    <script src="https://kit.fontawesome.com/3b179c433e.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -64,10 +67,9 @@
 	                    <div class="service-item rounded h-100">
 	                        <div class="d-flex justify-content-between">
 	                            <div class="service-icon">
-	                                <i class="fa fa-user-tie fa-2x"></i>
+	                                <img alt="mini-logo-white" src="${ pageContext.request.contextPath }/img/mini-logo.png" style="width:100%;">
 	                            </div>
-	                            <a class="service-btn" href="${ pageContext.request.contextPath }/account/transaction.do?accountNo=${ account.accountNo }">이체</a>
-	                        </div>
+	                            <a class="service-btn" href="${ pageContext.request.contextPath }/account/transaction.do?bankcode=${ account.bankcode }&accountNo=${ account.accountNo }">이체</a>	                        </div>
 	                        <div class="p-4">
 	                            <h4 class="mb-3">${ account.goods }</h4><br>
 	                            <h6 class="mb-3">계좌번호 ${ account.accountNo }</h6>
@@ -77,12 +79,28 @@
 	                </div>
                 </c:forEach>
                 <c:forEach items="${ otherAccountList }" var="account">
-	                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+	                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
+	                    onclick="location.href='${ pageContext.request.contextPath }/account/transactionList.do?bankcode=${ account.bankcode }&accountNo=${ account.accountNo }'">
 	                    <div class="service-item rounded h-100">
 	                        <div class="d-flex justify-content-between">
-	                            <div class="service-icon">
-	                                <i class="fa fa-user-tie fa-2x"></i>
-	                            </div>
+                            	<c:choose>
+                            		<c:when test="${ account.bankcode eq 1 }">
+                            			<div class='service-icon-sk'>
+                            				<img alt="skbank-logo" src="${ pageContext.request.contextPath }/img/skbank-logo.png" style="width:100%;">
+                           				</div>
+                       				</c:when>
+                       				<c:when test="${ account.bankcode eq 3 }">
+                            			<div class='service-icon-hj'>
+                            				<i class="fa-solid fa-building-columns fa-2x"></i>
+                           				</div>
+                       				</c:when>
+                       				<c:when test="${ account.bankcode eq 4 }">
+                            			<div class='service-icon-sm'>
+                            				<img alt="sm-logo" src="${ pageContext.request.contextPath }/img/logo-4.png" style="width:100%;">
+                           				</div>
+                       				</c:when>
+                            		<c:otherwise>'service-icon'</c:otherwise>
+								</c:choose>
 	                            <a class="service-btn" href="${ pageContext.request.contextPath }/account/transaction.do?accountNo=${ account.accountNo }">이체</a>
 	                        </div>
 	                        <div class="p-4">

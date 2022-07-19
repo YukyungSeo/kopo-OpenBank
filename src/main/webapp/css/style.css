@@ -284,6 +284,31 @@
     transition: .5s;
 }
 
+.service-icon-sk, .service-icon-hj, 
+.service-icon-sm {
+	margin: -1px 0 0 -1px;
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    border-radius: 5px 0;
+    transition: .5s;
+}
+
+.service-icon-sk {
+    background: #b6d1d4;
+}
+
+.service-icon-hj {
+	background: #00B98E;
+}
+
+.service-icon-sm {
+	background: blue
+}
+
 .service-item .service-btn {
 	/* top bottom right left */
     margin: -1px -1px 0 0;

@@ -32,6 +32,9 @@
 
     <!-- Template Stylesheet -->
     <link href="${ pageContext.request.contextPath }/css/style.css" rel="stylesheet">
+    
+    <!-- javascript -->
+    <script src="https://kit.fontawesome.com/3b179c433e.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -56,13 +59,40 @@
 
         <!-- Contact Start -->
         <div class="container">
+	        <div class="col-lg-7 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="row g-3">
+					<h1 class="animated zoomIn mb-3">
+                		<c:choose>
+                		<c:when test="${ account.bankcode eq 1 }">
+	                		<img alt="skbank-logo" src="${ pageContext.request.contextPath }/img/skbank-logo.png" style="height:70%"> 
+                		</c:when>
+                		<c:when test="${ account.bankcode eq 2 }">
+	                		<img alt="seobank-logo" src="${ pageContext.request.contextPath }/img/mini-logo.png" style="height:50%"> 
+                		</c:when>
+                		<c:when test="${ account.bankcode eq 3 }">
+	                		<i class="fa-solid fa-building-columns" style="height:50%;color:#00B98E"></i>
+                		</c:when>
+                		<c:when test="${ account.bankcode eq 4 }">
+                			<span style="background-color:blue;overflow:hidden;height:auto;weight:auto;">
+	                		<img alt="smbank-logo" src="${ pageContext.request.contextPath }/img/logo-4.png" style="height:50%"> 
+	                		</span>
+                		</c:when>
+                		</c:choose>
+               			${ account.goods }
+           			</h1>
+                	<h2 class="animated zoomIn mb-3">잔액 ${ account.amount }원</h2>
+					<p>사용여부 &nbsp;&nbsp; ${ account.available }</p>
+					<p>등록일 &nbsp;&nbsp;&nbsp;&nbsp; ${ account.regDate }<p>
+                </div>
+	        </div>
 		    <table class="table table-hover col-lg-7 wow fadeInUp" data-wow-delay="0.3s">
 				<thead>
 					<tr>
 						<th scope="col">거래일</th>
 						<th scope="col">거래명</th>
-						<th scope="col">금액</th>
-						<th scope="col">잔액</th>
+						<th scope="col">상태</th>
+						<th scope="col" style="text-align:right;">금액</th>
+						<th scope="col" style="text-align:right;">잔액</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -70,8 +100,17 @@
 					<tr class="table-primary" >
 						<td>${ transaction.regDate }</td>
 						<th scope="row">${ transaction.name }</th>
-						<td>${ transaction.amount }</td>
-						<td>${ transaction.balance }</td>
+						<c:choose>
+						<c:when test="${ transaction.type eq 'I' }">
+							<td style="color:blue;">입금</td>
+							<td style="color:blue; text-align:right;">${ transaction.amount } 원</td>
+						</c:when>
+						<c:when test="${ transaction.type eq 'O' }">
+							<td style="color:red;">출금</td>
+							<td style="color:red; text-align:right;">${ transaction.amount } 원</td>
+						</c:when>
+						</c:choose>
+						<td style="text-align:right;">${ transaction.balance } 원</td>
 					</tr>
 					</c:forEach>
 				</tbody>

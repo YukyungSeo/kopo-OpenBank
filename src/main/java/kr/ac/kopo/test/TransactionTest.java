@@ -23,7 +23,7 @@ public class TransactionTest {
 	}
 	
 	@org.junit.Test
-	public void TransactionDAOSelectAllTest() throws Exception {
+	public void TransactionDAOProcedureSelectAllTest() throws Exception {
 		TransactionDAO dao = new TransactionDAO();
 		assertNotNull(dao.procedureSelectAll("2", "13900000000001"));
 	}

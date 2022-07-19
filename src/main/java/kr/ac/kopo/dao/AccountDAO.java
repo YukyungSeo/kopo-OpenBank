@@ -23,9 +23,20 @@ public class AccountDAO {
 		return session;
 	}
 
-	public AccountVO selectByAccontNo(String accountNO) {
-		AccountVO account = session.selectOne("dao.AccountDAO.selectByAccontNo", accountNO);
-		return account;
+	@SuppressWarnings("unchecked")
+	public AccountVO procedureSelectOne(String bankcode, String accountNo) {
+		List<AccountVO> accountList = new ArrayList<AccountVO>();
+
+		Map<String, Object> map = new HashMap<>();
+		map.put("bankcode", bankcode);
+		map.put("accountNo", accountNo);
+		map.put("accountList", accountList);
+		
+		System.out.println("bankcode : " + map.get("bankcode") + ", accountNo : " + map.get("accountNo"));
+		session.selectOne("dao.AccountDAO.procedureSelectOne", map);
+		accountList = (List<AccountVO>) map.get("accountList");
+		
+		return accountList.get(0);
 	}
 
 	public List<AccountVO> selectAllMyAccount(String id) {
