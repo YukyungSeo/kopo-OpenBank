@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -31,12 +31,68 @@
 
     <!-- Template Stylesheet -->
     <link href="${ pageContext.request.contextPath }/css/style.css" rel="stylesheet">
-    
-    <!-- map api -->
+     --%>
+    <!-- javascript -->
     <script src="${ pageContext.request.contextPath }/js/secure.js"></script>
+    <script src="${ pageContext.request.contextPath }/js/kakao.js"></script>
     <script src="${ pageContext.request.contextPath }/js/jquery-3.6.0.min.js"></script>
-    <script src="${ pageContext.request.contextPath }/js/myJS.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-json/2.6.0/jquery.json.min.js" integrity="sha512-QE2PMnVCunVgNeqNsmX6XX8mhHW+OnEhUhAWxlZT0o6GFBJfGRCfJ/Ut3HGnVKAxt8cArm7sEqhq2QdSF0R7VQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script>
 	
+   	Kakao.init(getKakaoKey());
+    Kakao.isInitialized();
+    kakaoLogin();
+
+    function kakaoLogin() {	
+		Kakao.Auth.login({
+			success: kakaoGetToken,
+			fail: function(err) {
+				alert(JSON.stringify(err))
+			},
+		})
+	}
+	
+	function kakaoGetToken(result) {
+		alert(JSON.stringify(result))
+		
+		var accessToken = Kakao.Auth.getAccessToken(); // 액세스 토큰 할당
+        Kakao.Auth.setAccessToken(accessToken); // 액세스 토큰 사용하게 등록
+        
+        var str = JSON.stringify({ 
+    		object_type : 'text',
+            text : '계좌이체가 완료되었습니다. ${ transaction.activeAcctNo } 계좌에서 ${ transaction.amount } 이체되었습니다. 잔액 ${ transaction.balance }',
+            link : {
+                        web_url : 'http://localhost:9999/kopo-OpenBank/',
+                        mobile_web_url : 'http://localhost:9999/kopo-OpenBank/'
+                     },
+    		button_title: "자세히 보기"
+		});
+        
+        alert(str);
+      
+      	Kakao.API.request({
+    	    url: '/v2/api/talk/memo/default/send',
+    	    data: {
+    	    	template_object : { 
+    	    		object_type : 'text',
+    	            text : '계좌이체가 완료되었습니다. ${ transaction.activeAcctNo } 계좌에서 ${ transaction.amount } 이체되었습니다. 잔액 ${ transaction.balance }',
+    	            link : {
+    	                        web_url : 'http://localhost:9999/kopo-OpenBank/',
+    	                        mobile_web_url : 'http://localhost:9999/kopo-OpenBank/'
+    	                     },
+    	    		button_title: "자세히 보기"
+    			} 
+    	    },
+    	    success: function(response) {
+    	    	alert(response)	;    	        
+    	    },
+    	    fail: function(error) {
+    	        console.log(error);
+    	    }
+    	});
+	}
+	</script>
+<%-- 	
 
 </head>
 
@@ -64,16 +120,7 @@
         <!-- Features Start -->
         <div class="container">
             <div class="row justify-content-center">
-            	<div id="map" style="width:1000px;height:400px;"></div>
-            	<div class="col-lg-7 wow fadeInUp" data-wow-delay="0.3s">
-            		<br>
-	            	<p><strong>오시는 길</strong></p>
-					<p>철산역 3번 출구에서 505m</p>
-					<p><strong>문의</strong></p>
-					<p>02-2139-4800</p>
-					<p><strong>주소</strong></p>
-					<p>경기 광명시 오리로 904 4층</p>
-				</div>
+           	계좌이체가 완료되었습니다.
             </div>
         </div>
         <!-- Features End -->
@@ -97,30 +144,6 @@
     <script src="${ pageContext.request.contextPath }/lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-    
-	<script id="kakao-map-script" type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey="></script>
-	<script>
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-	    mapOption = { 
-	        center: new kakao.maps.LatLng(37.477366, 126.862592), // 지도의 중심좌표
-	        level: 3 // 지도의 확대 레벨
-	    };
-	
-	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-	var markerPosition  = new kakao.maps.LatLng(37.477366, 126.862592); // 마커가 표시될 위치입니다 
-	
-	// 마커를 생성합니다
-	var marker = new kakao.maps.Marker({
-	    position: markerPosition
-	});
-	
-	// 마커가 지도 위에 표시되도록 설정합니다
-	marker.setMap(map);
-	
-	// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-	// marker.setMap(null);    
-	</script>
 </body>
 
-</html>
+</html> --%>

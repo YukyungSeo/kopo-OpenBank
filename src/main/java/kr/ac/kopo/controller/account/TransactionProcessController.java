@@ -29,6 +29,8 @@ public class TransactionProcessController implements Controller {
 		TransactionService service = new TransactionService();
 		service.transaction(transactionVO, password);
 		
-		return "redirect:/account/list.do";
+		request.setAttribute("transaction", transactionVO);
+		
+		return "/jsp/account/transactionProcess.jsp";
 	}
 }

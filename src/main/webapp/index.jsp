@@ -35,32 +35,8 @@
     <!-- JavaScript -->
     <script src="${ pageContext.request.contextPath }/js/myJS.js"></script>
     <script src="${ pageContext.request.contextPath }/js/jquery-3.6.0.min.js"></script>
-    <script>
-/*     function checkLogin(type){
-    	if(${ empty member }) {
-    		$(".modal").fadeIn();
-    	} else {
-    		switch(type){
-    		case 'AccountList':
-    			location.href="${ pageContext.request.contextPath }/account/list.do"
-    			break;
-    		case 'CreateAccout':
-    			location.href="${ pageContext.request.contextPath }/account/create.do"
-    			break;
-    		}
-    	}
-    }
-    
-    $(document).ready(function(){    	
-		$(".btn-login").click(function(){
-			location.href="${ pageContext.request.contextPath }/login.do"
-		});
-		
-		$(".btn-cancle").click(function(){
-			$(".modal").fadeOut();
-		});
-    }); */
-    </script>
+    <script src="https://kit.fontawesome.com/3b179c433e.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -79,8 +55,8 @@
 	        <div class="container">
 	            <div class="row g-5 align-items-center">
 	                <div class="col-lg-6 text-center text-lg-start">
-	                    <h1 class="text-white mb-4 animated zoomIn">We Help To Push Your Business To The Top Level nego</h1>
-	                    <p class="text-white pb-3 animated zoomIn">Tempor rebum no at dolore lorem clita rebum rebum ipsum rebum stet dolor sed justo kasd. Ut dolor sed magna dolor sea diam. Sit diam sit justo amet ipsum vero ipsum clita lorem</p>
+	                    <h1 class="text-white mb-4 animated zoomIn">안녕하세요! SEO 은행에 오신 것을 환영합니다.</h1>
+	                    <p class="text-white pb-3 animated zoomIn">저희 SEO 은행은 오픈뱅킹 서비스를 지원합니다. 빠르고 간편한 계좌 설계부터 시작해보세요!</p>
 	                    <a class="btn btn-outline-light rounded-pill border-2 py-3 px-5 animated slideInRight btn-modal-action"
 	                    	onclick="checkLogin(${ empty member }, 'AccountList', '${ pageContext.request.contextPath }')">내 계좌</a>
 	                </div>
@@ -92,186 +68,19 @@
 	    </div>
         <!-- Navbar & Hero End -->
 
-
-        <!-- About Start -->
-        <div class="container-xxl py-6">
-            <div class="container">
-                <div class="row g-5 align-items-center">
-                    <div class="col-lg-6 wow zoomIn" data-wow-delay="0.1s">
-                        <img class="img-fluid" src="img/about.png">
-                    </div>
-                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="d-inline-block border rounded-pill text-primary px-4 mb-3">About Us</div>
-                        <h2 class="mb-4">Award Wining Consultancy Agency For Your Business</h2>
-                        <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor eirmod</p>
-                        <div class="row g-3 mb-4">
-                            <div class="col-12 d-flex">
-                                <div class="flex-shrink-0 btn-lg-square rounded-circle bg-primary">
-                                    <i class="fa fa-user-tie text-white"></i>
-                                </div>
-                                <div class="ms-4">
-                                    <h6>Business Planning</h6>
-                                    <span>Tempor erat elitr rebum at clita. Diam dolor ipsum amet eos erat ipsum lorem et sit sed stet lorem sit clita duo</span>
-                                </div>
-                            </div>
-                            <div class="col-12 d-flex">
-                                <div class="flex-shrink-0 btn-lg-square rounded-circle bg-primary">
-                                    <i class="fa fa-chart-line text-white"></i>
-                                </div>
-                                <div class="ms-4">
-                                    <h6>Financial Analaysis</h6>
-                                    <span>Tempor erat elitr rebum at clita. Diam dolor ipsum amet eos erat ipsum lorem et sit sed stet lorem sit clita duo</span>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="btn btn-primary rounded-pill py-3 px-5 mt-2" href="">Read More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- About End -->
-
-
-        <!-- Newsletter Start -->
-        <div class="container-xxl bg-primary my-6 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="container px-lg-5">
-                <div class="row align-items-center" style="height: 250px;">
-                    <div class="col-12 col-md-6">
-                        <h3 class="text-white">Ready to get started</h3>
-                        <small class="text-white">Diam elitr est dolore at sanctus nonumy.</small>
-                        <div class="position-relative w-100 mt-3">
-                            <input class="form-control border-0 rounded-pill w-100 ps-4 pe-5" type="text" placeholder="Enter Your Email" style="height: 48px;">
-                            <button type="button" class="btn shadow-none position-absolute top-0 end-0 mt-1 me-2"><i class="fa fa-paper-plane text-primary fs-4"></i></button>
-                        </div>
-                    </div>
-                    <div class="col-md-6 text-center mb-n5 d-none d-md-block">
-                        <img class="img-fluid mt-5" style="max-height: 250px;" src="img/newsletter.png">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Newsletter End -->
-
-
-        <!-- Service Start -->
-        <div class="container-xxl py-6">
-            <div class="container">
-                <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <div class="d-inline-block border rounded-pill text-primary px-4 mb-3">Our Services</div>
-                    <h2 class="mb-5">We Provide Solutions On Your Business</h2>
-                </div>
-                <div class="row g-4">
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="service-item rounded h-100">
-                            <div class="d-flex justify-content-between">
-                                <div class="service-icon">
-                                    <i class="fa fa-user-tie fa-2x"></i>
-                                </div>
-                                <a class="service-btn" href="">
-                                    <i class="fa fa-link fa-2x"></i>
-                                </a>
-                            </div>
-                            <div class="p-5">
-                                <h5 class="mb-3">Business Research</h5>
-                                <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="service-item rounded h-100">
-                            <div class="d-flex justify-content-between">
-                                <div class="service-icon">
-                                    <i class="fa fa-chart-pie fa-2x"></i>
-                                </div>
-                                <a class="service-btn" href="">
-                                    <i class="fa fa-link fa-2x"></i>
-                                </a>
-                            </div>
-                            <div class="p-5">
-                                <h5 class="mb-3">Stretagic Planning</h5>
-                                <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="service-item rounded h-100">
-                            <div class="d-flex justify-content-between">
-                                <div class="service-icon">
-                                    <i class="fa fa-chart-line fa-2x"></i>
-                                </div>
-                                <a class="service-btn" href="">
-                                    <i class="fa fa-link fa-2x"></i>
-                                </a>
-                            </div>
-                            <div class="p-5">
-                                <h5 class="mb-3">Market Analysis</h5>
-                                <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="service-item rounded h-100">
-                            <div class="d-flex justify-content-between">
-                                <div class="service-icon">
-                                    <i class="fa fa-chart-area fa-2x"></i>
-                                </div>
-                                <a class="service-btn" href="">
-                                    <i class="fa fa-link fa-2x"></i>
-                                </a>
-                            </div>
-                            <div class="p-5">
-                                <h5 class="mb-3">Financial Analaysis</h5>
-                                <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="service-item rounded h-100">
-                            <div class="d-flex justify-content-between">
-                                <div class="service-icon">
-                                    <i class="fa fa-balance-scale fa-2x"></i>
-                                </div>
-                                <a class="service-btn" href="">
-                                    <i class="fa fa-link fa-2x"></i>
-                                </a>
-                            </div>
-                            <div class="p-5">
-                                <h5 class="mb-3">legal Advisory</h5>
-                                <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="service-item rounded h-100">
-                            <div class="d-flex justify-content-between">
-                                <div class="service-icon">
-                                    <i class="fa fa-house-damage fa-2x"></i>
-                                </div>
-                                <a class="service-btn" href="">
-                                    <i class="fa fa-link fa-2x"></i>
-                                </a>
-                            </div>
-                            <div class="p-5">
-                                <h5 class="mb-3">Tax And Insurance</h5>
-                                <span>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Service End -->
-
+		<!-- Testimonial Start -->
+        <%@ include file="/jsp/include/goodsTestimonial.jsp" %>
+        <!-- Testimonial End -->
 
         <!-- Features Start -->
         <div class="container-xxl py-6">
             <div class="container">
                 <div class="row g-5">
                     <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="d-inline-block border rounded-pill text-primary px-4 mb-3">Features</div>
-                        <h2 class="mb-4">Why People Choose Us? We Are Trusted And Award Wining Agency</h2>
-                        <p>Clita nonumy sanctus nonumy et clita tempor, et sea amet ut et sadipscing rebum amet takimata amet, sed accusam eos eos dolores dolore et. Et ea ea dolor rebum invidunt clita eos. Sea accusam stet stet ipsum, sit ipsum et ipsum kasd</p>
-                        <p>Et ea ea dolor rebum invidunt clita eos. Sea accusam stet stet ipsum, sit ipsum et ipsum kasd</p>
+                        <div class="d-inline-block border rounded-pill text-primary px-4 mb-3">회사소개</div>
+                        <h2 class="mb-4">신뢰받고 앞서가는 글로벌 금융그룹</h2>
+                        <p>위대한 성공의 시작점에는 늘 가슴 뛰는 비전이 있었습니다.</p> 
+                        <p>SEO 은행은 그룹 구성원 모두가 참여하는 상향식 의견수렴(bottom-up) 방식을 통하여, 그룹의 존재이유인 미션, 새로운 10년의 비전, 그리고 모든 가치판단의 기준이 될 핵심가치를 다시 한 번 새롭게 정립하였습니다.</p>
                         <a class="btn btn-primary rounded-pill py-3 px-5 mt-2" href="">Read More</a>
                     </div>
                     <div class="col-lg-7">
@@ -279,56 +88,56 @@
                             <div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-                                        <i class="fa fa-cubes text-white"></i>
+                                    	<i class="fa fa-smile-beam text-white"></i>
                                     </div>
-                                    <h6 class="mb-0">Best In Industry</h6>
+                                    <h6 class="mb-0">모두가 행복한 금융</h6>
                                 </div>
-                                <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam eos diam dolor</span>
+                                <span>직원들에게 자아 실현의 기회를 제공하고, 손님의 자산 증대와 사업의 성장을 돕고, 이를 통해 사회가 번영하는데 일조하겠습니다.</span>
                             </div>
                             <div class="col-sm-6 wow fadeIn" data-wow-delay="0.2s">
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-                                        <i class="fa fa-percent text-white"></i>
+                                        <i class="fa fa-award text-white"></i>
                                     </div>
-                                    <h6 class="mb-0">99% Success Rate</h6>
+                                    <h6 class="mb-0">대한민국의 대표 금융그룹</h6>
                                 </div>
-                                <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam eos diam dolor</span>
+                                <span>SEO 은행은 국내 최대의 글로벌 네트워크를 통해 세계적인 금융그룹으로 도약하고 있습니다.</span>
                             </div>
                             <div class="col-sm-6 wow fadeIn" data-wow-delay="0.3s">
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-                                        <i class="fa fa-award text-white"></i>
+                                        <i class="fa-solid fa-earth-asia text-white"></i>
                                     </div>
-                                    <h6 class="mb-0">Award Winning</h6>
+                                    <h6 class="mb-0">신뢰받는 글로벌 금융그룹</h6>
                                 </div>
-                                <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam eos diam dolor</span>
+                                <span>금융의 각 분야에서 축적된 역량과 시너지를 통한 '신뢰받고 앞서가는 글로벌 금융그룹'의 실현을 위해 끊임없이 노력하고 있습니다.</span>
                             </div>
                             <div class="col-sm-6 wow fadeIn" data-wow-delay="0.4s">
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-                                        <i class="fa fa-smile-beam text-white"></i>
+                                    	<i class="fa-solid fa-thumbs-up text-white"></i>
                                     </div>
-                                    <h6 class="mb-0">100% Happy Client</h6>
+                                    <h6 class="mb-0">Best Bank</h6>
                                 </div>
-                                <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam eos diam dolor</span>
+                                <span>국내 1위 은행으로의 도약을 통한 안정적 이익 창출 기반 확보, 손님 기반 강회를 통한 은행 입지 제고</span>
                             </div>
                             <div class="col-sm-6 wow fadeIn" data-wow-delay="0.5s">
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
                                         <i class="fa fa-user-tie text-white"></i>
                                     </div>
-                                    <h6 class="mb-0">Professional Advisors</h6>
+                                    <h6 class="mb-0">Stable Portfollio</h6>
                                 </div>
-                                <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam eos diam dolor</span>
+                                <span>그룹의 안정적 사업 포트폴리오 구축, 시너지 기반의 진정한 종합금융 서비스 제공</span>
                             </div>
                             <div class="col-sm-6 wow fadeIn" data-wow-delay="0.6s">
                                 <div class="d-flex align-items-center mb-3">
                                     <div class="flex-shrink-0 btn-square bg-primary rounded-circle me-3">
-                                        <i class="fa fa-headset text-white"></i>
+                                        <i class="fa fa-cubes text-white"></i>
                                     </div>
-                                    <h6 class="mb-0">24/7 Customer Support</h6>
+                                    <h6 class="mb-0">Trusted Group</h6>
                                 </div>
-                                <span>Magna sea eos sit dolor, ipsum amet ipsum lorem diam eos diam dolor</span>
+                                <span>핵심 차별화 기반인 '신뢰'를 전략 목표에 반영, 그룹 차원의 브랜드 이미지 제고, 금융소비자 보호 강화</span>
                             </div>
                         </div>
                     </div>
@@ -354,127 +163,6 @@
             </div>
         </div>
         <!-- Client End -->
-
-
-        <!-- Testimonial Start -->
-        <div class="container-xxl py-6">
-            <div class="container">
-                <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <div class="d-inline-block border rounded-pill text-primary px-4 mb-3">Testimonial</div>
-                    <h2 class="mb-5">What Our Clients Say!</h2>
-                </div>
-                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="testimonial-item rounded p-4">
-                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                        <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
-                        <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-1.jpg">
-                            <div class="ps-3">
-                                <h6 class="mb-1">Client Name</h6>
-                                <small>Profession</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item rounded p-4">
-                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                        <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
-                        <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-2.jpg">
-                            <div class="ps-3">
-                                <h6 class="mb-1">Client Name</h6>
-                                <small>Profession</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item rounded p-4">
-                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                        <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
-                        <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-3.jpg">
-                            <div class="ps-3">
-                                <h6 class="mb-1">Client Name</h6>
-                                <small>Profession</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item rounded p-4">
-                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                        <p>Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
-                        <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="img/testimonial-4.jpg">
-                            <div class="ps-3">
-                                <h6 class="mb-1">Client Name</h6>
-                                <small>Profession</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Testimonial End -->
-
-
-        <!-- Team Start -->
-        <div class="container-xxl py-6">
-            <div class="container">
-                <div class="mx-auto text-center wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                    <div class="d-inline-block border rounded-pill text-primary px-4 mb-3">Our Team</div>
-                    <h2 class="mb-5">Meet Our Team Members</h2>
-                </div>
-                <div class="row g-4">
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-item">
-                            <h5>Full Name</h5>
-                            <p class="mb-4">Designation</p>
-                            <img class="img-fluid rounded-circle w-100 mb-4" src="img/team-1.jpg" alt="">
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="team-item">
-                            <h5>Full Name</h5>
-                            <p class="mb-4">Designation</p>
-                            <img class="img-fluid rounded-circle w-100 mb-4" src="img/team-2.jpg" alt="">
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="team-item">
-                            <h5>Full Name</h5>
-                            <p class="mb-4">Designation</p>
-                            <img class="img-fluid rounded-circle w-100 mb-4" src="img/team-3.jpg" alt="">
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                        <div class="team-item">
-                            <h5>Full Name</h5>
-                            <p class="mb-4">Designation</p>
-                            <img class="img-fluid rounded-circle w-100 mb-4" src="img/team-4.jpg" alt="">
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square text-primary bg-white m-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Team End -->
-        
 
         <!-- Footer Start -->
         <%@ include file="/jsp/include/footer.jsp"%>
