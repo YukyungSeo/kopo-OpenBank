@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>BizConsult - BoardDetail</title>
+    <title>SEO Bank - BoardDetail</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -75,7 +75,7 @@
                         </c:if>
 	                        <a class="btn btn-primary rounded-pill py-2 px-4 mt-2" type="button" href="${ pageContext.request.contextPath }/board/qna/list.do?page=1">목록</a>
 	                        <a class="btn btn-primary rounded-pill py-2 px-4 mt-2" type="button" 
-	                        	onclick="checkLogin(${ empty member }, 'writeQnABoard','${ pageContext.request.contextPath }')">답글</a>
+	                        	onclick="checkLogin(${ empty member }, 'writeQnABoard', '${ pageContext.request.contextPath }/board/qna/write.do?boardSeq=${ board.boardSeq }&title=${ board.title }')">답글</a>
 	                    </div>
 	                </div>
 		        </div>

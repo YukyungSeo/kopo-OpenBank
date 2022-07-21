@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>BizConsult - AddAccount</title>
+    <title>SEO Bank - AddAccount</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -34,6 +34,7 @@
     
     <!-- JavaScript -->
     <script src="${ pageContext.request.contextPath }/js/myJS.js"></script>
+    <script src="${ pageContext.request.contextPath }/js/kakao.js"></script>
 	<script>
 		function checkForm() {
 			let f = document.addAccountForm;

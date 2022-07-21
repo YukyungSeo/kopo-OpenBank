@@ -32,7 +32,7 @@
                 <a href="${ pageContext.request.contextPath }/map.do" class="nav-item nav-link">오시는 길</a>
                 <c:if test = "${ not empty member }">
 	                <a href="#" class="nav-item nav-link">마이페이지</a>
-	                <a href="${ pageContext.request.contextPath }/logout.do" class="nav-item nav-link">로그아웃</a>
+	                <a href="${ pageContext.request.contextPath }/logout.do" onclick="kakaoLogout()" class="nav-item nav-link">로그아웃</a>
                 </c:if>
             </div>
             <c:if test = "${ empty member }">

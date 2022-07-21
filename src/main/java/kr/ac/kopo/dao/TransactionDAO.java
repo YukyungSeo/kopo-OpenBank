@@ -29,6 +29,7 @@ public class TransactionDAO {
 		Map<String, Object> map = new HashMap<>();
 		map.put("password", password);
 		map.put("transactionVO", transactionVO);
+		System.out.println("TDAO : " + map.get("transactionVO").toString());
 		session.selectOne("dao.TransactionDAO.procedureTransaction", map);
 //		session.selectList("dao.TransactionDAO.transactionStart", transactionVO);
 	}

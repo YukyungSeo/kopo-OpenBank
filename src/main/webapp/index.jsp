@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>BizConsult - Consulting HTML Template</title>
+    <title>SEO Bank - Home</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -33,6 +33,8 @@
     <link href="css/style.css" rel="stylesheet">
     
     <!-- JavaScript -->
+    <script src="${ pageContext.request.contextPath }/js/secure.js"></script>
+    <script src="${ pageContext.request.contextPath }/js/kakao.js"></script>
     <script src="${ pageContext.request.contextPath }/js/myJS.js"></script>
     <script src="${ pageContext.request.contextPath }/js/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/3b179c433e.js" crossorigin="anonymous"></script>
@@ -55,10 +57,11 @@
 	        <div class="container">
 	            <div class="row g-5 align-items-center">
 	                <div class="col-lg-6 text-center text-lg-start">
-	                    <h1 class="text-white mb-4 animated zoomIn">안녕하세요! SEO 은행에 오신 것을 환영합니다.</h1>
+	                    <h1 class="text-white mb-4 animated zoomIn"><c:if test="${ not empty member }">${ member.name }님 </c:if>안녕하세요!</h1><br>
+	                    <h2 class="text-white mb-4 animated zoomIn">SEO 은행에 오신 것을 환영합니다.</h2>
 	                    <p class="text-white pb-3 animated zoomIn">저희 SEO 은행은 오픈뱅킹 서비스를 지원합니다. 빠르고 간편한 계좌 설계부터 시작해보세요!</p>
 	                    <a class="btn btn-outline-light rounded-pill border-2 py-3 px-5 animated slideInRight btn-modal-action"
-	                    	onclick="checkLogin(${ empty member }, 'AccountList', '${ pageContext.request.contextPath }')">내 계좌</a>
+	                    	onclick="checkLogin(${ empty member }, 'AccountList', '${ pageContext.request.contextPath }/account/list.do')">내 계좌</a>
 	                </div>
 	                <div class="col-lg-6 text-center text-lg-start">
 	                    <img class="img-fluid animated zoomIn" src="img/hero.png" alt="">

@@ -27,6 +27,7 @@ public class AccountService {
 	}
 
 	public AccountVO getAccount(String bankcode, String accountNO) {
+		System.out.println("getAccount" + bankcode);
 		AccountDAO accountDAO = new AccountDAO();
 		AccountVO account = accountDAO.procedureSelectOne(bankcode, accountNO);
 		return account;

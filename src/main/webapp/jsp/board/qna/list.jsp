@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>BizConsult - List</title>
+    <title>SEO Bank - List</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -63,7 +63,7 @@
 			<div class="col-12 wow fadeInUp" data-wow-delay="0.5s">
 				<div class="col-lg-auto wow fadeInUp" data-wow-delay="0.5s">
                 	<a class="btn btn-primary btn-sm" type="button" 
-                		onclick="checkLogin('writeQnABoard')">새글작성</a>
+                		onclick="checkLogin(${ empty member }, 'writeQnABoard', '${ pageContext.request.contextPath }/board/qna/write.do')">새글작성</a>
                 </div>
             </div>
 		    <table class="table table-hover col-lg-7 wow fadeInUp" data-wow-delay="0.3s">

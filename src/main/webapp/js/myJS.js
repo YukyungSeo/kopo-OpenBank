@@ -17,22 +17,12 @@ function isChecked(obj, msg) {
 	return false;
 }
 
-function checkLogin(member, type, contextPath){
+function checkLogin(member, type, path){
 	
 	if(member) {
 		$(".modal").fadeIn();
 	} else {
-		switch(type){
-		case 'AccountList':
-			location.href = contextPath + "/account/list.do"
-			break;
-		case 'CreateAccout':
-			location.href = contextPath + "/account/create.do"
-			break;
-		case 'writeQnABoard':
-			location.href="${ pageContext.request.contextPath }/board/qna/write.do"
-			break;
-		}
+		location.href = path;
 	}
 	
 }
@@ -41,6 +31,18 @@ function goLogin(contextPath){
 	location.href = contextPath + "/login.do"
 }
 
+
+function kakaoLogout() {
+	Kakao.init(getKakaoKey());
+	
+    if (!Kakao.Auth.getAccessToken()) {
+      alert('로그인을 해주세요.');
+      return
+    }
+    Kakao.Auth.logout(function() {
+      location.href = "/"; // 로그아웃 처리
+	})
+}
 
 
 

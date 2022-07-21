@@ -15,6 +15,8 @@ public class WriteController implements Controller {
 		String superBoardSeq = request.getParameter("boardSeq");
 		String superBoardTitle = request.getParameter("title");
 		
+//		System.out.println(superBoardSeq);
+		
 		request.setAttribute("superBoardSeq", superBoardSeq);
 		request.setAttribute("superBoardTitle", superBoardTitle);
 		request.setAttribute("boardType", 2);

@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>SEO Bank - 오시는길</title>
+    <title>SEO Bank - 이체완료</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -31,69 +31,12 @@
 
     <!-- Template Stylesheet -->
     <link href="${ pageContext.request.contextPath }/css/style.css" rel="stylesheet">
-     --%>
-    <!-- javascript -->
+    
+    <!-- map api -->
     <script src="${ pageContext.request.contextPath }/js/secure.js"></script>
-    <script src="${ pageContext.request.contextPath }/js/kakao.js"></script>
     <script src="${ pageContext.request.contextPath }/js/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-json/2.6.0/jquery.json.min.js" integrity="sha512-QE2PMnVCunVgNeqNsmX6XX8mhHW+OnEhUhAWxlZT0o6GFBJfGRCfJ/Ut3HGnVKAxt8cArm7sEqhq2QdSF0R7VQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<script>
+    <script src="${ pageContext.request.contextPath }/js/myJS.js"></script>
 	
-   	Kakao.init(getKakaoKey());
-    Kakao.isInitialized();
-    kakaoLogin();
-
-    function kakaoLogin() {	
-		Kakao.Auth.login({
-			success: kakaoGetToken,
-			fail: function(err) {
-				alert(JSON.stringify(err))
-			},
-		})
-	}
-	
-	function kakaoGetToken(result) {
-		alert(JSON.stringify(result))
-		
-		var accessToken = Kakao.Auth.getAccessToken(); // 액세스 토큰 할당
-        Kakao.Auth.setAccessToken(accessToken); // 액세스 토큰 사용하게 등록
-        
-        var str = JSON.stringify({ 
-    		object_type : 'text',
-            text : '계좌이체가 완료되었습니다. ${ transaction.activeAcctNo } 계좌에서 ${ transaction.amount } 이체되었습니다. 잔액 ${ transaction.balance }',
-            link : {
-                        web_url : 'http://localhost:9999/kopo-OpenBank/',
-                        mobile_web_url : 'http://localhost:9999/kopo-OpenBank/'
-                     },
-    		button_title: "자세히 보기"
-		});
-        
-        alert(str);
-      
-      	Kakao.API.request({
-    	    url: '/v2/api/talk/memo/default/send',
-    	    data: {
-    	    	template_object : { 
-    	    		object_type : 'text',
-    	            text : '계좌이체가 완료되었습니다. ${ transaction.activeAcctNo } 계좌에서 ${ transaction.amount } 이체되었습니다. 잔액 ${ transaction.balance }',
-    	            link : {
-    	                        web_url : 'http://localhost:9999/kopo-OpenBank/',
-    	                        mobile_web_url : 'http://localhost:9999/kopo-OpenBank/'
-    	                     },
-    	    		button_title: "자세히 보기"
-    			} 
-    	    },
-    	    success: function(response) {
-    	    	alert(response)	;    	        
-    	    },
-    	    fail: function(error) {
-    	        console.log(error);
-    	    }
-    	});
-	}
-	</script>
-<%-- 	
-
 </head>
 
 <body>
@@ -111,7 +54,7 @@
         <%@ include file="/jsp/include/navbar.jsp"%>
         <div class="container-xxl bg-primary page-header">
 	        <div class="container text-center">
-	            <h1 class="text-white animated zoomIn mb-3">오시는 길</h1>
+	            <h1 class="text-white animated zoomIn mb-3">이체 완료</h1>
 	        </div>
         </div>
         <!-- Navbar & Hero End -->
@@ -119,8 +62,18 @@
 
         <!-- Features Start -->
         <div class="container">
-            <div class="row justify-content-center">
-           	계좌이체가 완료되었습니다.
+            <div class="row align-items-center justify-content-center " >
+	            <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+	                <div class="row g-3">
+		            	<i class="fa-solid fa-circle-check  fa-3x text-primary mb-3"></i>
+		            	<h2 class="mb-5">이체가 완료되었습니다.</h2>
+			           	<button class="btn btn-kakao rounded-pill py-3 px-5 mt-2" onclick="kakaotalkSharing()">
+			           		<span class="span-login-icon"><img class="img-login-icon" src="${ pageContext.request.contextPath }/img/kakao_login_icon.png" /></span>
+			           		<span class="span-login">카카오톡으로 공유하기</span>
+		           		</button>
+			           	<a class="btn btn-primary rounded-pill py-3 px-5 mt-2" href="${ pageContext.request.contextPath }/account/list.do">계좌로 돌아가기</a>
+		            </div>
+	            </div>
             </div>
         </div>
         <!-- Features End -->
@@ -144,6 +97,74 @@
     <script src="${ pageContext.request.contextPath }/lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
+    <script src="${ pageContext.request.contextPath }/js/main.js"></script>
+    <script src="${ pageContext.request.contextPath }/js/secure.js"></script>
+    <script src="${ pageContext.request.contextPath }/js/kakao.js"></script>
+    <script src="${ pageContext.request.contextPath }/js/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-json/2.6.0/jquery.json.min.js" integrity="sha512-QE2PMnVCunVgNeqNsmX6XX8mhHW+OnEhUhAWxlZT0o6GFBJfGRCfJ/Ut3HGnVKAxt8cArm7sEqhq2QdSF0R7VQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://kit.fontawesome.com/3b179c433e.js" crossorigin="anonymous"></script>
+    
+	<!-- kakao message api start -->
+	<script>
+	
+	Kakao.init(getKakaoKey());
+	Kakao.isInitialized();
+	kakaoLogin();
+		
+	function kakaoLogin() {	
+		Kakao.Auth.login({
+			success: kakaoGetToken,
+			fail: function(err) {
+				alert(JSON.stringify(err))
+			},
+		})
+	}
+	
+	function kakaoGetToken(result) {
+		/* alert(JSON.stringify(result)) */
+		
+		var accessToken = Kakao.Auth.getAccessToken(); // 액세스 토큰 할당
+	       Kakao.Auth.setAccessToken(accessToken); // 액세스 토큰 사용하게 등록
+	       
+	     	Kakao.API.request({
+	   	    url: '/v2/api/talk/memo/default/send',
+	   	    data: {
+	   	    	template_object : { 
+	   	    		object_type : 'text',
+	   	            text : '계좌이체가 완료되었습니다.\n\n${ member.name }님의 \n${ account.goods }에서 \n${ transaction.amount } 원 이체되었습니다.\n\n잔액 ${ account.amount } 원',
+	   	            link : {
+	   	                        web_url : 'http://localhost:9999/kopo-OpenBank/',
+	   	                        mobile_web_url : 'http://localhost:9999/kopo-OpenBank/'
+	   	                     },
+	   	    		button_title: "자세히 보기"
+	   			}
+	   	    },
+	   	    success: function(response) {
+	   	    	/* alert(JSON.stringify(response))	; */    	        
+	   	    },
+	   	    fail: function(error) {
+	   	        console.log(error);
+	   	    }
+	   	});
+	}
+	</script>
+	<script>
+	function kakaotalkSharing(){
+		Kakao.Share.sendDefault({
+			  objectType: 'text',
+			  text:
+			    '${ member.name } 님에게서\n${ transaction.amount } 원 이체되었습니다.',
+			  link: {
+			    mobileWebUrl:
+			      'http://localhost:9999/kopo-OpenBank/',
+			    webUrl:
+			      'http://localhost:9999/kopo-OpenBank/',
+			  },
+		});
+	}
+	</script>
+    <!-- kakao message api end -->
+    
 </body>
 
-</html> --%>
+</html>

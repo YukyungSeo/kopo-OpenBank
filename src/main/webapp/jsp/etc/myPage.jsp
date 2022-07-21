@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>BizConsult - Consulting HTML Template</title>
+    <title>SEO Bank - Consulting HTML Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">

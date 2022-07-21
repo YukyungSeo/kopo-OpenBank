@@ -32,7 +32,7 @@ public class AccountDAO {
 		map.put("accountNo", accountNo);
 		map.put("accountList", accountList);
 		
-		System.out.println("bankcode : " + map.get("bankcode") + ", accountNo : " + map.get("accountNo"));
+		System.out.println("accountDAO - bankcode : " + map.get("bankcode") + ", accountNo : " + map.get("accountNo"));
 		session.selectOne("dao.AccountDAO.procedureSelectOne", map);
 		accountList = (List<AccountVO>) map.get("accountList");
 		

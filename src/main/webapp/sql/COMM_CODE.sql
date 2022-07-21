@@ -1,0 +1,62 @@
+REM ***********************************************************************************************
+REM SCRIPT 용도   : COMM_CODE(공통코드) 테이블 생성 및 데이터 삽입
+REM 작성자         : 서유경
+REM 작성일         : 2022-07-07, Version 1
+REM 수정일
+REM
+REM 주의사항       : 1. DBA 권한을 가진 사용자로 테이블을 생성할 것
+REM                 2. 공통코드유형 FK의 1XX 는 투자 서비스와 관련된 CODE 유형
+REM                 3. 공통코드유형 FK의 2XX 는 프로젝트 서비스와 관견된 CODE 유형
+REM
+REM 수정사항 FORMAT     YYYY-MM-DD  수정자 수정내용
+REM 수정사항
+REM ***********************************************************************************************
+
+DROP TABLE &1.COMM_CODE;
+
+CREATE TABLE &1.COMM_CODE(
+    CODE_ID     NUMBER(3),
+    CODE        NUMBER(2),
+    NAME        VARCHAR2(50),
+    AVAILABLE   CHAR(1)         DEFAULT 'Y'
+        CONSTRAINT CK_COMM_CODE_AVAILABLE CHECK (AVAILABLE IN('Y', 'N')),
+    CONSTRAINT PK_COMM_CODE     PRIMARY KEY(CODE_ID, CODE)
+);
+
+-- 상품유형
+INSERT INTO &1.COMM_CODE(CODE_ID, CODE, NAME) VALUES (100, 00, '입출금예금');
+INSERT INTO &1.COMM_CODE(CODE_ID, CODE, NAME, AVAILABLE) VALUES (100, 01, '정기예금', 'N');
+INSERT INTO &1.COMM_CODE(CODE_ID, CODE, NAME, AVAILABLE) VALUES (100, 02, '정기적금', 'N');
+
+
+-- 상품
+INSERT INTO &1.COMM_CODE(CODE_ID, CODE, NAME) VALUES (110, 00, 'SEO 취업이룸 통장');
+INSERT INTO &1.COMM_CODE(CODE_ID, CODE, NAME) VALUES (110, 01, '영SEO플러스 통장');
+INSERT INTO &1.COMM_CODE(CODE_ID, CODE, NAME) VALUES (110, 02, 'SEO 주택연금 지킴이 통장');
+INSERT INTO &1.COMM_CODE(CODE_ID, CODE, NAME) VALUES (110, 03, '급여SEO 통장');
+INSERT INTO &1.COMM_CODE(CODE_ID, CODE, NAME) VALUES (110, 04, '연금SEO 통장');
+INSERT INTO &1.COMM_CODE(CODE_ID, CODE, NAME) VALUES (110, 05, '주거래SEO 통장');
+INSERT INTO &1.COMM_CODE(CODE_ID, CODE, NAME) VALUES (110, 06, 'SEO 군인연금 평생안심 통장');
+INSERT INTO &1.COMM_CODE(CODE_ID, CODE, NAME) VALUES (110, 07, 'SEO 부가가치세 매입자 납부전용계좌');
+INSERT INTO &1.COMM_CODE(CODE_ID, CODE, NAME) VALUES (110, 08, 'SEO 플러스 통장');
+INSERT INTO &1.COMM_CODE(CODE_ID, CODE, NAME) VALUES (110, 09, '빅팟(BIG POT) 통장');
+INSERT INTO &1.COMM_CODE(CODE_ID, CODE, NAME) VALUES (110, 10, '행복나눔 통장');
+
+
+-- 은행
+INSERT INTO &1.COMM_CODE(CODE_ID, CODE, NAME) VALUES (120, 01, 'SY은행');
+INSERT INTO &1.COMM_CODE(CODE_ID, CODE, NAME) VALUES (120, 02, 'SEO은행');
+INSERT INTO &1.COMM_CODE(CODE_ID, CODE, NAME) VALUES (120, 03, 'HJ은행');
+INSERT INTO &1.COMM_CODE(CODE_ID, CODE, NAME) VALUES (120, 04, 'SOOMIN은행');
+
+-- 거래유형
+INSERT INTO &1.COMM_CODE(CODE_ID, CODE, NAME) VALUES (130, 000, '이체입금');
+INSERT INTO &1.COMM_CODE(CODE_ID, CODE, NAME) VALUES (130, 001, '이체송금');
+
+
+-- 게시글 유형
+INSERT INTO &1.COMM_CODE(CODE_ID, CODE, NAME) VALUES (200, 00, '공지사항');
+INSERT INTO &1.COMM_CODE(CODE_ID, CODE, NAME) VALUES (200, 01, 'FAQ');
+INSERT INTO &1.COMM_CODE(CODE_ID, CODE, NAME) VALUES (200, 02, 'QnA');
+
+

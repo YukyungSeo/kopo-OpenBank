@@ -99,7 +99,7 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     
-	<script id="kakao-map-script" type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey="></script>
+	<script id="kakao-map-script" type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b23c8690203165bedb718a1bfcdf11cd"></script>
 	<script>
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = { 

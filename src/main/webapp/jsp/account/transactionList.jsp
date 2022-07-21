@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>BizConsult - List</title>
+    <title>SEO Bank - List</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -102,11 +102,11 @@
 						<td>${ transaction.regDate }</td>
 						<th scope="row">${ transaction.name }</th>
 						<c:choose>
-						<c:when test="${ transaction.type eq 'I' }">
+						<c:when test="${ transaction.type eq 'I' or transaction.type eq '입금' }">
 							<td style="color:blue;">입금</td>
 							<td style="color:blue; text-align:right;">${ transaction.amount } 원</td>
 						</c:when>
-						<c:when test="${ transaction.type eq 'O' }">
+						<c:when test="${ transaction.type eq 'O' or transaction.type eq '출금' }">
 							<td style="color:red;">출금</td>
 							<td style="color:red; text-align:right;">${ transaction.amount } 원</td>
 						</c:when>

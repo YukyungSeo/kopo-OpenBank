@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>BizConsult - Account</title>
+    <title>SEO Bank - Account</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -63,16 +63,16 @@
         <div class="container">
             <div class="row g-4">
             	<c:forEach items="${ myAccountList }" var="account">
-	                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" 
-	                	onclick="location.href='${ pageContext.request.contextPath }/account/transactionList.do?bankcode=${ account.bankcode }&accountNo=${ account.accountNo }'">
+	                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" >
 	                    <div class="service-item rounded h-100">
 	                        <div class="d-flex justify-content-between">
 	                            <div class="service-icon">
 	                                <img alt="mini-logo-white" src="${ pageContext.request.contextPath }/img/mini-logo.png" style="width:100%;">
 	                            </div>
-	                            <a class="service-btn" href="${ pageContext.request.contextPath }/account/transaction.do?bankcode=${ account.bankcode }&accountNo=${ account.accountNo }">이체</a>	                        </div>
+	                            <a class="service-btn" href="${ pageContext.request.contextPath }/account/transaction.do?bankcode=${ account.bankcode }&accountNo=${ account.accountNo }">이체</a>
+                            </div>
 	                        <div class="p-4">
-	                            <h4 class="mb-3">${ account.goods }</h4><br>
+	                            <h4 class="mb-3"><a onclick="location.href='${ pageContext.request.contextPath }/account/transactionList.do?bankcode=${ account.bankcode }&accountNo=${ account.accountNo }'" href="#" style="text-decoration:none">${ account.goods }</a></h4><br>
 	                            <h6 class="mb-3">계좌번호 ${ account.accountNo }</h6>
 	                            <h5 class="mb-3">금액 ${ account.amount }원</h5>
 	                        </div>
@@ -80,8 +80,7 @@
 	                </div>
                 </c:forEach>
                 <c:forEach items="${ otherAccountList }" var="account">
-	                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
-	                    onclick="location.href='${ pageContext.request.contextPath }/account/transactionList.do?bankcode=${ account.bankcode }&accountNo=${ account.accountNo }'">
+	                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
 	                    <div class="service-item rounded h-100">
 	                        <div class="d-flex justify-content-between">
                             	<c:choose>
@@ -102,10 +101,10 @@
                        				</c:when>
                             		<c:otherwise>'service-icon'</c:otherwise>
 								</c:choose>
-	                            <a class="service-btn" href="${ pageContext.request.contextPath }/account/transaction.do?accountNo=${ account.accountNo }">이체</a>
+	                            <a class="service-btn" href="${ pageContext.request.contextPath }/account/transaction.do?bankcode=${ account.bankcode }&accountNo=${ account.accountNo }">이체</a>
 	                        </div>
 	                        <div class="p-4">
-	                            <h4 class="mb-3">${ account.goods }</h4><br>
+	                            <h4 class="mb-3"><a onclick="location.href='${ pageContext.request.contextPath }/account/transactionList.do?bankcode=${ account.bankcode }&accountNo=${ account.accountNo }'" style="text-decoration:none" href="#">${ account.goods }</a></h4><br>
 	                            <h6 class="mb-3">계좌 ${ account.accountNo }</h6>
 	                            <h5 class="mb-3">금액 ${ account.amount }원</h5>
 	                        </div>
