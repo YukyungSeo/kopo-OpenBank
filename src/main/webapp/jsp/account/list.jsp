@@ -34,7 +34,7 @@
     <link href="${ pageContext.request.contextPath }/css/style.css" rel="stylesheet">
     
     <!-- javascript -->
-    <script src="https://kit.fontawesome.com/3b179c433e.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/3b179c433e.js"></script>
     <script src="${ pageContext.request.contextPath }/js/myJS.js"></script>
 </head>
 
