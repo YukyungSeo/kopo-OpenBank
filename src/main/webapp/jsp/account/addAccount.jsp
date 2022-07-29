@@ -78,9 +78,9 @@
 		                	<div class="col-12">
 		                        <div class="form-floating">
 		                            <select class="form-select" id="bankcode" name="bankcode" aria-label="Financial Consultancy">
-		                                <option value="1">SY 은행</option>
-		                                <option value="3">HJ 은행</option>
-		                                <option value="4">SM 은행</option>
+		                            <c:forEach var="bank" items="${ bankList }" varStatus="status">
+		                                <option value="${ bank.code }">${ bank.name }</option>
+	                                </c:forEach>
 		                            </select>
 		                            <label for="floatingSelect">은행선택</label>
 		                        </div>

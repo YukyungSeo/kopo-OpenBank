@@ -104,11 +104,9 @@
 		                    <div class="col-12">
 		                        <div class="form-floating">
 		                            <select class="form-select" name="goodsCode" id="goodsCode" aria-label="Financial Consultancy">
-		                                <option value="0">SEO 취업이룸 통장</option>
-		                                <option value="1">영SEO플러스 통장</option>
-		                                <option value="2">SEO 주택연금 지킴이 통장</option>
-		                                <option value="3">급여SEO 통장</option>
-		                                <option value="4">연금SEO 통장</option>
+		                            <c:forEach var="goods" items="${ goodsList }" varStatus="status">
+		                                <option value="${ goods.code }">${ goods.name }</option>
+	                                </c:forEach>
 		                            </select>
 		                            <label for="floatingSelect">상품 유형</label>
 		                        </div>

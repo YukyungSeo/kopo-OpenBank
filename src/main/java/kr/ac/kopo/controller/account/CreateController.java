@@ -15,9 +15,9 @@ public class CreateController implements Controller {
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		CommCodeService service = new CommCodeService();
-		List<CommCodeVO> goodsclList = service.getCommCodeByCodeId("100");
+		List<CommCodeVO> goodsList = service.getGoodsByCodeId();
 		
-		request.setAttribute("goodsclList", goodsclList);
+		request.setAttribute("goodsList", goodsList);
 		// TODO : goodslist를 가져와서 /account/list.jsp에 넣기
 
 		return "/jsp/account/create.jsp";
