@@ -11,7 +11,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="${ pageContext.request.contextPath }/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,21 +23,21 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="${ pageContext.request.contextPath }/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="${ pageContext.request.contextPath }/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="${ pageContext.request.contextPath }/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="${ pageContext.request.contextPath }/css/style.css" rel="stylesheet">
     
     <!-- JavaScript -->
     <script src="${ pageContext.request.contextPath }/js/secure.js"></script>
     <script src="${ pageContext.request.contextPath }/js/kakao.js"></script>
     <script src="${ pageContext.request.contextPath }/js/myJS.js"></script>
     <script src="${ pageContext.request.contextPath }/js/jquery-3.6.0.min.js"></script>
-    <script src="https://kit.fontawesome.com/3b179c433e.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/3b179c433e.js"></script>
 
 </head>
 
@@ -179,13 +179,13 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/lib/wow/wow.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/lib/easing/easing.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/lib/waypoints/waypoints.min.js"></script>
+    <script src="${ pageContext.request.contextPath }/lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="${ pageContext.request.contextPath }/js/main.js"></script>
 </body>
 
 </html>

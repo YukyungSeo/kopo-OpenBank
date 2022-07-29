@@ -15,7 +15,7 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet"> 
 
     <!-- Icon Font Stylesheet -->
@@ -99,7 +99,7 @@
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
     
-	<script id="kakao-map-script" type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b23c8690203165bedb718a1bfcdf11cd"></script>
+	<script id="kakao-map-script" type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=34dd307018fd9282d3028b4fec3aa6b9"></script>
 	<script>
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = { 

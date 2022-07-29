@@ -49,7 +49,7 @@
     	
     	/* kakao login */
     	
-    	Kakao.init(getKakaoKey());
+    	Kakao.init(getKakaoJSKey());
 	    Kakao.isInitialized();
     	function kakaoLogin() {	
 			Kakao.Auth.login({

@@ -107,7 +107,7 @@
 	<!-- kakao message api start -->
 	<script>
 	
-	Kakao.init(getKakaoKey());
+	Kakao.init(getKakaoJSKey());
 	Kakao.isInitialized();
 	kakaoLogin();
 		
