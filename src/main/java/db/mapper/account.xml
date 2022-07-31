@@ -10,6 +10,11 @@
 	</resultMap>
 	<resultMap id="AccountMap" type="AccountVO">
     </resultMap>
+    
+    <resultMap type="ConnectedACCTVO" id="ConnectedACCTMap">
+    	<result column="ACCOUNT_NO" property="accountNo"/>	
+    	<result column="MEMBER_ID" property="memberId"/>	
+    </resultMap>
 	
 	<!-- sql  -->
 	<sql id="selectAllColumn">
@@ -43,7 +48,8 @@
 	</select>
 	<select id="selectAllOtherAccount" statementType="CALLABLE" parameterType="map">
 	{
-		CALL PR_OPENBACK_LIST(#{ memberId }, #{ accountList, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=AccountMap })
+		CALL PR_OPENBACK_LIST(#{ memberId }, #{ accountList, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=AccountMap }
+			, #{ connectedACCTList, mode=OUT, jdbcType=CURSOR, javaType=ResultSet, resultMap=ConnectedACCTMap })
 	}
 	</select>
 	<select id="procedureConnectedACCT" statementType="CALLABLE" parameterType="map">
@@ -57,5 +63,10 @@
 	<insert id="insertAccount" parameterType="AccountVO">
 		insert into account (ACCOUNT_NO, MEMBER_ID, PASSWORD, GOODS_CL, GOODS_CODE)
 		values('13900000000'||LPAD(ROUND(DBMS_RANDOM.VALUE(10, 999)),3, '0'), #{ memberId }, #{ password }, #{ goodsClCode }, #{ goodsCode })
+	</insert>
+	
+	<insert id="insertConnectedACCT" parameterType="map">
+		insert into CONNECTED_ACCT(BANKCODE, ACCOUNT_NO, MEMBER_ID)
+		values(#{ bankcode }, #{ accountNo } , #{ id })
 	</insert>
 </mapper>

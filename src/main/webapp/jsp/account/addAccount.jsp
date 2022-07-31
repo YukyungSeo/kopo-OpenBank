@@ -33,17 +33,52 @@
     <link href="${ pageContext.request.contextPath }/css/style.css" rel="stylesheet">
     
     <!-- JavaScript -->
-    <script src="${ pageContext.request.contextPath }/js/myJS.js"></script>
-    <script src="${ pageContext.request.contextPath }/js/kakao.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script>
-		function checkForm() {
-			let f = document.addAccountForm;
-	
-			if (isNull(f.bankSelect, "은행을 선택해주세요"))
-				return false;
+		function check() {
 			
-			return true;
+			let f = document.addAccountForm;
+			let bankcode = f.bankcode.value;
+			let accountNo = f.accountNo.value;
+		    
+			if(bankcode < 5 || accountNo !== '') {
+				return true
+			} else {
+				
+			    $.ajax({
+			       url:'http://130.162.132.21:8080/OpenApi/openapi/myaccount.json',
+			       //url: 'http://130.162.132.21:8080/OpenApi/openapi/myaccount/transaction/history.json',
+			       type:'post',
+			       data: {
+			    	   bank_code: bankcode,
+			    	   tel: '${ member.phone }'
+			       },
+			       dataType:'json',
+			       success:callback,
+			       error: function(){
+			          alert('실패!!')
+			       }
+			    })
+			    
+				return false
+			    
+			}
+	
 		}
+		 
+		 function callback(result){
+		    let res = JSON.stringify(result)
+		    console.log('result:'+ res)
+		    
+	    	let f = document.addAccountForm;
+		    
+		    for(i=0; i<result.length; i++){
+		    	
+		    	f.accountNo.value += result[i].acctNO + ',';
+		    }
+		    
+		    $('#addAccount-btn').trigger("click");
+		 }
 	</script>
 </head>
 
@@ -72,8 +107,9 @@
         <div class="container">
 		    <div class="row justify-content-center">
 		        <div class="col-lg-7 wow fadeInUp" data-wow-delay="0.3s">
-		            <form  action="${ pageContext.request.contextPath }/account/addAccountProcess.do" method="post"
-							onsubmit="return checkForm()" name="addAccountForm" class="pt-3">
+		            <form  action="${ pageContext.request.contextPath }/account/addAccountProcess.do" method="post" 
+		            		onsubmit="return check()" name="addAccountForm" class="pt-3">
+	            		<input type="hidden" name="accountNo" value="" />
 		                <div class="row g-3">
 		                	<div class="col-12">
 		                        <div class="form-floating">
@@ -86,7 +122,7 @@
 		                        </div>
 		                    </div>
 		                    <div class="col-12">
-		                        <button class="btn btn-primary w-100 py-3" type="submit">계좌 추가하기</button>
+		                        <button class="btn btn-primary w-100 py-3" type="submit" id="addAccount-btn">계좌 추가하기</button>
 		                    </div>
 		                </div>
 		            </form>

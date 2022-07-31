@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import kr.ac.kopo.MyConfig;
 import kr.ac.kopo.vo.AccountVO;
+import kr.ac.kopo.vo.ConnectedACCTVO;
 
 public class AccountDAO {
 
@@ -48,21 +49,26 @@ public class AccountDAO {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<AccountVO> selectAllOtherAccount(String id) {
+	public Map<String, Object> selectAllOtherAccount(String id) {
 		List<AccountVO> accountList = new ArrayList<>();
+		List<ConnectedACCTVO> connectedACCTList = new ArrayList<>();
 
 		Map<String, Object> map = new HashMap<>();
 		map.put("memberId", id);
 		map.put("accountList", accountList);
+		map.put("connectedACCTList", connectedACCTList);
 
 		System.out.println("아이디 : " + id);
 		session.selectOne("dao.AccountDAO.selectAllOtherAccount", map);
-		accountList = (List<AccountVO>) map.get("accountList");
 		
-		for (AccountVO account : accountList) {
-			System.out.println(account);
+		accountList = (List<AccountVO>) map.get("accountList");
+		connectedACCTList = (List<ConnectedACCTVO>) map.get("connectedACCTList");
+		
+		for (ConnectedACCTVO connectedACCT : connectedACCTList) {
+			System.out.println(connectedACCT);
 		}
-		return accountList;
+		
+		return map;
 	}
 
 	public void precedureConnectedACCT(String id, String bankcode) {
@@ -76,6 +82,21 @@ public class AccountDAO {
 
 	public void insertAccount(AccountVO accountVO) {
 		session.insert("dao.AccountDAO.insertAccount", accountVO);
+		session.commit();
+	}
+
+	public void insertConnectedACCT(String id, String bankcode, String[] accountNoArr) {
+		
+		for (String accountNo : accountNoArr) {
+			
+			Map<String, Object> map = new HashMap<>();
+			map.put("id", id);
+			map.put("bankcode", bankcode);
+			map.put("accountNo", accountNo);
+			
+			session.insert("dao.AccountDAO.insertConnectedACCT", map);
+		}
+		
 		session.commit();
 	}
 }

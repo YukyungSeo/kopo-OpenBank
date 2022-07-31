@@ -36,6 +36,60 @@
     <!-- javascript -->
     <script src="https://kit.fontawesome.com/3b179c433e.js"></script>
     <script src="${ pageContext.request.contextPath }/js/myJS.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+			
+		<c:forEach items="${ connectedACCTList }" var="connectedACCT">
+			$.ajax({
+		       url:'http://130.162.132.21:8080/OpenApi/openapi/myaccount.json',
+		       //url: 'http://130.162.132.21:8080/OpenApi/openapi/myaccount/transaction/history.json',
+		       type:'post',
+		       data: {
+		    	   bank_code: '${ connectedACCT.bankcode }',
+		    	   tel: '${ member.phone }'
+		       },
+		       dataType:'json',
+		       success:callback,
+		       error: function(){
+		          alert('실패!!')
+		       }
+		    })
+		</c:forEach>
+		
+		function callback(result){
+		    let res = JSON.stringify(result)
+		    console.log('result:'+ res);
+		    
+		    let d = document.getElementById('account-div');
+		    
+		    for(i=0; i<result.length; i++){
+			    		    	
+		    	let	card_head = '<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"> <div class="service-item rounded h-100"> <div class="d-flex justify-content-between">';
+	            let card_tail = `</div> <div class="p-4">
+		                <h4 class="mb-3"><a onclick="location.href='${ pageContext.request.contextPath }/account/transactionList.do?bankcode=` + result[i].bank_code + `&accountNo=` + result[i].acctNO + `'" style="text-decoration:none" href="#">` + result[i]['acctAlias'] + `</a></h4><br>
+		                <h6 class="mb-3">계좌 ` + result[i].acctNO + `</h6>
+		                <h5 class="mb-3">금액 ` + result[i].balance + `원</h5>
+		            </div>
+		            </div> </div>`;
+		            
+	            //console.log(card_tail);
+	            
+	           	let card_body = '';
+	            if(result[i].bank_code === '1000') {
+	            	card_body = '<div class="service-icon-kk"> <img alt="kkbank-logo" src="${ pageContext.request.contextPath }/img/kkbank-logo.png" style="width:100%;"> </div>';
+	            } else if(result[i].bank_code === '2000') {
+	            	card_body = '<div class="service-icon-hw"> <img alt="hwbank-logo" src="${ pageContext.request.contextPath }/img/logo-8.png" style="width:100%;"> </div>';
+	            } else if(result[i].bank_code === '3000') {
+	            	card_body = '<div class="service-icon-jj"> <img alt="jjbank-logo" src="${ pageContext.request.contextPath }/img/jjbank-logo.png" style="width:100%;"> </div>';
+	            }
+	            
+	            card_body += '<a class="service-btn" href="#">이체</a>';
+	            
+	            //console.log(card_body);
+	            d.innerHTML += card_head + card_body + card_tail;
+		    }
+		 }
+	</script>
 </head>
 
 <body>
@@ -61,7 +115,7 @@
 
         <!-- Service Start -->
         <div class="container">
-            <div class="row g-4">
+            <div class="row g-4" id="account-div">
             	<c:forEach items="${ myAccountList }" var="account">
 	                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" >
 	                    <div class="service-item rounded h-100">

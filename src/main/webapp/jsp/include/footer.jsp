@@ -21,7 +21,7 @@
 	            <a class="btn btn-link" href="">About Us</a>
 	            <a class="btn btn-link" href="">Contact Us</a>
 	            <a class="btn btn-link" href="">Privacy Policy</a>
-	            <a class="btn btn-link" href="">Terms & Condition</a>
+	            <a class="btn btn-link" href="">Terms and Condition</a>
 	            <a class="btn btn-link" href="">Career</a>
 	        </div>
 	        <div class="col-md-6 col-lg-3">
@@ -29,7 +29,7 @@
 	            <a class="btn btn-link" href="">About Us</a>
 	            <a class="btn btn-link" href="">Contact Us</a>
 	            <a class="btn btn-link" href="">Privacy Policy</a>
-	            <a class="btn btn-link" href="">Terms & Condition</a>
+	            <a class="btn btn-link" href="">Terms and Condition</a>
 	            <a class="btn btn-link" href="">Career</a>
 	        </div>
 	        <div class="col-md-6 col-lg-3">

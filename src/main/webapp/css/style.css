@@ -285,7 +285,8 @@
 }
 
 .service-icon-sk, .service-icon-hj, 
-.service-icon-sm {
+.service-icon-sm, .service-icon-kk, 
+.service-icon-hw, .service-icon-jj {
 	margin: -1px 0 0 -1px;
     width: 65px;
     height: 65px;
@@ -306,7 +307,19 @@
 }
 
 .service-icon-sm {
-	background: blue
+	background: blue;
+}
+
+.service-icon-kk {
+	background: #5D62BE;
+}
+
+.service-icon-hw {
+	background: yellow;
+}
+
+.service-icon-jj {
+	background: #618e78;
 }
 
 .service-item .service-btn {

@@ -14,14 +14,17 @@ public class AddAccountProcessController implements Controller {
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		String bankcode = request.getParameter("bankcode");
+		String accountNo = request.getParameter("accountNo");
+		
 		HttpSession session = request.getSession();
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");
 		System.out.println("AddAccountProcess - memberVO : " + memberVO);
 		System.out.println("AddAccountProcess - bankcode : " + bankcode);
+		System.out.println("AddAccountProcess - accountNo : " + accountNo);
 		
 		AccountService service = new AccountService();
-		service.addAccountByBankCode(memberVO, bankcode);
-
+		service.addAccountByBankCode(memberVO, bankcode, accountNo);
+		
 		return "redirect:/account/list.do";
 	}
 

@@ -15,6 +15,7 @@
 		<typeAlias type="kr.ac.kopo.vo.TransactionVO" alias="TransactionVO" />
 		<typeAlias type="kr.ac.kopo.vo.CommCodeVO" alias="CommCodeVO" />
 		<typeAlias type="kr.ac.kopo.vo.BoardVO" alias="BoardVO" />
+		<typeAlias type="kr.ac.kopo.vo.ConnectedACCTVO" alias="ConnectedACCTVO" />
 	</typeAliases>
 
 	<environments default="development">
