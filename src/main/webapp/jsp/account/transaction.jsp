@@ -88,7 +88,7 @@
 		                        <div class="form-floating">
 		                            <select class="form-select" id="dealBankcode" name="dealBankcode" aria-label="Financial Consultancy">
 		                                <option selected value="2">SEO 은행</option>
-		                                <option value="1">SY 은행</option>
+		                                <option value="1">SK 은행</option>
 		                                <option value="3">HJ 은행</option>
 		                                <option value="4">SM 은행</option>
 		                            </select>

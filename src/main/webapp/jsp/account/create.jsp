@@ -119,7 +119,7 @@
 		                    </div>
 		                    <div class="col-md-6">
 		                        <div class="form-floating">
-		                            <input type="repassword" class="form-control" name="repassword" id="repassword" placeholder="4digit password">
+		                            <input type="password" class="form-control" name="repassword" id="repassword" placeholder="4digit password">
 		                            <label for="repassword">비밀번호 4자리 재입력</label>
 		                        </div>
 		                    </div>

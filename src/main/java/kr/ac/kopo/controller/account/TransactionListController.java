@@ -21,18 +21,34 @@ public class TransactionListController implements Controller {
 		String bankcode = request.getParameter("bankcode");
 		HttpSession session = request.getSession();
 		
-		// accountNo로 Account정보 가져와서 pageContext로 올림
-		AccountService AccountService = new AccountService();
-		AccountVO account = AccountService.getAccount(bankcode, accountNo);
-		session.setAttribute("account", account);
-		System.out.println(account);
-
-		// accountNo로 transactionList를 가져와서 pageContext로 올림
-		TransactionService service = new TransactionService();
-		List<TransactionVO> transactionList = service.getAllTransaction(bankcode, accountNo);
+		int code = Integer.parseInt(bankcode);
+		if(code < 4) {
+			
+			// accountNo로 Account정보 가져와서 pageContext로 올림
+			AccountService AccountService = new AccountService();
+			AccountVO account = AccountService.getAccount(bankcode, accountNo);
+			session.setAttribute("account", account);
+			System.out.println(account);
 		
-		session.setAttribute("transactionList", transactionList);
-
+			// accountNo로 transactionList를 가져와서 pageContext로 올림
+			TransactionService service = new TransactionService();
+			List<TransactionVO> transactionList = service.getAllTransaction(bankcode, accountNo);
+			
+			request.setAttribute("transactionList", transactionList);
+			
+		} else {
+			
+			AccountVO account = new AccountVO();
+			account.setBankcode(bankcode);
+			account.setAccountNo(accountNo);
+			session.setAttribute("account", account);
+			
+			TransactionVO transactionVO = new TransactionVO();
+			transactionVO.setActiveAcctNo(accountNo);
+			transactionVO.setActiveBankcode(bankcode);
+			request.setAttribute("transactionVO", transactionVO);
+			
+		}
 		return "/jsp/account/transactionList.jsp";
 	}
 

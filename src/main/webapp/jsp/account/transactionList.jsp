@@ -34,7 +34,8 @@
     <link href="${ pageContext.request.contextPath }/css/style.css" rel="stylesheet">
     
     <!-- javascript -->
-    <script src="https://kit.fontawesome.com/3b179c433e.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/3b179c433e.js"></script>
+
 </head>
 
 <body>
@@ -61,7 +62,7 @@
         <div class="container">
 	        <div class="col-lg-7 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="row g-3">
-					<h1 class="animated zoomIn mb-3">
+					<h1 class="animated zoomIn mb-3" id="acctAlias">
                 		<c:choose>
                 		<c:when test="${ account.bankcode eq 1 }">
 	                		<img alt="skbank-logo" src="${ pageContext.request.contextPath }/img/skbank-logo.png" style="height:70%"> 
@@ -74,16 +75,27 @@
                 		</c:when>
                 		<c:when test="${ account.bankcode eq 4 }">
                 			<span style="background-color:blue;overflow:hidden;height:auto;weight:auto;">
-	                		<img alt="smbank-logo" src="${ pageContext.request.contextPath }/img/logo-4.png" style="height:50%"> 
+	                		<img alt="smbank-logo" src="${ pageContext.request.contextPath }/img/skbank-logo.png" style="height:50%"> 
 	                		</span>
+                		</c:when>
+                		<c:when test="${ transactionVO.activeBankcode eq 1000 }">
+	                		<img alt="seobank-logo" src="${ pageContext.request.contextPath }/img/kkbank-logo.png" style="height:50%"> 
+                		</c:when>
+                		<c:when test="${ transactionVO.activeBankcode eq 2000 }">
+	                		<span style="background-color:yellow;overflow:hidden;height:auto;weight:auto;">
+	                		<img alt="smbank-logo" src="${ pageContext.request.contextPath }/img/skbank-logo.png" style="height:50%"> 
+	                		</span>
+                		</c:when>
+                		<c:when test="${ transactionVO.activeBankcode eq 3000 }">
+	                		<img alt="seobank-logo" src="${ pageContext.request.contextPath }/img/jjbank-logo.png" style="height:50%"> 
                 		</c:when>
                 		</c:choose>
                			${ account.goods }
            			</h1>
-                	<h2 class="animated zoomIn mb-3">잔액 ${ account.amount }원</h2>
-					<p>계좌번호 &nbsp;&nbsp; ${ account.accountNo }</p>
-					<p>사용여부 &nbsp;&nbsp; ${ account.available }</p>
-					<p>등록일 &nbsp;&nbsp;&nbsp;&nbsp; ${ account.regDate }<p>
+                	<h2 class="animated zoomIn mb-3" id="balance">잔액 ${ account.amount }원</h2>
+					<p id="accountNo">계좌번호 &nbsp;&nbsp; ${ account.accountNo }</p>
+					<p id="available">사용여부 &nbsp;&nbsp; ${ account.available }</p>
+					<p id="regDate">등록일 &nbsp;&nbsp;&nbsp;&nbsp; ${ account.regDate }<p>
                 </div>
 	        </div>
 		    <table class="table table-hover col-lg-7 wow fadeInUp" data-wow-delay="0.3s">
@@ -96,7 +108,7 @@
 						<th scope="col" style="text-align:right;">잔액</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="tr-tbody">
 					<c:forEach items="${ transactionList }" var="transaction" varStatus="status">
 					<tr class="table-primary" >
 						<td>${ transaction.regDate }</td>
@@ -139,6 +151,161 @@
 
     <!-- Template Javascript -->
     <script src="${ pageContext.request.contextPath }/js/main.js"></script>
+    
+    <!-- javascript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    $(window).on('load', function () {		
+		$.ajax({
+		   url:'http://130.162.132.21:8080/OpenApi/openapi/myaccount.json',
+		   //url: 'http://130.162.132.21:8080/OpenApi/openapi/myaccount/transaction/history.json',
+		   type:'post',
+		   data: {
+			   bank_code: '${ account.bankcode }',
+	    	   tel: '${ member.phone }'
+		   },
+		   dataType:'json',
+		   success:callbackAccount,
+		   error: function(){
+		      alert('실패!!')
+		   }
+		})
+		
+		$.ajax({
+		   //url:'http://130.162.132.21:8080/OpenApi/openapi/myaccount.json',
+		   url: 'http://130.162.132.21:8080/OpenApi/openapi/myaccount/transaction/history.json',
+		   type:'post',
+		   data: {
+			   account_no: '${ transactionVO.activeAcctNo }'
+		   },
+		   dataType:'json',
+		   success:callbackTransaction,
+		   error: function(){
+		      alert('실패!!')
+		   }
+		})
+    })
+		 
+	 function callbackAccount(result){
+	    let res = JSON.stringify(result)
+	    console.log('result:'+ res);
+	    
+	    for(i=0; i<result.length; i++){
+	    	
+    		let acctAlias = document.getElementById('acctAlias');
+	    	let balance = document.getElementById('balance');
+	    	let available = document.getElementById('available');
+	    	let regDate = document.getElementById('regDate');
+	    	
+	    	acctAlias.innerHTML += result[i].acctAlias;
+	    	balance.innerHTML = '잔액 ' + result[i].balance + '원';
+	    	available.innerHTML += 'Y';
+	    	regDate.innerHTML = '';
+	    }
+	 }
+	
+	
+	 function callbackTransaction(result){
+	    let res = JSON.stringify(result)
+	    console.log('result:'+ res);
+	    
+	    if(${ transactionVO.activeBankcode } === 1000) {
+	    
+		    let tr = ``;
+		    for(i=0; i<result.length; i++){
+		    	
+		    	let regDate = result[i].ts_date;
+		    	let name = result[i].ts_name;
+		    	let type = result[i].ts_type;
+		    	let amount = result[i].ts_amount;
+		    	let balance = result[i].balance;
+		    	
+		    	tr += `
+		    	<tr class="table-primary" >
+				<td>` + regDate + `</td>
+				<th scope="row">` + name + `</th>`;
+				
+				if( type === 'D') {
+					tr += `<td style="color:blue;">입금</td>
+					<td style="color:blue; text-align:right;">` + amount + ` 원</td>`;
+				} else if( type === 'W') {
+					tr += `<td style="color:red;">출금</td>
+					<td style="color:red; text-align:right;">` + amount + ` 원</td>`;
+				}
+				
+				tr += `<td style="text-align:right;">` + balance + ` 원</td></tr>`;
+			
+		    }
+				
+		    let tbody = document.getElementById('tr-tbody');
+		    tbody.innerHTML += tr;
+		    
+	    } else if(${ transactionVO.activeBankcode } === 2000) {
+	    
+		    let tr = ``;
+		    for(i=0; i<result.length; i++){
+		    	
+		    	let regDate = result[i].ts_date;
+		    	let name = result[i].ts_name;
+		    	let type = result[i].ts_type;
+		    	let amount = result[i].ts_amount;
+		    	let balance = result[i].balance;
+		    	
+		    	tr += `
+		    	<tr class="table-primary" >
+				<td>` + regDate + `</td>
+				<th scope="row">` + name + `</th>`;
+				
+				if( type === 'D') {
+					tr += `<td style="color:blue;">입금</td>
+					<td style="color:blue; text-align:right;">` + amount + ` 원</td>`;
+				} else if( type === 'W') {
+					tr += `<td style="color:red;">출금</td>
+					<td style="color:red; text-align:right;">` + amount + ` 원</td>`;
+				}
+				
+				tr += `<td style="text-align:right;">` + balance + ` 원</td></tr>`;
+			
+		    }
+				
+		    let tbody = document.getElementById('tr-tbody');
+		    tbody.innerHTML += tr;
+		    
+	    } else if(${ transactionVO.activeBankcode } === 3000) {
+	    
+		    let tr = ``;
+		    for(i=0; i<result.length; i++){
+		    	
+		    	let regDate = result[i].ts_date;
+		    	let name = result[i].target_bank;
+		    	let type = result[i].ts_type;
+		    	let amount = result[i].ts_amount;
+		    	let balance = result[i].balance;
+		    	
+		    	tr += `
+		    	<tr class="table-primary" >
+				<td>` + regDate + `</td>
+				<th scope="row">` + name + `</th>`;
+				
+				if( type === '입금') {
+					tr += `<td style="color:blue;">입금</td>
+					<td style="color:blue; text-align:right;">` + amount + ` 원</td>`;
+				} else if( type === '출금') {
+					tr += `<td style="color:red;">출금</td>
+					<td style="color:red; text-align:right;">` + amount + ` 원</td>`;
+				}
+				
+				tr += `<td style="text-align:right;">` + balance + ` 원</td></tr>`;
+			
+		    }
+				
+		    let tbody = document.getElementById('tr-tbody');
+		    tbody.innerHTML += tr;
+		    
+	    }
+	    
+	 }
+	</script>
 </body>
 
 </html>
